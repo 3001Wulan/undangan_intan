@@ -273,6 +273,9 @@ a{
     line-height:1.15;
     font-weight:500;
     color:#5b3743;
+
+    /* NAMA TETAP SATU BARIS */
+    white-space:nowrap;
 }
 
 .opening-degree{
@@ -1433,79 +1436,37 @@ a{
     background:#f8e5eb;
 }
 
-.journey-grid{
-    max-width:1000px;
 
-    margin:auto;
+/* =========================================================
+   JOURNEY QUOTE
+========================================================= */
 
-    display:grid;
+.journey-quote{
+    max-width:850px;
 
-    grid-template-columns:repeat(3,1fr);
-
-    gap:24px;
-}
-
-.journey-card{
-    min-height:280px;
-
-    padding:35px 28px;
-
-    background:#fff;
-
-    text-align:center;
-
-    position:relative;
-
-    box-shadow:
-        0 15px 30px rgba(120,60,80,.07);
-}
-
-.journey-shape{
-    width:62px;
-    height:62px;
-
-    margin:0 auto 18px;
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    border-radius:50% 50% 50% 0;
-
-    transform:rotate(-45deg);
-
-    background:#f4cbd9;
-}
-
-.journey-number{
-    transform:rotate(45deg);
+    margin:25px auto 0;
 
     font-family:'Playfair Display',serif;
 
-    color:#a94b6d;
+    font-size:clamp(25px,3.4vw,42px);
 
-    font-size:18px;
-}
-
-.journey-card h3{
-    margin-top:25px;
-
-    font-family:'Playfair Display',serif;
-
-    font-size:25px;
+    line-height:1.5;
 
     font-weight:500;
+
+    color:#583844;
 }
 
-.journey-card p{
-    margin-top:12px;
+.journey-author{
+    display:block;
 
-    font-size:13px;
+    margin-top:22px;
 
-    line-height:1.8;
+    font-size:12px;
 
-    color:#876d76;
+    letter-spacing:1px;
+
+    color:#9a6577;
 }
 
 
@@ -1932,10 +1893,6 @@ footer .footer-flower{
         grid-template-columns:1fr;
     }
 
-    .journey-grid{
-        grid-template-columns:1fr;
-    }
-
     .wishes-layout{
         grid-template-columns:1fr;
     }
@@ -1954,7 +1911,12 @@ footer .footer-flower{
 @media(max-width:500px){
 
     .opening-name{
-        font-size:32px;
+        /*
+         * Tetap satu baris di HP
+         * dengan ukuran yang menyesuaikan layar
+         */
+        font-size:clamp(20px,7vw,32px);
+        letter-spacing:-.4px;
     }
 
     .opening-script{
@@ -2023,6 +1985,11 @@ footer .footer-flower{
         font-size:40px;
     }
 
+    .journey-quote{
+        font-size:27px;
+        line-height:1.5;
+    }
+
     #map{
         height:300px;
     }
@@ -2080,8 +2047,7 @@ footer .footer-flower{
         </div>
 
         <div class="opening-name">
-            Intan Salma<br>
-            Denaidy, S.Kom
+            Intan Salma Denaidy, S.Kom
         </div>
 
         <div class="opening-degree">
@@ -2568,12 +2534,9 @@ footer .footer-flower{
                 To Celebrate
             </h2>
 
-            <p>
-                Sebuah tempat untuk bertemu,
-                berbagi cerita, dan merayakan
-                satu pencapaian bersama
-                orang-orang terkasih.
-            </p>
+
+            <!-- PARAGRAF YANG DIMINTA DIHAPUS SUDAH DIHILANGKAN -->
+
 
             <p>
                 <strong>
@@ -2615,9 +2578,9 @@ footer .footer-flower{
             ></div>
 
             <div class="map-coordinate">
-                📍 Koordinat lokasi:
+                📍 Lokasi:
                 <strong>
-                    -0.91482, 100.46039
+                    Fakultas Teknologi Informasi, Universitas Andalas
                 </strong>
             </div>
 
@@ -2636,87 +2599,14 @@ footer .footer-flower{
 
     <div class="section-heading">
 
-        <small>
-            A Little Story
-        </small>
+        <p class="journey-quote">
+            “Diperjumpakan dengan akhir dan kerampungan,
+            kita akan usai dan menyambut garis selesai.”
+        </p>
 
-        <h2>
-            From Then To Now
-        </h2>
-
-    </div>
-
-
-    <div class="journey-grid">
-
-
-        <div class="journey-card">
-
-            <div class="journey-shape">
-
-                <div class="journey-number">
-                    01
-                </div>
-
-            </div>
-
-            <h3>
-                Memulai
-            </h3>
-
-            <p>
-                Sebuah langkah yang dimulai dengan
-                rasa ingin tahu, harapan, dan banyak
-                hal baru untuk dipelajari.
-            </p>
-
-        </div>
-
-
-        <div class="journey-card">
-
-            <div class="journey-shape">
-
-                <div class="journey-number">
-                    02
-                </div>
-
-            </div>
-
-            <h3>
-                Menyelesaikan
-            </h3>
-
-            <p>
-                Ada hari yang mudah dan ada pula
-                yang penuh tantangan. Semuanya
-                menjadi bagian dari perjalanan.
-            </p>
-
-        </div>
-
-
-        <div class="journey-card">
-
-            <div class="journey-shape">
-
-                <div class="journey-number">
-                    03
-                </div>
-
-            </div>
-
-            <h3>
-                Merayakan
-            </h3>
-
-            <p>
-                Sampai akhirnya tiba pada satu titik
-                yang layak dikenang dan dirayakan
-                bersama orang-orang terkasih.
-            </p>
-
-        </div>
+        <span class="journey-author">
+            — Nadin Amizah, Kekal
+        </span>
 
     </div>
 
@@ -2735,13 +2625,13 @@ footer .footer-flower{
         <div class="wish-intro">
 
             <div class="wish-script">
-                Your Words
+                Your Wishes
             </div>
 
             <h2>
                 Leave<br>
                 A Little<br>
-                Love
+                Memory
             </h2>
 
             <p>
@@ -3374,6 +3264,11 @@ renderCalendar();
    LEAFLET OPENSTREETMAP
 ========================================================= */
 
+/*
+ * Titik diarahkan ke area FTI Universitas Andalas.
+ * FTI Unand berada di Kampus Limau Manis.
+ */
+
 const FTI_LAT = -0.91482;
 const FTI_LNG = 100.46039;
 
@@ -3460,15 +3355,18 @@ const marker =
 
 marker.bindPopup(`
     <div class="map-popup">
+
         <strong>
             Fakultas Teknologi Informasi
         </strong>
+
         <br>
 
         <small>
             Universitas Andalas<br>
             Limau Manis, Padang
         </small>
+
     </div>
 `);
 
