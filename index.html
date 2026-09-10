@@ -1205,6 +1205,8 @@ a{
 
     width:max-content;
 
+    align-items:center;
+
     gap:20px;
 
     animation:
@@ -1239,11 +1241,21 @@ a{
     cursor:pointer;
 
     position:relative;
+
+    transition:
+        width .35s ease,
+        height .35s ease;
 }
+
+
+/* FOTO GENAP TETAP SEDIKIT TURUN */
 
 .slide-photo:nth-child(even){
     transform:translateY(30px);
 }
+
+
+/* FOTO NORMAL */
 
 .slide-photo img{
     width:100%;
@@ -1255,14 +1267,92 @@ a{
 
     object-position:center;
 
-    border:0;
-    outline:0;
+    border:0 !important;
+    outline:0 !important;
+
+    margin:0;
+    padding:0;
 
     transition:
         transform .5s ease;
 }
 
-.slide-photo:hover img{
+
+/* =========================================================
+   FOTO LANDSCAPE OTOMATIS
+========================================================= */
+
+/*
+   Class ini ditambahkan otomatis oleh JavaScript
+   berdasarkan ukuran asli foto.
+
+   Jadi:
+   - landscape = mengikuti rasio asli
+   - portrait = tetap seperti desain awal
+*/
+
+.slide-photo.is-landscape{
+
+    width:min(420px,78vw);
+
+    height:auto;
+
+    overflow:hidden;
+
+    background:transparent;
+
+    border:0 !important;
+
+    outline:0 !important;
+
+    box-shadow:none;
+
+    padding:0;
+
+    border-radius:0;
+}
+
+
+/* FOTO LANDSCAPE */
+
+.slide-photo.is-landscape img{
+
+    width:100%;
+
+    height:auto;
+
+    max-width:none;
+
+    display:block;
+
+    object-fit:contain;
+
+    object-position:center;
+
+    background:transparent;
+
+    border:0 !important;
+
+    outline:0 !important;
+
+    border-radius:0;
+
+    margin:0;
+
+    padding:0;
+}
+
+
+/* HOVER LANDSCAPE */
+
+.slide-photo.is-landscape:hover img{
+    transform:scale(1.035);
+}
+
+
+/* HOVER FOTO NORMAL */
+
+.slide-photo:not(.is-landscape):hover img{
     transform:scale(1.06);
 }
 
@@ -2186,11 +2276,21 @@ footer .footer-flower{
 }
 
 .lightbox img{
-    max-width:90%;
+    max-width:92%;
 
-    max-height:85vh;
+    max-height:88vh;
+
+    width:auto;
+    height:auto;
 
     object-fit:contain;
+
+    display:block;
+
+    border:0 !important;
+    outline:0 !important;
+
+    background:transparent;
 
     box-shadow:
         0 20px 60px rgba(0,0,0,.35);
@@ -2353,6 +2453,39 @@ footer .footer-flower{
         width:220px;
 
         height:290px;
+    }
+
+    /*
+       Landscape di HP otomatis lebih kecil,
+       tetapi tetap mengikuti rasio asli.
+    */
+
+    .slide-photo.is-landscape{
+
+        width:min(330px,82vw);
+
+        height:auto;
+
+        background:transparent;
+
+        box-shadow:none;
+
+        border:0 !important;
+
+        outline:0 !important;
+    }
+
+    .slide-photo.is-landscape img{
+
+        width:100%;
+
+        height:auto;
+
+        object-fit:contain;
+
+        border:0 !important;
+
+        outline:0 !important;
     }
 
     .venue-copy h2{
@@ -3934,7 +4067,8 @@ renderCalendar();
 
 
 /* =========================================================
-   PHOTO SLIDER - DUPLIKASI OTOMATIS
+   PHOTO SLIDER
+   DUPLIKASI OTOMATIS
 ========================================================= */
 
 const photoTrack =
@@ -3948,6 +4082,11 @@ const originalPhotos =
         photoTrack.children
     );
 
+
+/*
+   Gandakan semua foto agar slider
+   berjalan tanpa putus.
+*/
 
 originalPhotos.forEach(function(photo){
 
@@ -3966,6 +4105,116 @@ originalPhotos.forEach(function(photo){
     );
 
 });
+
+
+/* =========================================================
+   DETEKSI OTOMATIS PORTRAIT / LANDSCAPE
+========================================================= */
+
+/*
+   Fungsi ini membaca:
+   
+   naturalWidth
+   naturalHeight
+
+   dari setiap foto.
+
+   Jika lebar > tinggi:
+       LANDSCAPE
+
+   Jika tinggi >= lebar:
+       PORTRAIT
+*/
+
+function detectPhotoOrientation(){
+
+    const photos =
+        document.querySelectorAll(
+            ".slide-photo"
+        );
+
+
+    photos.forEach(function(card){
+
+        const image =
+            card.querySelector("img");
+
+
+        if(!image){
+            return;
+        }
+
+
+        function checkOrientation(){
+
+            if(
+                image.naturalWidth >
+                image.naturalHeight
+            ){
+
+                card.classList.add(
+                    "is-landscape"
+                );
+
+            }
+
+            else{
+
+                card.classList.remove(
+                    "is-landscape"
+                );
+
+            }
+
+        }
+
+
+        /*
+           Jika gambar sudah selesai dimuat.
+        */
+
+        if(image.complete){
+
+            checkOrientation();
+
+        }
+
+
+        /*
+           Jika gambar baru selesai dimuat.
+        */
+
+        image.addEventListener(
+            "load",
+            checkOrientation
+        );
+
+    });
+
+}
+
+
+/*
+   Jalankan setelah seluruh elemen
+   foto selesai dibuat.
+*/
+
+detectPhotoOrientation();
+
+
+/*
+   Jalankan sekali lagi setelah halaman
+   benar-benar selesai dimuat.
+*/
+
+window.addEventListener(
+    "load",
+    function(){
+
+        detectPhotoOrientation();
+
+    }
+);
 
 
 /* =========================================================
