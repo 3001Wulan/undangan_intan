@@ -274,7 +274,6 @@ a{
     font-weight:500;
     color:#5b3743;
 
-    /* NAMA TETAP SATU BARIS */
     white-space:nowrap;
 }
 
@@ -1438,35 +1437,181 @@ a{
 
 
 /* =========================================================
-   JOURNEY QUOTE
+   FINAL QUOTE CARD
 ========================================================= */
 
-.journey-quote{
+.final-quote-card{
     max-width:850px;
 
-    margin:25px auto 0;
+    margin:0 auto;
+
+    padding:60px 50px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff8fb 0%,
+            #fce7ef 50%,
+            #fff9fb 100%
+        );
+
+    border:1px solid rgba(216,100,137,.22);
+
+    border-radius:30px;
+
+    box-shadow:
+        0 20px 50px rgba(169,70,104,.12),
+        inset 0 1px 0 rgba(255,255,255,.8);
+
+    text-align:center;
+}
+
+.final-quote-card::before{
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    top:-90px;
+    left:-80px;
+
+    border-radius:50%;
+
+    background:rgba(216,100,137,.08);
+}
+
+.final-quote-card::after{
+    content:"";
+
+    position:absolute;
+
+    width:200px;
+    height:200px;
+
+    right:-100px;
+    bottom:-110px;
+
+    border-radius:50%;
+
+    background:rgba(216,100,137,.07);
+}
+
+
+/* =========================================================
+   QUOTE DECORATION
+========================================================= */
+
+.quote-decoration{
+    position:absolute;
 
     font-family:'Playfair Display',serif;
 
-    font-size:clamp(25px,3.4vw,42px);
+    font-size:100px;
 
-    line-height:1.5;
+    line-height:1;
+
+    color:rgba(216,100,137,.22);
+
+    pointer-events:none;
+}
+
+.quote-left{
+    top:22px;
+    left:35px;
+}
+
+.quote-right{
+    right:35px;
+    bottom:0;
+}
+
+
+/* =========================================================
+   QUOTE CONTENT
+========================================================= */
+
+.quote-content{
+    position:relative;
+
+    z-index:2;
+}
+
+
+/* =========================================================
+   FINAL QUOTE
+========================================================= */
+
+.final-quote{
+    max-width:720px;
+
+    margin:0 auto;
+
+    font-family:'Playfair Display',serif;
+
+    font-size:clamp(23px,3.6vw,36px);
+
+    line-height:1.55;
 
     font-weight:500;
 
     color:#583844;
+
+    letter-spacing:.1px;
 }
 
-.journey-author{
+
+/* =========================================================
+   FINAL QUOTE AUTHOR
+========================================================= */
+
+.final-quote-author{
     display:block;
 
-    margin-top:22px;
+    margin-top:25px;
 
-    font-size:12px;
+    font-family:'DM Sans',sans-serif;
 
-    letter-spacing:1px;
+    font-size:13px;
 
-    color:#9a6577;
+    letter-spacing:1.5px;
+
+    color:#8b6d77;
+}
+
+.final-quote-author::before{
+    content:"";
+
+    display:inline-block;
+
+    width:35px;
+    height:1px;
+
+    margin-right:10px;
+
+    vertical-align:middle;
+
+    background:#d86489;
+}
+
+.final-quote-author::after{
+    content:"";
+
+    display:inline-block;
+
+    width:35px;
+    height:1px;
+
+    margin-left:10px;
+
+    vertical-align:middle;
+
+    background:#d86489;
 }
 
 
@@ -1911,10 +2056,6 @@ footer .footer-flower{
 @media(max-width:500px){
 
     .opening-name{
-        /*
-         * Tetap satu baris di HP
-         * dengan ukuran yang menyesuaikan layar
-         */
         font-size:clamp(20px,7vw,32px);
         letter-spacing:-.4px;
     }
@@ -1985,9 +2126,46 @@ footer .footer-flower{
         font-size:40px;
     }
 
-    .journey-quote{
-        font-size:27px;
-        line-height:1.5;
+    /* FINAL QUOTE CARD MOBILE */
+
+    .journey{
+        padding:80px 16px;
+    }
+
+    .final-quote-card{
+        padding:50px 25px 55px;
+
+        border-radius:24px;
+    }
+
+    .quote-decoration{
+        font-size:75px;
+    }
+
+    .quote-left{
+        top:18px;
+        left:20px;
+    }
+
+    .quote-right{
+        right:20px;
+        bottom:-5px;
+    }
+
+    .final-quote{
+        font-size:21px;
+        line-height:1.6;
+    }
+
+    .final-quote-author{
+        margin-top:22px;
+        font-size:11px;
+        letter-spacing:1px;
+    }
+
+    .final-quote-author::before,
+    .final-quote-author::after{
+        width:20px;
     }
 
     #map{
@@ -2535,9 +2713,6 @@ footer .footer-flower{
             </h2>
 
 
-            <!-- PARAGRAF YANG DIMINTA DIHAPUS SUDAH DIHILANGKAN -->
-
-
             <p>
                 <strong>
                     Fakultas Teknologi Informasi<br>
@@ -2592,21 +2767,33 @@ footer .footer-flower{
 
 
 <!-- ======================================================
-     JOURNEY
+     FINAL QUOTE
 ====================================================== -->
 
 <section class="journey">
 
-    <div class="section-heading">
+    <div class="final-quote-card">
 
-        <p class="journey-quote">
-            “Diperjumpakan dengan akhir dan kerampungan,
-            kita akan usai dan menyambut garis selesai.”
-        </p>
+        <div class="quote-decoration quote-left">
+            “
+        </div>
 
-        <span class="journey-author">
-            — Nadin Amizah, Kekal
-        </span>
+        <div class="quote-content">
+
+            <p class="final-quote">
+                Diperjumpakan dengan akhir dan kerampungan,
+                kita akan usai dan menyambut garis selesai.
+            </p>
+
+            <span class="final-quote-author">
+                — Nadin Amizah, Kekal
+            </span>
+
+        </div>
+
+        <div class="quote-decoration quote-right">
+            ”
+        </div>
 
     </div>
 
@@ -3264,11 +3451,6 @@ renderCalendar();
    LEAFLET OPENSTREETMAP
 ========================================================= */
 
-/*
- * Titik diarahkan ke area FTI Universitas Andalas.
- * FTI Unand berada di Kampus Limau Manis.
- */
-
 const FTI_LAT = -0.91482;
 const FTI_LNG = 100.46039;
 
@@ -3385,6 +3567,7 @@ setTimeout(function(){
     map.invalidateSize();
 
 },500);
+
 
 window.addEventListener(
     "resize",
