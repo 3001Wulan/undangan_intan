@@ -33,12 +33,7 @@
     src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
 </script>
 
-
 <style>
-
-/* =========================================================
-   ROOT
-========================================================= */
 
 :root{
     --pink:#d86489;
@@ -47,18 +42,11 @@
     --pink-light:#fff1f5;
     --cream:#fff9fb;
     --white:#ffffff;
-
     --text:#563843;
     --muted:#866c75;
     --line:#ead0da;
-
     --dark:#56343f;
 }
-
-
-/* =========================================================
-   RESET
-========================================================= */
 
 *{
     margin:0;
@@ -72,13 +60,9 @@ html{
 
 body{
     margin:0;
-
     font-family:'DM Sans',sans-serif;
-
     color:var(--text);
-
     background:var(--cream);
-
     overflow-x:hidden;
 }
 
@@ -97,48 +81,31 @@ a{
     color:inherit;
 }
 
-
-/* =========================================================
-   FLOWER FALLING
-========================================================= */
+/* =========================
+   FLOWER
+========================= */
 
 #flowerLayer{
     position:fixed;
-
     inset:0;
-
     pointer-events:none;
-
     overflow:hidden;
-
     z-index:9999;
 }
 
 .flower{
     position:absolute;
-
     top:-60px;
-
     color:#df87a5;
-
     opacity:.65;
-
-    animation:
-        fallFlower linear infinite;
-
-    filter:
-        drop-shadow(
-            0 2px 3px rgba(160,60,90,.12)
-        );
+    animation:fallFlower linear infinite;
+    filter:drop-shadow(0 2px 3px rgba(160,60,90,.12));
 }
 
 @keyframes fallFlower{
 
     0%{
-        transform:
-            translate3d(0,-70px,0)
-            rotate(0deg);
-
+        transform:translate3d(0,-70px,0) rotate(0deg);
         opacity:0;
     }
 
@@ -147,107 +114,75 @@ a{
     }
 
     50%{
-        transform:
-            translate3d(80px,55vh,0)
-            rotate(180deg);
+        transform:translate3d(80px,55vh,0) rotate(180deg);
     }
 
     100%{
-        transform:
-            translate3d(-100px,110vh,0)
-            rotate(360deg);
-
+        transform:translate3d(-100px,110vh,0) rotate(360deg);
         opacity:0;
     }
-
 }
 
-
-/* =========================================================
+/* =========================
    GLOW
-========================================================= */
+========================= */
 
 #glowLayer{
     position:fixed;
-
     inset:0;
-
     pointer-events:none;
-
     z-index:2;
 }
 
 .glow{
     position:absolute;
-
     width:4px;
     height:4px;
-
     border-radius:50%;
-
     background:#efa9bf;
-
     opacity:.5;
-
-    animation:
-        glowAnimation 5s ease-in-out infinite;
+    animation:glowAnimation 5s ease-in-out infinite;
 }
 
 @keyframes glowAnimation{
 
-    0%,100%{
-        transform:
-            translateY(0)
-            scale(.7);
-
+    0%,
+    100%{
+        transform:translateY(0) scale(.7);
         opacity:.2;
     }
 
     50%{
-        transform:
-            translateY(-25px)
-            scale(1.5);
-
+        transform:translateY(-25px) scale(1.5);
         opacity:.8;
     }
-
 }
 
-
-/* =========================================================
+/* =========================
    OPENING
-========================================================= */
+========================= */
 
 .opening{
     position:fixed;
-
     inset:0;
-
     z-index:5000;
-
     display:flex;
-
     align-items:center;
     justify-content:center;
-
     padding:25px;
-
     text-align:center;
 
     background:
-
         radial-gradient(
             circle at 15% 15%,
             rgba(255,255,255,.95),
             transparent 28%
         ),
-
         radial-gradient(
             circle at 85% 80%,
             rgba(247,197,213,.8),
             transparent 32%
         ),
-
         linear-gradient(
             135deg,
             #fff9fb,
@@ -261,213 +196,136 @@ a{
 
 .opening.hide{
     opacity:0;
-
     visibility:hidden;
 }
 
 .opening-card{
     width:min(540px,100%);
-
     padding:50px 30px;
-
     position:relative;
 }
 
 .opening-card::before{
     content:"❀";
-
     position:absolute;
-
     top:-20px;
     left:5px;
-
     color:#d66f91;
-
     font-size:75px;
-
     opacity:.22;
-
     transform:rotate(-20deg);
 }
 
 .opening-card::after{
     content:"✿";
-
     position:absolute;
-
     bottom:-25px;
     right:5px;
-
     color:#d66f91;
-
     font-size:85px;
-
     opacity:.22;
-
     transform:rotate(20deg);
 }
 
-
-/* =========================================================
-   OPENING SCRIPT
-========================================================= */
+/* GRADUATION DAY */
 
 .opening-script{
     font-family:'Parisienne',cursive;
-
     color:var(--pink-dark);
-
-    font-size:52px;
-
+    font-size:60px;
     line-height:1.1;
+    text-transform:none;
+    white-space:nowrap;
 }
-
-
-/* =========================================================
-   OPENING NAME
-========================================================= */
 
 .opening-name{
     margin-top:12px;
-
     font-family:'Playfair Display',serif;
-
     font-size:42px;
-
     line-height:1.15;
-
     font-weight:500;
-
     color:#5b3743;
-
     white-space:nowrap;
 }
 
 .opening-degree{
     margin-top:14px;
-
     font-size:13px;
-
     color:var(--muted);
 }
 
-
-/* =========================================================
-   GUEST
-========================================================= */
-
 .guest-box{
     margin:35px auto 27px;
-
     padding:17px 20px;
-
-    border-top:
-        1px solid rgba(169,67,104,.2);
-
-    border-bottom:
-        1px solid rgba(169,67,104,.2);
+    border-top:1px solid rgba(169,67,104,.2);
+    border-bottom:1px solid rgba(169,67,104,.2);
 }
 
 .guest-label{
     font-size:9px;
-
     text-transform:uppercase;
-
     letter-spacing:2px;
-
     color:#9a7883;
 }
 
 .guest-name{
     margin-top:8px;
-
     font-family:'Playfair Display',serif;
-
     font-size:21px;
-
     color:#704451;
 }
 
-
-/* =========================================================
-   OPEN BUTTON
-========================================================= */
-
 .open-button{
     border:0;
-
     padding:15px 30px;
-
     border-radius:50px;
-
     color:#fff;
-
     background:#c55c80;
-
     font-size:12px;
-
     font-weight:600;
-
     cursor:pointer;
-
-    box-shadow:
-        0 12px 30px rgba(184,73,111,.25);
-
+    box-shadow:0 12px 30px rgba(184,73,111,.25);
     transition:.3s;
 }
 
 .open-button:hover{
     transform:translateY(-3px);
-
     background:#aa486b;
 }
 
-
-/* =========================================================
+/* =========================
    MAIN
-========================================================= */
+========================= */
 
 .main{
     opacity:0;
-
-    transition:
-        opacity 1s ease;
+    transition:opacity 1s ease;
 }
 
 .main.show{
     opacity:1;
 }
 
-
-/* =========================================================
+/* =========================
    HERO
-========================================================= */
+========================= */
 
 .hero{
     min-height:100vh;
-
     display:grid;
-
     grid-template-columns:1fr 1fr;
-
     align-items:center;
-
     gap:70px;
-
     padding:90px 9%;
-
     position:relative;
-
     overflow:hidden;
 
     background:
-
         radial-gradient(
             circle at 85% 15%,
             #f7dbe5,
             transparent 28%
         ),
-
         linear-gradient(
             135deg,
             #fff9fb,
@@ -477,365 +335,232 @@ a{
 
 .hero::before{
     content:"";
-
     position:absolute;
-
     width:520px;
     height:520px;
-
-    border:
-        1px solid #edc5d2;
-
+    border:1px solid #edc5d2;
     border-radius:50%;
-
     right:-250px;
     top:-220px;
 }
 
 .hero-text{
     position:relative;
-
     z-index:3;
 }
 
 .hero-label{
     display:inline-block;
-
     padding:8px 15px;
-
     border-radius:30px;
-
     background:#fbe8ee;
-
     color:#a84a6c;
-
     font-size:10px;
-
     letter-spacing:2px;
-
     text-transform:uppercase;
 }
 
 .hero h1{
     margin-top:24px;
-
     font-family:'Playfair Display',serif;
-
     font-size:clamp(48px,6vw,80px);
-
     line-height:1;
-
     font-weight:500;
-
     color:#573742;
 }
 
 .hero h1 span{
     display:block;
-
     margin-top:8px;
-
     font-family:'Parisienne',cursive;
-
     font-size:1.1em;
-
     color:#c85e83;
 }
 
 .hero-description{
     max-width:510px;
-
     margin-top:27px;
-
     font-size:14px;
-
     line-height:1.9;
-
     color:#80666f;
 }
 
-
-/* =========================================================
-   HERO PHOTO
-========================================================= */
-
 .hero-photo-area{
     min-height:610px;
-
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
     position:relative;
 }
 
 .photo-frame{
     width:min(410px,90%);
-
     height:530px;
-
     padding:0;
-
     background:transparent;
-
-    box-shadow:
-        0 25px 60px rgba(100,45,65,.16);
-
+    box-shadow:0 25px 60px rgba(100,45,65,.16);
     transform:rotate(3deg);
-
     position:relative;
-
     overflow:visible;
 }
 
 .photo-frame::before{
     content:"";
-
     position:absolute;
-
     inset:-25px;
-
-    border:
-        1px solid #e7a9bd;
-
+    border:1px solid #e7a9bd;
     z-index:-1;
-
     transform:rotate(-7deg);
-
     pointer-events:none;
 }
 
 .photo-frame::after{
     content:"";
-
     position:absolute;
-
     width:80px;
     height:80px;
-
-    border:
-        1px solid #e5a7bb;
-
+    border:1px solid #e5a7bb;
     border-radius:50%;
-
     right:-55px;
     bottom:25px;
-
     opacity:.5;
-
     pointer-events:none;
 }
 
 .photo-frame img{
     width:100%;
     height:100%;
-
     display:block;
-
     object-fit:cover;
-
     object-position:center;
-
     border:0;
     outline:0;
-
     border-radius:0;
 }
 
-
-/* =========================================================
-   HERO FLOWER
-========================================================= */
-
 .hero-flower{
     position:absolute;
-
     color:#d87999;
-
     opacity:.28;
-
     font-size:105px;
 }
 
 .hero-flower.one{
     top:30px;
     left:5px;
-
     transform:rotate(-20deg);
 }
 
 .hero-flower.two{
     right:0;
     bottom:35px;
-
     transform:rotate(25deg);
 }
 
 .scroll-hint{
     position:absolute;
-
     left:50%;
     bottom:24px;
-
     transform:translateX(-50%);
-
     font-size:9px;
-
     letter-spacing:3px;
-
     color:#a47d88;
-
     text-transform:uppercase;
 }
 
-
-/* =========================================================
+/* =========================
    QUOTE
-========================================================= */
+========================= */
 
 .quote-section{
     padding:120px 10%;
-
     background:#fff;
-
     text-align:center;
 }
 
 .quote-flower{
     color:#d76c8e;
-
     font-size:36px;
-
     margin-bottom:25px;
 }
 
 .quote-section h2{
     max-width:820px;
-
     margin:auto;
-
     font-family:'Playfair Display',serif;
-
     font-size:clamp(30px,4vw,48px);
-
     line-height:1.4;
-
     font-weight:500;
-
     color:#593843;
 }
 
 .quote-section p{
     max-width:680px;
-
     margin:25px auto 0;
-
     font-size:14px;
-
     line-height:1.9;
-
     color:#856b75;
 }
 
-
-/* =========================================================
+/* =========================
    DATE
-========================================================= */
+========================= */
 
 .date-section{
     padding:105px 7%;
-
     background:#fdf0f4;
 }
 
 .section-heading{
     text-align:center;
-
     margin-bottom:50px;
 }
 
 .section-heading small{
     font-size:9px;
-
     text-transform:uppercase;
-
     letter-spacing:3px;
-
     color:#b45a7a;
 }
 
 .section-heading h2{
     margin-top:9px;
-
     font-family:'Playfair Display',serif;
-
     font-size:43px;
-
     font-weight:500;
-
     color:#583844;
 }
 
-
-/* =========================================================
-   CALENDAR WRAP
-========================================================= */
-
 .calendar-wrap{
     max-width:920px;
-
     margin:auto;
-
     display:grid;
-
     grid-template-columns:1.15fr .85fr;
-
     gap:25px;
-
     align-items:stretch;
 }
 
-
-/* =========================================================
-   CALENDAR
-========================================================= */
-
 .calendar{
     background:#fff;
-
     padding:32px;
-
-    box-shadow:
-        0 18px 45px rgba(120,60,80,.08);
+    box-shadow:0 18px 45px rgba(120,60,80,.08);
 }
 
 .calendar-header{
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
     margin-bottom:30px;
 }
 
 .calendar-header button{
     width:38px;
     height:38px;
-
     border-radius:50%;
-
-    border:
-        1px solid #efd3dd;
-
+    border:1px solid #efd3dd;
     background:#fff8fa;
-
     color:#b95376;
-
     font-size:25px;
-
     cursor:pointer;
 }
 
@@ -845,36 +570,25 @@ a{
 
 .calendar-title strong{
     display:block;
-
     font-family:'Playfair Display',serif;
-
     font-size:23px;
-
     letter-spacing:3px;
-
     color:#603c48;
-
     font-weight:500;
 }
 
 .calendar-title span{
     display:block;
-
     margin-top:3px;
-
     font-size:10px;
-
     letter-spacing:3px;
-
     color:#a27b86;
 }
 
 .calendar-week,
 .calendar-days{
     display:grid;
-
     grid-template-columns:repeat(7,1fr);
-
     text-align:center;
 }
 
@@ -884,9 +598,7 @@ a{
 
 .calendar-week span{
     font-size:8px;
-
     letter-spacing:1px;
-
     color:#a47b87;
 }
 
@@ -896,17 +608,11 @@ a{
 
 .calendar-day{
     aspect-ratio:1;
-
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
     position:relative;
-
     font-size:13px;
-
     color:#684650;
 }
 
@@ -916,73 +622,46 @@ a{
 
 .calendar-day.active{
     color:#fff;
-
     font-weight:700;
-
     z-index:1;
 }
 
 .calendar-day.active::before{
     content:"";
-
     position:absolute;
-
     width:42px;
     height:42px;
-
     border-radius:50%;
-
     background:#c85f82;
-
     z-index:-1;
-
-    box-shadow:
-        0 7px 16px rgba(190,75,115,.25);
+    box-shadow:0 7px 16px rgba(190,75,115,.25);
 }
 
 .calendar-day.active::after{
     content:"✿";
-
     position:absolute;
-
     top:-5px;
     right:-3px;
-
     font-size:11px;
-
     color:#e9a8bd;
 }
 
-
-/* =========================================================
-   SELECTED DATE
-========================================================= */
-
 .selected-date{
     min-height:100%;
-
     padding:40px 25px;
-
     display:flex;
-
     flex-direction:column;
-
     align-items:center;
-
     justify-content:center;
-
     text-align:center;
-
     color:#fff;
 
     background:
-
         radial-gradient(
             circle at 80% 15%,
             rgba(255,255,255,.2),
             transparent 30%
         ),
-
         linear-gradient(
             145deg,
             #d86e92,
@@ -990,223 +669,146 @@ a{
         );
 
     position:relative;
-
     overflow:hidden;
 }
 
 .selected-date::before{
     content:"";
-
     position:absolute;
-
     width:230px;
     height:230px;
-
-    border:
-        1px solid rgba(255,255,255,.18);
-
+    border:1px solid rgba(255,255,255,.18);
     border-radius:50%;
-
     top:-120px;
     right:-90px;
 }
 
 .selected-date::after{
     content:"";
-
     position:absolute;
-
     width:180px;
     height:180px;
-
-    border:
-        1px solid rgba(255,255,255,.12);
-
+    border:1px solid rgba(255,255,255,.12);
     border-radius:50%;
-
     bottom:-90px;
     left:-80px;
 }
 
 .selected-flower{
     font-size:32px;
-
     color:#ffdce7;
-
     margin-bottom:8px;
 }
 
 .selected-day{
     font-size:10px;
-
     text-transform:uppercase;
-
     letter-spacing:4px;
 }
 
 .selected-number{
     font-family:'Playfair Display',serif;
-
     font-size:105px;
-
     line-height:1;
-
     margin:5px 0;
 }
 
 .selected-month{
     font-family:'Playfair Display',serif;
-
     font-size:23px;
 }
 
 .selected-time{
     margin-top:18px;
-
     padding-top:15px;
-
-    border-top:
-        1px solid rgba(255,255,255,.3);
-
+    border-top:1px solid rgba(255,255,255,.3);
     font-size:11px;
-
     letter-spacing:1px;
 }
 
-
-/* =========================================================
-   COUNTDOWN
-========================================================= */
-
 .countdown-title{
     text-align:center;
-
     margin-top:62px;
-
     margin-bottom:22px;
-
     font-family:'Playfair Display',serif;
-
     font-size:23px;
-
     color:#704451;
 }
 
 .countdown{
     max-width:700px;
-
     margin:auto;
-
     display:grid;
-
     grid-template-columns:repeat(4,1fr);
-
     gap:14px;
 }
 
 .time-box{
     padding:24px 10px;
-
     background:#fff;
-
-    border:
-        1px solid #efd5de;
-
+    border:1px solid #efd5de;
     text-align:center;
 }
 
 .time-box strong{
     display:block;
-
     font-family:'Playfair Display',serif;
-
     font-size:38px;
-
     font-weight:500;
-
     color:#bd5a7d;
 }
 
 .time-box span{
     display:block;
-
     margin-top:4px;
-
     font-size:8px;
-
     letter-spacing:2px;
-
     text-transform:uppercase;
-
     color:#92727d;
 }
 
-
-/* =========================================================
+/* =========================
    PHOTO SLIDER
-========================================================= */
+========================= */
 
 .photo-slider-section{
     padding:105px 0;
-
     background:#fff;
-
     overflow:hidden;
 }
 
 .photo-slider-heading{
     text-align:center;
-
     padding:0 20px;
-
     margin-bottom:42px;
 }
 
 .photo-slider-heading small{
     font-size:9px;
-
     letter-spacing:3px;
-
     text-transform:uppercase;
-
     color:#b45a7a;
 }
 
 .photo-slider-heading h2{
     margin-top:10px;
-
     font-family:'Playfair Display',serif;
-
     font-size:40px;
-
     font-weight:500;
-
     color:#583844;
 }
 
-
-/* =========================================================
-   PHOTO TRACK
-========================================================= */
-
 .photo-slider-window{
     width:100%;
-
     overflow:hidden;
 }
 
 .photo-track{
     display:flex;
-
     width:max-content;
-
-    align-items:flex-start;
-
+    align-items:center;
     gap:20px;
-
-    animation:
-        photoMoving 90s linear infinite;
-
+    animation:photoMoving 90s linear infinite;
     will-change:transform;
 }
 
@@ -1214,141 +816,71 @@ a{
     animation-play-state:paused;
 }
 
-
-/* =========================================================
-   SLIDE PHOTO DEFAULT = PORTRAIT
-========================================================= */
-
 .slide-photo{
     width:270px;
-
     height:350px;
-
     flex-shrink:0;
-
     overflow:hidden;
-
     background:#f7dce5;
-
-    box-shadow:
-        0 16px 35px rgba(100,45,65,.12);
-
+    box-shadow:0 16px 35px rgba(100,45,65,.12);
     cursor:pointer;
-
     position:relative;
-
     transition:
         width .35s ease,
         height .35s ease;
 }
 
-
-/* FOTO GENAP SEDIKIT TURUN */
-
 .slide-photo:nth-child(even){
     transform:translateY(30px);
 }
 
-
-/* =========================================================
-   IMAGE DEFAULT
-========================================================= */
-
 .slide-photo img{
     width:100%;
-
     height:100%;
-
     display:block;
-
     object-fit:cover;
-
     object-position:center;
-
     border:0 !important;
-
     outline:0 !important;
-
     margin:0;
-
     padding:0;
-
-    transition:
-        transform .5s ease;
+    transition:transform .5s ease;
 }
-
-
-/* =========================================================
-   LANDSCAPE OTOMATIS
-========================================================= */
 
 .slide-photo.is-landscape{
-
     width:min(420px,78vw);
-
     height:auto;
-
-    flex-shrink:0;
-
     overflow:hidden;
-
     background:transparent;
-
     border:0 !important;
-
     outline:0 !important;
-
     box-shadow:none;
-
     padding:0;
-
-    margin:0;
+    border-radius:0;
 }
-
 
 .slide-photo.is-landscape img{
-
     width:100%;
-
     height:auto;
-
     max-width:none;
-
     display:block;
-
     object-fit:contain;
-
     object-position:center;
-
     background:transparent;
-
     border:0 !important;
-
     outline:0 !important;
-
+    border-radius:0;
     margin:0;
-
     padding:0;
 }
 
-
-/* LANDSCAPE HOVER */
-
 .slide-photo.is-landscape:hover img{
-    transform:scale(1.02);
+    transform:scale(1.035);
 }
-
-
-/* PORTRAIT HOVER */
 
 .slide-photo:not(.is-landscape):hover img{
     transform:scale(1.06);
 }
-
-
-/* =========================================================
-   PHOTO ANIMATION
-========================================================= */
 
 @keyframes photoMoving{
 
@@ -1359,104 +891,62 @@ a{
     to{
         transform:translateX(calc(-50% - 10px));
     }
-
 }
 
-
-/* =========================================================
+/* =========================
    VENUE
-========================================================= */
+========================= */
 
 .venue{
     padding:110px 8%;
-
     background:#fff8fa;
 }
 
 .venue-layout{
     max-width:1100px;
-
     margin:auto;
-
     display:grid;
-
     grid-template-columns:.8fr 1.2fr;
-
     gap:45px;
-
     align-items:center;
 }
 
 .venue-script{
     font-family:'Parisienne',cursive;
-
     font-size:43px;
-
     color:#c15a7d;
 }
 
 .venue-copy h2{
     margin-top:3px;
-
     font-family:'Playfair Display',serif;
-
     font-size:48px;
-
     line-height:1.1;
-
     font-weight:500;
-
     color:#583844;
 }
 
 .venue-copy p{
     margin-top:22px;
-
     font-size:14px;
-
     line-height:1.9;
-
     color:#80656e;
 }
 
-
-/* =========================================================
-   MAP BUTTON
-========================================================= */
-
 .map-button{
     display:inline-flex;
-
     align-items:center;
-
     justify-content:center;
-
     gap:9px;
-
     margin-top:22px;
-
     padding:13px 22px;
-
     border-radius:30px;
-
     text-decoration:none;
-
     font-size:11px;
-
     font-weight:600;
-
     color:#fff;
-
-    background:
-        linear-gradient(
-            135deg,
-            #d86e92,
-            #bd5277
-        );
-
-    box-shadow:
-        0 10px 24px rgba(194,83,119,.22);
-
+    background:linear-gradient(135deg,#d86e92,#bd5277);
+    box-shadow:0 10px 24px rgba(194,83,119,.22);
     transition:
         transform .3s ease,
         box-shadow .3s ease,
@@ -1465,94 +955,50 @@ a{
 
 .map-button:hover{
     transform:translateY(-3px);
-
-    background:
-        linear-gradient(
-            135deg,
-            #e07a9d,
-            #aa4569
-        );
-
-    box-shadow:
-        0 14px 30px rgba(194,83,119,.30);
+    background:linear-gradient(135deg,#e07a9d,#aa4569);
+    box-shadow:0 14px 30px rgba(194,83,119,.30);
 }
-
-
-/* =========================================================
-   PIN BUTTON
-========================================================= */
 
 .location-pin{
     width:15px;
     height:19px;
-
     position:relative;
-
     display:inline-block;
-
     background:#ffb5cb;
-
-    border-radius:
-        50% 50% 50% 0;
-
+    border-radius:50% 50% 50% 0;
     transform:rotate(-45deg);
-
     flex-shrink:0;
 }
 
 .location-pin::after{
     content:"";
-
     position:absolute;
-
     width:6px;
     height:6px;
-
     border-radius:50%;
-
     background:#c45c80;
-
     top:4px;
     left:4px;
 }
 
-
-/* =========================================================
-   MAP BOX
-========================================================= */
-
 .map-box{
     padding:12px;
-
     background:#fff;
-
-    box-shadow:
-        0 20px 45px rgba(120,60,80,.12);
-
+    box-shadow:0 20px 45px rgba(120,60,80,.12);
     border-radius:4px;
 }
 
 #map{
     width:100%;
-
     height:380px;
-
     border:0;
-
     overflow:hidden;
 }
-
-
-/* =========================================================
-   LEAFLET
-========================================================= */
 
 .leaflet-container{
     width:100%;
     height:100%;
-
     font-family:'DM Sans',sans-serif;
-
     background:#f8e9ee;
 }
 
@@ -1564,118 +1010,70 @@ a{
     font-size:8px !important;
 }
 
-
-/* =========================================================
-   CUSTOM PINK MARKER
-========================================================= */
-
 .pink-map-marker{
     background:transparent;
-
     border:0;
 }
 
 .pink-pin{
     width:38px;
     height:38px;
-
     position:relative;
-
     background:#d86489;
-
     border:4px solid #fff;
-
-    border-radius:
-        50% 50% 50% 0;
-
+    border-radius:50% 50% 50% 0;
     transform:rotate(-45deg);
-
-    box-shadow:
-        0 7px 18px rgba(170,65,105,.38);
+    box-shadow:0 7px 18px rgba(170,65,105,.38);
 }
 
 .pink-pin::after{
     content:"";
-
     position:absolute;
-
     width:9px;
     height:9px;
-
     left:50%;
     top:50%;
-
-    transform:
-        translate(-50%,-50%);
-
+    transform:translate(-50%,-50%);
     border-radius:50%;
-
     background:#fff;
 }
 
 .pink-pin::before{
     content:"";
-
     position:absolute;
-
     width:58px;
     height:58px;
-
     left:50%;
     top:50%;
-
-    transform:
-        translate(-50%,-50%);
-
+    transform:translate(-50%,-50%);
     border-radius:50%;
-
-    border:
-        1px solid rgba(216,100,137,.25);
-
-    animation:
-        markerPulse 2s ease-out infinite;
+    border:1px solid rgba(216,100,137,.25);
+    animation:markerPulse 2s ease-out infinite;
 }
 
 @keyframes markerPulse{
 
     0%{
-        transform:
-            translate(-50%,-50%)
-            scale(.7);
-
+        transform:translate(-50%,-50%) scale(.7);
         opacity:.8;
     }
 
     100%{
-        transform:
-            translate(-50%,-50%)
-            scale(1.5);
-
+        transform:translate(-50%,-50%) scale(1.5);
         opacity:0;
     }
-
 }
-
-
-/* =========================================================
-   MAP POPUP
-========================================================= */
 
 .map-popup{
     text-align:center;
-
     color:#563843;
-
     line-height:1.6;
-
     padding:3px;
 }
 
 .map-popup strong{
     color:#b44f72;
-
     font-family:'Playfair Display',serif;
-
     font-size:14px;
 }
 
@@ -1683,20 +1081,11 @@ a{
     color:#80656e;
 }
 
-
-/* =========================================================
-   COORDINATE
-========================================================= */
-
 .map-coordinate{
     margin-top:10px;
-
     text-align:center;
-
     font-size:10px;
-
     letter-spacing:.5px;
-
     color:#96727d;
 }
 
@@ -1704,35 +1093,23 @@ a{
     color:#b44f72;
 }
 
-
-/* =========================================================
+/* =========================
    JOURNEY
-========================================================= */
+========================= */
 
 .journey{
     padding:110px 8%;
-
     background:#f8e5eb;
 }
 
-
-/* =========================================================
-   FINAL QUOTE CARD
-========================================================= */
-
 .final-quote-card{
     max-width:850px;
-
     margin:0 auto;
-
     padding:60px 50px;
-
     position:relative;
-
     overflow:hidden;
 
     background:
-
         linear-gradient(
             145deg,
             #fff8fb 0%,
@@ -1740,70 +1117,44 @@ a{
             #fff9fb 100%
         );
 
-    border:
-        1px solid rgba(216,100,137,.22);
-
+    border:1px solid rgba(216,100,137,.22);
     border-radius:30px;
 
     box-shadow:
         0 20px 50px rgba(169,70,104,.12),
-
-        inset 0 1px 0
-        rgba(255,255,255,.8);
+        inset 0 1px 0 rgba(255,255,255,.8);
 
     text-align:center;
 }
 
 .final-quote-card::before{
     content:"";
-
     position:absolute;
-
     width:180px;
     height:180px;
-
     top:-90px;
     left:-80px;
-
     border-radius:50%;
-
-    background:
-        rgba(216,100,137,.08);
+    background:rgba(216,100,137,.08);
 }
 
 .final-quote-card::after{
     content:"";
-
     position:absolute;
-
     width:200px;
     height:200px;
-
     right:-100px;
     bottom:-110px;
-
     border-radius:50%;
-
-    background:
-        rgba(216,100,137,.07);
+    background:rgba(216,100,137,.07);
 }
-
-
-/* =========================================================
-   QUOTE DECORATION
-========================================================= */
 
 .quote-decoration{
     position:absolute;
-
     font-family:'Playfair Display',serif;
-
     font-size:100px;
-
     line-height:1;
-
     color:rgba(216,100,137,.22);
-
     pointer-events:none;
 }
 
@@ -1817,209 +1168,136 @@ a{
     bottom:0;
 }
 
-
-/* =========================================================
-   QUOTE CONTENT
-========================================================= */
-
 .quote-content{
     position:relative;
-
     z-index:2;
 }
 
-
-/* =========================================================
-   FINAL QUOTE
-========================================================= */
-
 .final-quote{
     max-width:720px;
-
     margin:0 auto;
-
     font-family:'Playfair Display',serif;
-
     font-size:clamp(23px,3.6vw,36px);
-
     line-height:1.55;
-
     font-weight:500;
-
     color:#583844;
-
     letter-spacing:.1px;
 }
 
-
-/* =========================================================
-   AUTHOR
-========================================================= */
-
 .final-quote-author{
     display:block;
-
     margin-top:25px;
-
     font-family:'DM Sans',sans-serif;
-
     font-size:13px;
-
     letter-spacing:1.5px;
-
     color:#8b6d77;
 }
 
 .final-quote-author::before{
     content:"";
-
     display:inline-block;
-
     width:35px;
     height:1px;
-
     margin-right:10px;
-
     vertical-align:middle;
-
     background:#d86489;
 }
 
 .final-quote-author::after{
     content:"";
-
     display:inline-block;
-
     width:35px;
     height:1px;
-
     margin-left:10px;
-
     vertical-align:middle;
-
     background:#d86489;
 }
 
-
-/* =========================================================
+/* =========================
    WISHES
-========================================================= */
+========================= */
 
 .wishes{
     padding:110px 8%;
 
     background:
-
         radial-gradient(
             circle at 20% 20%,
             #f7d6e2,
             transparent 25%
         ),
-
         #fff4f7;
 }
 
 .wishes-layout{
     max-width:1000px;
-
     margin:auto;
-
     display:grid;
-
     grid-template-columns:.8fr 1.2fr;
-
     gap:50px;
 }
 
 .wish-script{
     font-family:'Parisienne',cursive;
-
     font-size:43px;
-
     color:#c35b7e;
 }
 
 .wish-intro h2{
     margin-top:3px;
-
     font-family:'Playfair Display',serif;
-
     font-size:50px;
-
     line-height:1.1;
-
     font-weight:500;
 }
 
 .wish-intro p{
     margin-top:20px;
-
     font-size:14px;
-
     line-height:1.9;
-
     color:#866b75;
 }
 
 .wish-form{
     padding:35px;
-
     background:#fff;
-
-    box-shadow:
-        0 15px 40px rgba(120,60,80,.08);
+    box-shadow:0 15px 40px rgba(120,60,80,.08);
 }
 
 .input{
     width:100%;
-
     border:0;
-
-    border-bottom:
-        1px solid #ead2da;
-
+    border-bottom:1px solid #ead2da;
     background:transparent;
-
     outline:none;
-
     padding:14px 5px;
-
     margin-bottom:20px;
-
     font-size:13px;
-
     color:#543943;
 }
 
 textarea.input{
     min-height:120px;
-
     resize:vertical;
 }
 
 .send-button{
     border:0;
-
     padding:13px 24px;
-
     border-radius:30px;
-
     color:#fff;
-
     background:#c45c80;
-
     font-size:11px;
-
     cursor:pointer;
-
     transition:.3s;
 }
 
 .send-button:hover{
     background:#aa486b;
-
     transform:translateY(-2px);
 }
+
+/* WISH CARD - ROUNDED */
 
 .wish-list{
     margin-top:30px;
@@ -2027,137 +1305,103 @@ textarea.input{
 
 .wish-card{
     padding:20px;
-
     margin-bottom:12px;
-
     background:#fff;
 
-    border-left:
-        3px solid #d77a99;
+    border-left:3px solid #d77a99;
+
+    /* Membuat semua sudut card melengkung */
+    border-radius:16px;
+
+    /* Supaya border kiri ikut melengkung */
+    overflow:hidden;
+
+    /* Bayangan lembut */
+    box-shadow:0 8px 22px rgba(120,60,80,.07);
 }
 
 .wish-card strong{
     font-size:13px;
-
     color:#704451;
 }
 
 .wish-card p{
     margin-top:7px;
-
     font-size:12px;
-
     line-height:1.7;
-
     color:#856a74;
 }
 
-
-/* =========================================================
+/* =========================
    CLOSING
-========================================================= */
+========================= */
 
 .closing{
     padding:105px 20px;
-
     text-align:center;
-
     background:#5b3743;
-
     color:#fff;
-
     position:relative;
-
     overflow:hidden;
 }
 
 .closing::before{
     content:"❀";
-
     position:absolute;
-
     left:-80px;
     top:-70px;
-
     font-size:230px;
-
     color:rgba(255,255,255,.04);
 }
 
 .closing::after{
     content:"✿";
-
     position:absolute;
-
     right:-80px;
     bottom:-90px;
-
     font-size:230px;
-
     color:rgba(255,255,255,.04);
 }
 
 .closing-script{
     font-family:'Parisienne',cursive;
-
     font-size:46px;
-
     color:#f1b6c9;
 }
 
 .closing h2{
     margin-top:8px;
-
     font-family:'Playfair Display',serif;
-
     font-size:42px;
-
     font-weight:500;
 }
 
 .closing p{
     max-width:600px;
-
     margin:18px auto 0;
-
     font-size:13px;
-
     line-height:1.8;
-
     color:#e7cbd4;
 }
 
 .save-buttons{
     margin-top:30px;
-
     display:flex;
-
     justify-content:center;
-
     gap:12px;
-
     flex-wrap:wrap;
 }
 
 .save-button{
     display:inline-block;
-
     padding:13px 22px;
-
     border-radius:30px;
-
     text-decoration:none;
-
     font-size:11px;
-
     background:#fff;
-
     color:#603c48;
-
     border:0;
-
     cursor:pointer;
-
     transition:.3s;
 }
 
@@ -2167,68 +1411,45 @@ textarea.input{
 
 .save-button.secondary{
     background:transparent;
-
     color:#fff;
-
-    border:
-        1px solid rgba(255,255,255,.45);
+    border:1px solid rgba(255,255,255,.45);
 }
 
-
-/* =========================================================
+/* =========================
    FOOTER
-========================================================= */
+========================= */
 
 footer{
     padding:28px 20px;
-
     text-align:center;
-
     background:#4d303a;
-
     color:#dcbfc8;
-
     font-size:10px;
 }
 
 footer .footer-flower{
     font-size:25px;
-
     color:#efabc1;
-
     margin-bottom:8px;
 }
 
-
-/* =========================================================
+/* =========================
    MUSIC
-========================================================= */
+========================= */
 
 .music-button{
     position:fixed;
-
     right:20px;
     bottom:20px;
-
     width:46px;
     height:46px;
-
     border-radius:50%;
-
-    border:
-        1px solid #e7b4c5;
-
+    border:1px solid #e7b4c5;
     background:#fff;
-
     color:#b44f72;
-
     z-index:100;
-
     cursor:pointer;
-
-    box-shadow:
-        0 8px 20px rgba(100,40,60,.12);
-
+    box-shadow:0 8px 20px rgba(100,40,60,.12);
     transition:.3s;
 }
 
@@ -2236,28 +1457,19 @@ footer .footer-flower{
     transform:scale(1.06);
 }
 
-
-/* =========================================================
+/* =========================
    LIGHTBOX
-========================================================= */
+========================= */
 
 .lightbox{
     position:fixed;
-
     inset:0;
-
     z-index:10000;
-
     display:none;
-
     align-items:center;
-
     justify-content:center;
-
     padding:25px;
-
-    background:
-        rgba(42,20,28,.93);
+    background:rgba(42,20,28,.93);
 }
 
 .lightbox.show{
@@ -2266,59 +1478,37 @@ footer .footer-flower{
 
 .lightbox img{
     max-width:92%;
-
     max-height:88vh;
-
     width:auto;
-
     height:auto;
-
     object-fit:contain;
-
     display:block;
-
     border:0 !important;
-
     outline:0 !important;
-
     background:transparent;
-
-    box-shadow:
-        0 20px 60px rgba(0,0,0,.35);
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
 }
 
 .lightbox-close{
     position:absolute;
-
     right:28px;
-
     top:20px;
-
     color:#fff;
-
     font-size:38px;
-
     cursor:pointer;
-
     z-index:2;
 }
 
-
-/* =========================================================
-   MOBILE
-========================================================= */
+/* =========================
+   TABLET
+========================= */
 
 @media(max-width:800px){
 
     .hero{
         grid-template-columns:1fr;
-
-        padding:
-            90px 7%
-            75px;
-
+        padding:90px 7% 75px;
         gap:40px;
-
         text-align:center;
     }
 
@@ -2362,31 +1552,25 @@ footer .footer-flower{
     #map{
         height:330px;
     }
-
 }
 
-
-/* =========================================================
-   MOBILE SMALL
-========================================================= */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:500px){
 
     .opening-name{
-        font-size:
-            clamp(
-                20px,
-                7vw,
-                32px
-            );
-
+        font-size:clamp(20px,7vw,32px);
         letter-spacing:-.4px;
-
         white-space:normal;
     }
 
+    /* Graduation Day tetap besar dan G tetap kapital */
     .opening-script{
-        font-size:42px;
+        font-size:46px;
+        line-height:1.1;
+        white-space:nowrap;
     }
 
     .hero h1{
@@ -2399,7 +1583,6 @@ footer .footer-flower{
 
     .photo-frame{
         width:88%;
-
         height:400px;
     }
 
@@ -2442,37 +1625,23 @@ footer .footer-flower{
 
     .slide-photo{
         width:220px;
-
         height:290px;
     }
 
-    /* LANDSCAPE HP */
-
     .slide-photo.is-landscape{
-
         width:min(330px,82vw);
-
         height:auto;
-
         background:transparent;
-
         box-shadow:none;
-
         border:0 !important;
-
         outline:0 !important;
     }
 
     .slide-photo.is-landscape img{
-
         width:100%;
-
         height:auto;
-
         object-fit:contain;
-
         border:0 !important;
-
         outline:0 !important;
     }
 
@@ -2489,9 +1658,7 @@ footer .footer-flower{
     }
 
     .final-quote-card{
-        padding:
-            50px 25px 55px;
-
+        padding:50px 25px 55px;
         border-radius:24px;
     }
 
@@ -2511,15 +1678,12 @@ footer .footer-flower{
 
     .final-quote{
         font-size:21px;
-
         line-height:1.6;
     }
 
     .final-quote-author{
         margin-top:22px;
-
         font-size:11px;
-
         letter-spacing:1px;
     }
 
@@ -2532,12 +1696,16 @@ footer .footer-flower{
         height:300px;
     }
 
+    /* Card ucapan tetap rounded di HP */
+    .wish-card{
+        border-radius:16px;
+        overflow:hidden;
+    }
 }
 
-
-/* =========================================================
+/* =========================
    REDUCED MOTION
-========================================================= */
+========================= */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -2550,34 +1718,21 @@ footer .footer-flower{
     .photo-track{
         animation:none !important;
     }
-
 }
 
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- ======================================================
-     FLOWER LAYER
-====================================================== -->
-
 <div id="flowerLayer"></div>
-
 <div id="glowLayer"></div>
 
-
-<!-- ======================================================
+<!-- =========================
      OPENING
-====================================================== -->
+========================= -->
 
-<section
-    class="opening"
-    id="opening"
->
+<section class="opening" id="opening">
 
     <div class="opening-card">
 
@@ -2599,10 +1754,7 @@ footer .footer-flower{
                 Dengan hormat, kami mengundang
             </div>
 
-            <div
-                class="guest-name"
-                id="guestName"
-            >
+            <div class="guest-name" id="guestName">
                 Tamu Undangan
             </div>
 
@@ -2619,20 +1771,15 @@ footer .footer-flower{
 
 </section>
 
-
-<!-- ======================================================
+<!-- =========================
      MAIN
-====================================================== -->
+========================= -->
 
-<main
-    class="main"
-    id="main"
->
+<main class="main" id="main">
 
-
-<!-- ======================================================
+<!-- =========================
      HERO
-====================================================== -->
+========================= -->
 
 <section class="hero">
 
@@ -2661,7 +1808,6 @@ footer .footer-flower{
 
     </div>
 
-
     <div class="hero-photo-area">
 
         <div class="hero-flower one">
@@ -2683,17 +1829,15 @@ footer .footer-flower{
 
     </div>
 
-
     <div class="scroll-hint">
         Scroll to celebrate ↓
     </div>
 
 </section>
 
-
-<!-- ======================================================
+<!-- =========================
      QUOTE
-====================================================== -->
+========================= -->
 
 <section class="quote-section">
 
@@ -2702,9 +1846,7 @@ footer .footer-flower{
     </div>
 
     <h2>
-        “Satu langkah selesai,
-        banyak cerita tersimpan,
-        dan perjalanan baru menanti.”
+        “Satu langkah selesai, banyak cerita tersimpan, dan perjalanan baru menanti.”
     </h2>
 
     <p>
@@ -2716,10 +1858,9 @@ footer .footer-flower{
 
 </section>
 
-
-<!-- ======================================================
+<!-- =========================
      DATE
-====================================================== -->
+========================= -->
 
 <section class="date-section">
 
@@ -2735,9 +1876,7 @@ footer .footer-flower{
 
     </div>
 
-
     <div class="calendar-wrap">
-
 
         <div class="calendar">
 
@@ -2749,7 +1888,6 @@ footer .footer-flower{
                 >
                     ‹
                 </button>
-
 
                 <div class="calendar-title">
 
@@ -2763,7 +1901,6 @@ footer .footer-flower{
 
                 </div>
 
-
                 <button
                     onclick="changeMonth(1)"
                     aria-label="Bulan berikutnya"
@@ -2772,7 +1909,6 @@ footer .footer-flower{
                 </button>
 
             </div>
-
 
             <div class="calendar-week">
 
@@ -2786,14 +1922,12 @@ footer .footer-flower{
 
             </div>
 
-
             <div
                 class="calendar-days"
                 id="calendarDays"
             ></div>
 
         </div>
-
 
         <div class="selected-date">
 
@@ -2821,74 +1955,39 @@ footer .footer-flower{
 
     </div>
 
-
     <div class="countdown-title">
         Counting Down To The Day
     </div>
 
-
     <div class="countdown">
 
         <div class="time-box">
-
-            <strong id="days">
-                00
-            </strong>
-
-            <span>
-                Hari
-            </span>
-
+            <strong id="days">00</strong>
+            <span>Hari</span>
         </div>
 
-
         <div class="time-box">
-
-            <strong id="hours">
-                00
-            </strong>
-
-            <span>
-                Jam
-            </span>
-
+            <strong id="hours">00</strong>
+            <span>Jam</span>
         </div>
 
-
         <div class="time-box">
-
-            <strong id="minutes">
-                00
-            </strong>
-
-            <span>
-                Menit
-            </span>
-
+            <strong id="minutes">00</strong>
+            <span>Menit</span>
         </div>
 
-
         <div class="time-box">
-
-            <strong id="seconds">
-                00
-            </strong>
-
-            <span>
-                Detik
-            </span>
-
+            <strong id="seconds">00</strong>
+            <span>Detik</span>
         </div>
 
     </div>
 
 </section>
 
-
-<!-- ======================================================
+<!-- =========================
      PHOTO SLIDER
-     FOTO 1 - FOTO 20
-====================================================== -->
+========================= -->
 
 <section class="photo-slider-section">
 
@@ -2904,7 +2003,6 @@ footer .footer-flower{
 
     </div>
 
-
     <div class="photo-slider-window">
 
         <div
@@ -2912,304 +2010,147 @@ footer .footer-flower{
             id="photoTrack"
         >
 
-
-            <!-- FOTO 1 -->
-
             <div
                 class="slide-photo"
-                onclick="openLightbox('foto-1.jpg')"
+                onclick="openLightbox('foto-intan.jpg')"
             >
-
                 <img
-                    src="foto-1.jpg"
-                    alt="Memory 1"
+                    src="foto-intan.jpg"
+                    alt="Intan Salma Denaidy"
                 >
-
             </div>
-
-
-            <!-- FOTO 2 -->
 
             <div
                 class="slide-photo"
                 onclick="openLightbox('foto-2.jpg')"
             >
-
-                <img
-                    src="foto-2.jpg"
-                    alt="Memory 2"
-                >
-
+                <img src="foto-2.jpg" alt="Memory 2">
             </div>
-
-
-            <!-- FOTO 3 -->
 
             <div
                 class="slide-photo"
                 onclick="openLightbox('foto-3.jpg')"
             >
-
-                <img
-                    src="foto-3.jpg"
-                    alt="Memory 3"
-                >
-
+                <img src="foto-3.jpg" alt="Memory 3">
             </div>
-
-
-            <!-- FOTO 4 -->
 
             <div
                 class="slide-photo"
                 onclick="openLightbox('foto-4.jpg')"
             >
-
-                <img
-                    src="foto-4.jpg"
-                    alt="Memory 4"
-                >
-
+                <img src="foto-4.jpg" alt="Memory 4">
             </div>
-
-
-            <!-- FOTO 5 -->
 
             <div
                 class="slide-photo"
                 onclick="openLightbox('foto-5.jpg')"
             >
-
-                <img
-                    src="foto-5.jpg"
-                    alt="Memory 5"
-                >
-
+                <img src="foto-5.jpg" alt="Memory 5">
             </div>
-
-
-            <!-- FOTO 6 -->
 
             <div
                 class="slide-photo"
                 onclick="openLightbox('foto-6.jpg')"
             >
-
-                <img
-                    src="foto-6.jpg"
-                    alt="Memory 6"
-                >
-
+                <img src="foto-6.jpg" alt="Memory 6">
             </div>
-
-
-            <!-- FOTO 7 -->
 
             <div
                 class="slide-photo"
                 onclick="openLightbox('foto-7.jpg')"
             >
-
-                <img
-                    src="foto-7.jpg"
-                    alt="Memory 7"
-                >
-
+                <img src="foto-7.jpg" alt="Memory 7">
             </div>
-
-
-            <!-- FOTO 8 -->
 
             <div
                 class="slide-photo"
                 onclick="openLightbox('foto-8.jpg')"
             >
-
-                <img
-                    src="foto-8.jpg"
-                    alt="Memory 8"
-                >
-
+                <img src="foto-8.jpg" alt="Memory 8">
             </div>
-
-
-            <!-- FOTO 9 -->
 
             <div
                 class="slide-photo"
                 onclick="openLightbox('foto-9.jpg')"
             >
-
-                <img
-                    src="foto-9.jpg"
-                    alt="Memory 9"
-                >
-
+                <img src="foto-9.jpg" alt="Memory 9">
             </div>
-
-
-            <!-- FOTO 10 -->
 
             <div
                 class="slide-photo"
                 onclick="openLightbox('foto-10.jpg')"
             >
-
-                <img
-                    src="foto-10.jpg"
-                    alt="Memory 10"
-                >
-
+                <img src="foto-10.jpg" alt="Memory 10">
             </div>
-
-
-            <!-- FOTO 11 -->
 
             <div
                 class="slide-photo"
                 onclick="openLightbox('foto-11.jpg')"
             >
-
-                <img
-                    src="foto-11.jpg"
-                    alt="Memory 11"
-                >
-
+                <img src="foto-11.jpg" alt="Memory 11">
             </div>
-
-
-            <!-- FOTO 12 -->
 
             <div
                 class="slide-photo"
                 onclick="openLightbox('foto-12.jpg')"
             >
-
-                <img
-                    src="foto-12.jpg"
-                    alt="Memory 12"
-                >
-
+                <img src="foto-12.jpg" alt="Memory 12">
             </div>
-
-
-            <!-- FOTO 13 -->
 
             <div
                 class="slide-photo"
                 onclick="openLightbox('foto-13.jpg')"
             >
-
-                <img
-                    src="foto-13.jpg"
-                    alt="Memory 13"
-                >
-
+                <img src="foto-13.jpg" alt="Memory 13">
             </div>
-
-
-            <!-- FOTO 14 -->
 
             <div
                 class="slide-photo"
                 onclick="openLightbox('foto-14.jpg')"
             >
-
-                <img
-                    src="foto-14.jpg"
-                    alt="Memory 14"
-                >
-
+                <img src="foto-14.jpg" alt="Memory 14">
             </div>
-
-
-            <!-- FOTO 15 -->
 
             <div
                 class="slide-photo"
                 onclick="openLightbox('foto-15.jpg')"
             >
-
-                <img
-                    src="foto-15.jpg"
-                    alt="Memory 15"
-                >
-
+                <img src="foto-15.jpg" alt="Memory 15">
             </div>
-
-
-            <!-- FOTO 16 -->
 
             <div
                 class="slide-photo"
                 onclick="openLightbox('foto-16.jpg')"
             >
-
-                <img
-                    src="foto-16.jpg"
-                    alt="Memory 16"
-                >
-
+                <img src="foto-16.jpg" alt="Memory 16">
             </div>
-
-
-            <!-- FOTO 17 -->
 
             <div
                 class="slide-photo"
                 onclick="openLightbox('foto-17.jpg')"
             >
-
-                <img
-                    src="foto-17.jpg"
-                    alt="Memory 17"
-                >
-
+                <img src="foto-17.jpg" alt="Memory 17">
             </div>
-
-
-            <!-- FOTO 18 -->
 
             <div
                 class="slide-photo"
                 onclick="openLightbox('foto-18.jpg')"
             >
-
-                <img
-                    src="foto-18.jpg"
-                    alt="Memory 18"
-                >
-
+                <img src="foto-18.jpg" alt="Memory 18">
             </div>
-
-
-            <!-- FOTO 19 -->
 
             <div
                 class="slide-photo"
                 onclick="openLightbox('foto-19.jpg')"
             >
-
-                <img
-                    src="foto-19.jpg"
-                    alt="Memory 19"
-                >
-
+                <img src="foto-19.jpg" alt="Memory 19">
             </div>
-
-
-            <!-- FOTO 20 -->
 
             <div
                 class="slide-photo"
                 onclick="openLightbox('foto-20.jpg')"
             >
-
-                <img
-                    src="foto-20.jpg"
-                    alt="Memory 20"
-                >
-
+                <img src="foto-20.jpg" alt="Memory 20">
             </div>
 
         </div>
@@ -3218,10 +2159,9 @@ footer .footer-flower{
 
 </section>
 
-
-<!-- ======================================================
+<!-- =========================
      VENUE
-====================================================== -->
+========================= -->
 
 <section class="venue">
 
@@ -3239,16 +2179,12 @@ footer .footer-flower{
             </h2>
 
             <p>
-
                 <strong>
                     Fakultas Teknologi Informasi<br>
                     Universitas Andalas
                 </strong>
-
                 <br>
-
                 Limau Manis, Padang
-
             </p>
 
             <a
@@ -3268,7 +2204,6 @@ footer .footer-flower{
 
         </div>
 
-
         <div class="map-box">
 
             <div
@@ -3279,7 +2214,6 @@ footer .footer-flower{
             <div class="map-coordinate">
 
                 📍 Lokasi:
-
                 <strong>
                     Fakultas Teknologi Informasi, Universitas Andalas
                 </strong>
@@ -3292,10 +2226,9 @@ footer .footer-flower{
 
 </section>
 
-
-<!-- ======================================================
-     FINAL QUOTE
-====================================================== -->
+<!-- =========================
+     JOURNEY
+========================= -->
 
 <section class="journey">
 
@@ -3328,10 +2261,9 @@ footer .footer-flower{
 
 </section>
 
-
-<!-- ======================================================
+<!-- =========================
      WISHES
-====================================================== -->
+========================= -->
 
 <section class="wishes">
 
@@ -3350,15 +2282,12 @@ footer .footer-flower{
             </h2>
 
             <p>
-
                 Tuliskan ucapan, doa, atau pesan kecil
                 untuk Intan. Setiap kata akan menjadi
                 bagian dari kenangan hari ini.
-
             </p>
 
         </div>
-
 
         <div>
 
@@ -3392,7 +2321,6 @@ footer .footer-flower{
 
             </form>
 
-
             <div
                 class="wish-list"
                 id="wishList"
@@ -3404,10 +2332,9 @@ footer .footer-flower{
 
 </section>
 
-
-<!-- ======================================================
+<!-- =========================
      CLOSING
-====================================================== -->
+========================= -->
 
 <section class="closing">
 
@@ -3420,14 +2347,11 @@ footer .footer-flower{
     </h2>
 
     <p>
-
         Terima kasih telah menjadi bagian dari
         perjalanan ini. Kehadiran dan doa baik
         dari Anda akan menjadi bagian indah
         dari hari yang berkesan.
-
     </p>
-
 
     <div class="save-buttons">
 
@@ -3440,7 +2364,6 @@ footer .footer-flower{
             ♡ Simpan ke Kalender
         </a>
 
-
         <button
             class="save-button secondary"
             onclick="downloadICS()"
@@ -3452,10 +2375,9 @@ footer .footer-flower{
 
 </section>
 
-
-<!-- ======================================================
+<!-- =========================
      FOOTER
-====================================================== -->
+========================= -->
 
 <footer>
 
@@ -3465,13 +2387,11 @@ footer .footer-flower{
 
 </footer>
 
-
 </main>
 
-
-<!-- ======================================================
+<!-- =========================
      LIGHTBOX
-====================================================== -->
+========================= -->
 
 <div
     class="lightbox"
@@ -3486,7 +2406,6 @@ footer .footer-flower{
         ×
     </div>
 
-
     <img
         id="lightboxImage"
         src=""
@@ -3496,18 +2415,16 @@ footer .footer-flower{
 
 </div>
 
-
-<!-- ======================================================
+<!-- =========================
      MUSIC
-====================================================== -->
+========================= -->
 
 <audio
     id="music"
     src="audio.mp3"
     loop
-    preload="auto">
-</audio>
-
+    preload="auto"
+></audio>
 
 <button
     class="music-button"
@@ -3518,36 +2435,30 @@ footer .footer-flower{
     ♫
 </button>
 
-
 <script>
 
-/* =========================================================
+/* =========================
    GUEST NAME
-========================================================= */
+========================= */
 
-const params =
-    new URLSearchParams(
-        window.location.search
-    );
+const params = new URLSearchParams(
+    window.location.search
+);
 
-const guest =
-    params.get("to");
+const guest = params.get("to");
 
 if(guest){
 
-    document
-        .getElementById("guestName")
-        .textContent =
+    document.getElementById("guestName").textContent =
         decodeURIComponent(
             guest.replace(/\+/g," ")
         );
 
 }
 
-
-/* =========================================================
+/* =========================
    OPEN INVITATION
-========================================================= */
+========================= */
 
 function openInvitation(){
 
@@ -3570,59 +2481,45 @@ function openInvitation(){
 
     music.volume = 0.35;
 
-    music.play()
+    music.play().then(function(){
 
-        .then(function(){
+        document.getElementById(
+            "musicButton"
+        ).textContent = "♫";
 
-            document.getElementById(
-                "musicButton"
-            ).textContent = "♫";
+    }).catch(function(){
 
-        })
+        document.getElementById(
+            "musicButton"
+        ).textContent = "♪";
 
-        .catch(function(){
-
-            document.getElementById(
-                "musicButton"
-            ).textContent = "♪";
-
-        });
+    });
 
 }
 
-
-/* =========================================================
-   FLOWER FALLING
-========================================================= */
+/* =========================
+   FLOWERS
+========================= */
 
 function createFlowers(){
 
     const layer =
-        document.getElementById(
-            "flowerLayer"
-        );
+        document.getElementById("flowerLayer");
 
     const flowerTypes = [
-
         "❀",
         "✿",
         "❁",
         "✽",
         "♡"
-
     ];
 
-    for(
-        let i = 0;
-        i < 30;
-        i++
-    ){
+    for(let i=0;i<30;i++){
 
         const flower =
             document.createElement("div");
 
-        flower.className =
-            "flower";
+        flower.className = "flower";
 
         flower.textContent =
             flowerTypes[
@@ -3655,29 +2552,21 @@ function createFlowers(){
 
 createFlowers();
 
-
-/* =========================================================
-   GLOW PARTICLES
-========================================================= */
+/* =========================
+   GLOW
+========================= */
 
 function createGlow(){
 
     const layer =
-        document.getElementById(
-            "glowLayer"
-        );
+        document.getElementById("glowLayer");
 
-    for(
-        let i = 0;
-        i < 20;
-        i++
-    ){
+    for(let i=0;i<20;i++){
 
         const dot =
             document.createElement("div");
 
-        dot.className =
-            "glow";
+        dot.className = "glow";
 
         dot.style.left =
             Math.random() * 100 + "%";
@@ -3696,16 +2585,14 @@ function createGlow(){
 
 createGlow();
 
-
-/* =========================================================
+/* =========================
    COUNTDOWN
-========================================================= */
+========================= */
 
 const targetDate =
     new Date(
         "2026-09-18T13:00:00+07:00"
     ).getTime();
-
 
 function updateCountdown(){
 
@@ -3717,21 +2604,17 @@ function updateCountdown(){
 
     if(distance <= 0){
 
-        document.getElementById(
-            "days"
-        ).textContent = "00";
+        document.getElementById("days").textContent =
+            "00";
 
-        document.getElementById(
-            "hours"
-        ).textContent = "00";
+        document.getElementById("hours").textContent =
+            "00";
 
-        document.getElementById(
-            "minutes"
-        ).textContent = "00";
+        document.getElementById("minutes").textContent =
+            "00";
 
-        document.getElementById(
-            "seconds"
-        ).textContent = "00";
+        document.getElementById("seconds").textContent =
+            "00";
 
         return;
 
@@ -3745,49 +2628,35 @@ function updateCountdown(){
 
     const hours =
         Math.floor(
-            (
-                distance %
-                (1000 * 60 * 60 * 24)
-            ) /
+            (distance %
+                (1000 * 60 * 60 * 24)) /
             (1000 * 60 * 60)
         );
 
     const minutes =
         Math.floor(
-            (
-                distance %
-                (1000 * 60 * 60)
-            ) /
+            (distance %
+                (1000 * 60 * 60)) /
             (1000 * 60)
         );
 
     const seconds =
         Math.floor(
-            (
-                distance %
-                (1000 * 60)
-            ) /
+            (distance %
+                (1000 * 60)) /
             1000
         );
 
-    document.getElementById(
-        "days"
-    ).textContent =
+    document.getElementById("days").textContent =
         String(days).padStart(2,"0");
 
-    document.getElementById(
-        "hours"
-    ).textContent =
+    document.getElementById("hours").textContent =
         String(hours).padStart(2,"0");
 
-    document.getElementById(
-        "minutes"
-    ).textContent =
+    document.getElementById("minutes").textContent =
         String(minutes).padStart(2,"0");
 
-    document.getElementById(
-        "seconds"
-    ).textContent =
+    document.getElementById("seconds").textContent =
         String(seconds).padStart(2,"0");
 
 }
@@ -3799,17 +2668,14 @@ setInterval(
     1000
 );
 
-
-/* =========================================================
+/* =========================
    CALENDAR
-========================================================= */
+========================= */
 
 let calendarMonth = 8;
-
 let calendarYear = 2026;
 
 const monthNames = [
-
     "JANUARI",
     "FEBRUARI",
     "MARET",
@@ -3822,9 +2688,7 @@ const monthNames = [
     "OKTOBER",
     "NOVEMBER",
     "DESEMBER"
-
 ];
-
 
 function renderCalendar(){
 
@@ -3865,11 +2729,7 @@ function renderCalendar(){
             0
         ).getDate();
 
-    for(
-        let i = 0;
-        i < firstDay;
-        i++
-    ){
+    for(let i=0;i<firstDay;i++){
 
         const empty =
             document.createElement("div");
@@ -3884,8 +2744,8 @@ function renderCalendar(){
     }
 
     for(
-        let day = 1;
-        day <= totalDays;
+        let day=1;
+        day<=totalDays;
         day++
     ){
 
@@ -3899,13 +2759,9 @@ function renderCalendar(){
             day;
 
         if(
-
             day === 18 &&
-
             calendarMonth === 8 &&
-
             calendarYear === 2026
-
         ){
 
             cell.classList.add(
@@ -3922,7 +2778,6 @@ function renderCalendar(){
 
 }
 
-
 function changeMonth(direction){
 
     calendarMonth += direction;
@@ -3930,7 +2785,6 @@ function changeMonth(direction){
     if(calendarMonth < 0){
 
         calendarMonth = 11;
-
         calendarYear--;
 
     }
@@ -3938,7 +2792,6 @@ function changeMonth(direction){
     if(calendarMonth > 11){
 
         calendarMonth = 0;
-
         calendarYear++;
 
     }
@@ -3949,48 +2802,41 @@ function changeMonth(direction){
 
 renderCalendar();
 
-
-/* =========================================================
+/* =========================
    PHOTO SLIDER
-   FOTO 1 - FOTO 20
-========================================================= */
+========================= */
 
 const photoTrack =
     document.getElementById(
         "photoTrack"
     );
 
-
 const originalPhotos =
     Array.from(
         photoTrack.children
     );
 
+originalPhotos.forEach(
+    function(photo){
 
-/*
-   Gandakan FOTO 1-20.
-*/
+        const clone =
+            photo.cloneNode(true);
 
-originalPhotos.forEach(function(photo){
+        clone.setAttribute(
+            "aria-hidden",
+            "true"
+        );
 
-    const clone =
-        photo.cloneNode(true);
+        photoTrack.appendChild(
+            clone
+        );
 
-    clone.setAttribute(
-        "aria-hidden",
-        "true"
-    );
+    }
+);
 
-    photoTrack.appendChild(
-        clone
-    );
-
-});
-
-
-/* =========================================================
-   DETEKSI OTOMATIS LANDSCAPE
-========================================================= */
+/* =========================
+   PHOTO ORIENTATION
+========================= */
 
 function detectPhotoOrientation(){
 
@@ -3999,92 +2845,54 @@ function detectPhotoOrientation(){
             ".slide-photo"
         );
 
+    photos.forEach(
+        function(card){
 
-    photos.forEach(function(card){
+            const image =
+                card.querySelector("img");
 
-        const image =
-            card.querySelector("img");
+            if(!image){
+                return;
+            }
 
+            function checkOrientation(){
 
-        if(!image){
-            return;
-        }
+                if(
+                    image.naturalWidth >
+                    image.naturalHeight
+                ){
 
+                    card.classList.add(
+                        "is-landscape"
+                    );
 
-        function checkOrientation(){
+                }else{
 
-            /*
-               LANDSCAPE:
-               lebar > tinggi
-            */
+                    card.classList.remove(
+                        "is-landscape"
+                    );
 
-            if(
-                image.naturalWidth >
-                image.naturalHeight
-            ){
-
-                card.classList.add(
-                    "is-landscape"
-                );
+                }
 
             }
 
-            /*
-               PORTRAIT / SQUARE:
-               tinggi >= lebar
-            */
+            if(image.complete){
 
-            else{
-
-                card.classList.remove(
-                    "is-landscape"
-                );
+                checkOrientation();
 
             }
 
-        }
-
-
-        /*
-           Jika foto sudah selesai dimuat.
-        */
-
-        if(
-            image.complete &&
-            image.naturalWidth > 0
-        ){
-
-            checkOrientation();
+            image.addEventListener(
+                "load",
+                checkOrientation
+            );
 
         }
-
-
-        /*
-           Jika foto belum selesai dimuat,
-           cek setelah selesai.
-        */
-
-        image.addEventListener(
-            "load",
-            checkOrientation
-        );
-
-    });
+    );
 
 }
 
-
-/*
-   Jalankan setelah clone selesai.
-*/
-
 detectPhotoOrientation();
-
-
-/*
-   Jalankan kembali ketika semua
-   resource halaman selesai dimuat.
-*/
 
 window.addEventListener(
     "load",
@@ -4095,60 +2903,38 @@ window.addEventListener(
     }
 );
 
+/* =========================
+   MAP
+========================= */
 
-/* =========================================================
-   LEAFLET MAP
-========================================================= */
-
-const FTI_LAT =
-    -0.91482;
-
-const FTI_LNG =
-    100.46039;
-
+const FTI_LAT = -0.91482;
+const FTI_LNG = 100.46039;
 
 const map =
     L.map(
         "map",
         {
-
             center:[
                 FTI_LAT,
                 FTI_LNG
             ],
-
             zoom:17,
-
             scrollWheelZoom:false,
-
             zoomControl:true
-
         }
     );
 
-
 L.tileLayer(
-
     "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-
     {
-
         maxZoom:19,
 
         attribution:
             '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
-
     }
-
 ).addTo(map);
 
-
-/* =========================================================
-   CUSTOM PINK MARKER
-========================================================= */
-
 const pinkPinIcon =
-
     L.divIcon({
 
         className:
@@ -4174,22 +2960,16 @@ const pinkPinIcon =
 
     });
 
-
 const marker =
-
     L.marker(
-
         [
             FTI_LAT,
             FTI_LNG
         ],
-
         {
             icon:pinkPinIcon
         }
-
     ).addTo(map);
-
 
 marker.bindPopup(`
 
@@ -4210,20 +2990,16 @@ marker.bindPopup(`
 
 `);
 
-
 marker.openPopup();
 
+setTimeout(
+    function(){
 
-/* =========================================================
-   FIX MAP
-========================================================= */
+        map.invalidateSize();
 
-setTimeout(function(){
-
-    map.invalidateSize();
-
-},500);
-
+    },
+    500
+);
 
 window.addEventListener(
     "resize",
@@ -4234,10 +3010,9 @@ window.addEventListener(
     }
 );
 
-
-/* =========================================================
+/* =========================
    MUSIC
-========================================================= */
+========================= */
 
 function toggleMusic(){
 
@@ -4251,28 +3026,25 @@ function toggleMusic(){
             "musicButton"
         );
 
-
     if(music.paused){
 
-        music.play()
-
-            .then(function(){
+        music.play().then(
+            function(){
 
                 button.textContent =
                     "♫";
 
-            })
-
-            .catch(function(){
+            }
+        ).catch(
+            function(){
 
                 button.textContent =
                     "♪";
 
-            });
+            }
+        );
 
-    }
-
-    else{
+    }else{
 
         music.pause();
 
@@ -4283,10 +3055,9 @@ function toggleMusic(){
 
 }
 
-
-/* =========================================================
+/* =========================
    LIGHTBOX
-========================================================= */
+========================= */
 
 function openLightbox(src){
 
@@ -4300,127 +3071,99 @@ function openLightbox(src){
             "lightboxImage"
         );
 
-
-    image.src =
-        src;
-
+    image.src = src;
 
     lightbox.classList.add(
         "show"
     );
-
 
     document.body.style.overflow =
         "hidden";
 
 }
 
-
 function closeLightbox(){
 
-    document
-        .getElementById("lightbox")
-        .classList.remove("show");
-
+    document.getElementById(
+        "lightbox"
+    ).classList.remove(
+        "show"
+    );
 
     document.body.style.overflow =
         "";
 
 }
 
-
-/* =========================================================
-   WISHES
-========================================================= */
+/* =========================
+   WISH
+========================= */
 
 function addWish(event){
 
     event.preventDefault();
 
-
     const name =
-        document
-        .getElementById("wishName")
-        .value
-        .trim();
-
+        document.getElementById(
+            "wishName"
+        ).value.trim();
 
     const message =
-        document
-        .getElementById("wishMessage")
-        .value
-        .trim();
+        document.getElementById(
+            "wishMessage"
+        ).value.trim();
 
-
-    if(
-        !name ||
-        !message
-    ){
-
+    if(!name || !message){
         return;
-
     }
-
 
     const card =
         document.createElement("div");
 
-
     card.className =
         "wish-card";
-
 
     const nameElement =
         document.createElement("strong");
 
-
     nameElement.textContent =
         name;
-
 
     const messageElement =
         document.createElement("p");
 
-
     messageElement.textContent =
         message;
-
 
     card.appendChild(
         nameElement
     );
 
-
     card.appendChild(
         messageElement
     );
 
+    document.getElementById(
+        "wishList"
+    ).prepend(card);
 
-    document
-        .getElementById("wishList")
-        .prepend(card);
+    document.getElementById(
+        "wishName"
+    ).value = "";
 
-
-    document
-        .getElementById("wishName")
-        .value = "";
-
-
-    document
-        .getElementById("wishMessage")
-        .value = "";
+    document.getElementById(
+        "wishMessage"
+    ).value = "";
 
 }
 
-
-/* =========================================================
+/* =========================
    DOWNLOAD ICS
-========================================================= */
+========================= */
 
 function downloadICS(){
 
     const ics =
-
 `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Undangan Wisuda Intan Salma Denaidy//ID
@@ -4437,52 +3180,37 @@ LOCATION:Fakultas Teknologi Informasi, Universitas Andalas, Limau Manis, Padang
 END:VEVENT
 END:VCALENDAR`;
 
-
     const blob =
         new Blob(
-
             [ics],
-
             {
                 type:
                     "text/calendar;charset=utf-8"
             }
-
         );
-
 
     const url =
         URL.createObjectURL(
             blob
         );
 
-
     const link =
-        document.createElement(
-            "a"
-        );
+        document.createElement("a");
 
-
-    link.href =
-        url;
-
+    link.href = url;
 
     link.download =
         "wisuda-intan-salma-denaidy.ics";
-
 
     document.body.appendChild(
         link
     );
 
-
     link.click();
-
 
     document.body.removeChild(
         link
     );
-
 
     URL.revokeObjectURL(
         url
@@ -4490,18 +3218,15 @@ END:VCALENDAR`;
 
 }
 
-
-/* =========================================================
-   ESC UNTUK LIGHTBOX
-========================================================= */
+/* =========================
+   ESCAPE
+========================= */
 
 document.addEventListener(
     "keydown",
     function(event){
 
-        if(
-            event.key === "Escape"
-        ){
+        if(event.key === "Escape"){
 
             closeLightbox();
 
