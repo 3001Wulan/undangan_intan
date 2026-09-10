@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Parisienne&family=Playfair+Display:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&family=Parisienne&family=Playfair+Display:wght@400;500;600;700&display=swap"
     rel="stylesheet"
 >
 
@@ -227,13 +227,16 @@ a{
     transform:rotate(20deg);
 }
 
-/* GRADUATION DAY */
+/* =========================
+   GRADUATION DAY
+========================= */
 
 .opening-script{
-    font-family:'Parisienne',cursive;
+    font-family:'Great Vibes',cursive;
     color:var(--pink-dark);
     font-size:60px;
     line-height:1.1;
+    font-weight:400;
     text-transform:none;
     white-space:nowrap;
 }
@@ -1262,7 +1265,32 @@ a{
     padding:35px;
     background:#fff;
     box-shadow:0 15px 40px rgba(120,60,80,.08);
+    border-radius:20px;
 }
+
+/* =========================
+   SEND BUTTON
+========================= */
+
+.send-button{
+    border:0;
+    padding:13px 24px;
+    border-radius:30px;
+    color:#fff;
+    background:#c45c80;
+    font-size:11px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.send-button:hover{
+    background:#aa486b;
+    transform:translateY(-2px);
+}
+
+/* =========================
+   INPUT
+========================= */
 
 .input{
     width:100%;
@@ -1281,46 +1309,39 @@ textarea.input{
     resize:vertical;
 }
 
-.send-button{
-    border:0;
-    padding:13px 24px;
-    border-radius:30px;
-    color:#fff;
-    background:#c45c80;
-    font-size:11px;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.send-button:hover{
-    background:#aa486b;
-    transform:translateY(-2px);
-}
-
-/* WISH CARD - ROUNDED */
+/* =========================
+   WISH CARD
+   CARD PUTIH HASIL UCAPAN
+========================= */
 
 .wish-list{
     margin-top:30px;
 }
 
 .wish-card{
+    width:100%;
     padding:20px;
-    margin-bottom:12px;
-    background:#fff;
+    margin-bottom:14px;
 
+    background:#ffffff;
+
+    border:1px solid rgba(216,100,137,.12);
     border-left:3px solid #d77a99;
 
-    /* Membuat semua sudut card melengkung */
-    border-radius:16px;
+    /* Keempat sudut benar-benar melengkung */
+    border-radius:22px !important;
 
-    /* Supaya border kiri ikut melengkung */
+    /* Agar isi dan border mengikuti lengkungan */
     overflow:hidden;
 
-    /* Bayangan lembut */
-    box-shadow:0 8px 22px rgba(120,60,80,.07);
+    box-shadow:
+        0 8px 22px rgba(120,60,80,.07);
+
+    position:relative;
 }
 
 .wish-card strong{
+    display:block;
     font-size:13px;
     color:#704451;
 }
@@ -1566,8 +1587,9 @@ footer .footer-flower{
         white-space:normal;
     }
 
-    /* Graduation Day tetap besar dan G tetap kapital */
+    /* G kapital lebih jelas dengan Great Vibes */
     .opening-script{
+        font-family:'Great Vibes',cursive;
         font-size:46px;
         line-height:1.1;
         white-space:nowrap;
@@ -1696,11 +1718,12 @@ footer .footer-flower{
         height:300px;
     }
 
-    /* Card ucapan tetap rounded di HP */
+    /* Card putih ucapan di HP */
     .wish-card{
-        border-radius:16px;
+        border-radius:22px !important;
         overflow:hidden;
     }
+
 }
 
 /* =========================
