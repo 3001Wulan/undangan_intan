@@ -1,17 +1,50 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Undangan Wisuda Intan Salma Denaidy, S.Kom</title>
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-<meta name="description" content="Undangan Wisuda Intan Salma Denaidy, S.Kom">
+<title>
+    Undangan Wisuda Intan Salma Denaidy, S.Kom
+</title>
+
+<meta
+    name="description"
+    content="Undangan Wisuda Intan Salma Denaidy, S.Kom"
+>
+
+<!-- =========================================================
+     GOOGLE FONTS
+========================================================= -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Parisienne&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Parisienne&family=Playfair+Display:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+>
+
+
+<!-- =========================================================
+     LEAFLET OPENSTREETMAP
+========================================================= -->
+
+<link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+
 
 <style>
 
@@ -20,10 +53,12 @@
 ========================================================= */
 
 :root{
+
     --pink:#d86489;
     --pink-dark:#a94668;
     --pink-soft:#f7d9e4;
     --pink-light:#fff1f5;
+
     --cream:#fff9fb;
     --white:#ffffff;
 
@@ -32,6 +67,7 @@
     --line:#ead0da;
 
     --dark:#56343f;
+
 }
 
 
@@ -45,28 +81,39 @@
     box-sizing:border-box;
 }
 
+
 html{
     scroll-behavior:smooth;
 }
 
+
 body{
+
     margin:0;
+
     font-family:'DM Sans',sans-serif;
+
     color:var(--text);
+
     background:var(--cream);
+
     overflow-x:hidden;
+
 }
+
 
 img{
     display:block;
     max-width:100%;
 }
 
+
 button,
 input,
 textarea{
     font-family:inherit;
 }
+
 
 a{
     color:inherit;
@@ -78,47 +125,78 @@ a{
 ========================================================= */
 
 #flowerLayer{
+
     position:fixed;
+
     inset:0;
+
     pointer-events:none;
+
     overflow:hidden;
+
     z-index:9999;
+
 }
 
+
 .flower{
+
     position:absolute;
+
     top:-60px;
+
     color:#df87a5;
+
     opacity:.65;
+
     animation:fallFlower linear infinite;
-    filter:drop-shadow(0 2px 3px rgba(160,60,90,.12));
+
+    filter:
+        drop-shadow(
+            0 2px 3px
+            rgba(160,60,90,.12)
+        );
+
 }
+
 
 @keyframes fallFlower{
 
     0%{
+
         transform:
             translate3d(0,-70px,0)
             rotate(0deg);
+
         opacity:0;
+
     }
+
 
     10%{
         opacity:.75;
     }
 
+
     50%{
+
         transform:
             translate3d(80px,55vh,0)
             rotate(180deg);
+
     }
 
+
     100%{
+
         transform:
             translate3d(-100px,110vh,0)
             rotate(360deg);
+
         opacity:0;
+
     }
+
 }
 
 
@@ -127,32 +205,61 @@ a{
 ========================================================= */
 
 #glowLayer{
+
     position:fixed;
+
     inset:0;
+
     pointer-events:none;
+
     z-index:2;
+
 }
 
+
 .glow{
+
     position:absolute;
+
     width:4px;
     height:4px;
+
     border-radius:50%;
+
     background:#efa9bf;
+
     opacity:.5;
-    animation:glowAnimation 5s ease-in-out infinite;
+
+    animation:
+        glowAnimation
+        5s
+        ease-in-out
+        infinite;
+
 }
+
 
 @keyframes glowAnimation{
 
     0%,100%{
-        transform:translateY(0) scale(.7);
+
+        transform:
+            translateY(0)
+            scale(.7);
+
         opacity:.2;
+
     }
 
+
     50%{
-        transform:translateY(-25px) scale(1.5);
+
+        transform:
+            translateY(-25px)
+            scale(1.5);
+
         opacity:.8;
+
     }
 
 }
@@ -163,12 +270,17 @@ a{
 ========================================================= */
 
 .opening{
+
     position:fixed;
+
     inset:0;
+
     z-index:5000;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     padding:25px;
@@ -176,16 +288,19 @@ a{
     text-align:center;
 
     background:
+
         radial-gradient(
             circle at 15% 15%,
             rgba(255,255,255,.95),
             transparent 28%
         ),
+
         radial-gradient(
             circle at 85% 80%,
             rgba(247,197,213,.8),
             transparent 32%
         ),
+
         linear-gradient(
             135deg,
             #fff9fb,
@@ -195,117 +310,202 @@ a{
     transition:
         opacity .8s ease,
         visibility .8s ease;
+
 }
+
 
 .opening.hide{
+
     opacity:0;
+
     visibility:hidden;
+
 }
+
 
 .opening-card{
+
     width:min(540px,100%);
+
     padding:50px 30px;
+
     position:relative;
+
 }
+
 
 .opening-card::before{
+
     content:"❀";
+
     position:absolute;
+
     top:-20px;
     left:5px;
+
     color:#d66f91;
+
     font-size:75px;
+
     opacity:.22;
+
     transform:rotate(-20deg);
+
 }
+
 
 .opening-card::after{
+
     content:"✿";
+
     position:absolute;
+
     bottom:-25px;
     right:5px;
+
     color:#d66f91;
+
     font-size:85px;
+
     opacity:.22;
+
     transform:rotate(20deg);
+
 }
+
 
 .opening-small{
+
     font-size:10px;
+
     letter-spacing:4px;
+
     text-transform:uppercase;
+
     color:var(--pink-dark);
+
     margin-bottom:20px;
+
 }
+
 
 .opening-script{
+
     font-family:'Parisienne',cursive;
+
     color:var(--pink-dark);
+
     font-size:45px;
+
     line-height:1;
+
 }
 
+
 .opening-name{
+
     margin-top:7px;
 
     font-family:'Playfair Display',serif;
+
     font-size:42px;
+
     line-height:1.15;
+
     font-weight:500;
+
     color:#5b3743;
+
 }
+
 
 .opening-degree{
+
     margin-top:14px;
+
     font-size:13px;
+
     color:var(--muted);
+
 }
+
 
 .guest-box{
+
     margin:35px auto 27px;
+
     padding:17px 20px;
 
-    border-top:1px solid rgba(169,67,104,.2);
-    border-bottom:1px solid rgba(169,67,104,.2);
+    border-top:
+        1px solid
+        rgba(169,67,104,.2);
+
+    border-bottom:
+        1px solid
+        rgba(169,67,104,.2);
+
 }
+
 
 .guest-label{
+
     font-size:9px;
+
     text-transform:uppercase;
+
     letter-spacing:2px;
+
     color:#9a7883;
+
 }
+
 
 .guest-name{
+
     margin-top:8px;
+
     font-family:'Playfair Display',serif;
+
     font-size:21px;
+
     color:#704451;
+
 }
 
+
 .open-button{
+
     border:0;
+
     padding:15px 30px;
 
     border-radius:50px;
 
     color:#fff;
+
     background:#c55c80;
 
     font-size:12px;
+
     font-weight:600;
 
     cursor:pointer;
 
     box-shadow:
-        0 12px 30px rgba(184,73,111,.25);
+        0 12px 30px
+        rgba(184,73,111,.25);
 
     transition:.3s;
+
 }
 
+
 .open-button:hover{
+
     transform:translateY(-3px);
+
     background:#aa486b;
+
 }
 
 
@@ -314,12 +514,18 @@ a{
 ========================================================= */
 
 .main{
+
     opacity:0;
+
     transition:opacity 1s ease;
+
 }
 
+
 .main.show{
+
     opacity:1;
+
 }
 
 
@@ -328,10 +534,13 @@ a{
 ========================================================= */
 
 .hero{
+
     min-height:100vh;
 
     display:grid;
+
     grid-template-columns:1fr 1fr;
+
     align-items:center;
 
     gap:70px;
@@ -339,22 +548,28 @@ a{
     padding:90px 9%;
 
     position:relative;
+
     overflow:hidden;
 
     background:
+
         radial-gradient(
             circle at 85% 15%,
             #f7dbe5,
             transparent 28%
         ),
+
         linear-gradient(
             135deg,
             #fff9fb,
             #ffffff
         );
+
 }
 
+
 .hero::before{
+
     content:"";
 
     position:absolute;
@@ -363,18 +578,26 @@ a{
     height:520px;
 
     border:1px solid #edc5d2;
+
     border-radius:50%;
 
     right:-250px;
     top:-220px;
+
 }
+
 
 .hero-text{
+
     position:relative;
+
     z-index:3;
+
 }
 
+
 .hero-label{
+
     display:inline-block;
 
     padding:8px 15px;
@@ -388,10 +611,14 @@ a{
     font-size:10px;
 
     letter-spacing:2px;
+
     text-transform:uppercase;
+
 }
 
+
 .hero h1{
+
     margin-top:24px;
 
     font-family:'Playfair Display',serif;
@@ -403,9 +630,12 @@ a{
     font-weight:500;
 
     color:#573742;
+
 }
 
+
 .hero h1 span{
+
     display:block;
 
     margin-top:8px;
@@ -415,31 +645,44 @@ a{
     font-size:1.1em;
 
     color:#c85e83;
+
 }
 
+
 .hero-description{
+
     max-width:510px;
 
     margin-top:27px;
 
     font-size:14px;
+
     line-height:1.9;
 
     color:#80666f;
+
 }
 
+
 .hero-photo-area{
+
     min-height:610px;
 
     display:flex;
+
     justify-content:center;
+
     align-items:center;
 
     position:relative;
+
 }
 
+
 .photo-frame{
+
     width:min(410px,90%);
+
     height:530px;
 
     padding:13px;
@@ -447,14 +690,18 @@ a{
     background:#fff;
 
     box-shadow:
-        0 25px 60px rgba(100,45,65,.16);
+        0 25px 60px
+        rgba(100,45,65,.16);
 
     transform:rotate(3deg);
 
     position:relative;
+
 }
 
+
 .photo-frame::before{
+
     content:"";
 
     position:absolute;
@@ -466,9 +713,12 @@ a{
     z-index:-1;
 
     transform:rotate(-7deg);
+
 }
 
+
 .photo-frame::after{
+
     content:"";
 
     position:absolute;
@@ -477,22 +727,29 @@ a{
     height:80px;
 
     border:1px solid #e5a7bb;
+
     border-radius:50%;
 
     right:-55px;
     bottom:25px;
 
     opacity:.5;
+
 }
 
+
 .photo-frame img{
+
     width:100%;
     height:100%;
 
     object-fit:cover;
+
 }
 
+
 .hero-flower{
+
     position:absolute;
 
     color:#d87999;
@@ -500,21 +757,32 @@ a{
     opacity:.28;
 
     font-size:105px;
+
 }
+
 
 .hero-flower.one{
+
     top:30px;
     left:5px;
+
     transform:rotate(-20deg);
+
 }
+
 
 .hero-flower.two{
+
     right:0;
     bottom:35px;
+
     transform:rotate(25deg);
+
 }
 
+
 .scroll-hint{
+
     position:absolute;
 
     left:50%;
@@ -523,11 +791,13 @@ a{
     transform:translateX(-50%);
 
     font-size:9px;
+
     letter-spacing:3px;
 
     color:#a47d88;
 
     text-transform:uppercase;
+
 }
 
 
@@ -536,21 +806,31 @@ a{
 ========================================================= */
 
 .quote-section{
+
     padding:120px 10%;
 
     background:#fff;
 
     text-align:center;
+
 }
+
 
 .quote-flower{
+
     color:#d76c8e;
+
     font-size:36px;
+
     margin-bottom:25px;
+
 }
 
+
 .quote-section h2{
+
     max-width:820px;
+
     margin:auto;
 
     font-family:'Playfair Display',serif;
@@ -562,17 +842,22 @@ a{
     font-weight:500;
 
     color:#593843;
+
 }
 
+
 .quote-section p{
+
     max-width:680px;
 
     margin:25px auto 0;
 
     font-size:14px;
+
     line-height:1.9;
 
     color:#856b75;
+
 }
 
 
@@ -581,17 +866,25 @@ a{
 ========================================================= */
 
 .date-section{
+
     padding:105px 7%;
 
     background:#fdf0f4;
+
 }
+
 
 .section-heading{
+
     text-align:center;
+
     margin-bottom:50px;
+
 }
 
+
 .section-heading small{
+
     font-size:9px;
 
     text-transform:uppercase;
@@ -599,9 +892,12 @@ a{
     letter-spacing:3px;
 
     color:#b45a7a;
+
 }
 
+
 .section-heading h2{
+
     margin-top:9px;
 
     font-family:'Playfair Display',serif;
@@ -611,6 +907,7 @@ a{
     font-weight:500;
 
     color:#583844;
+
 }
 
 
@@ -619,6 +916,7 @@ a{
 ========================================================= */
 
 .calendar-wrap{
+
     max-width:920px;
 
     margin:auto;
@@ -630,6 +928,7 @@ a{
     gap:25px;
 
     align-items:stretch;
+
 }
 
 
@@ -638,24 +937,33 @@ a{
 ========================================================= */
 
 .calendar{
+
     background:#fff;
 
     padding:32px;
 
     box-shadow:
-        0 18px 45px rgba(120,60,80,.08);
+        0 18px 45px
+        rgba(120,60,80,.08);
+
 }
 
+
 .calendar-header{
+
     display:flex;
 
     justify-content:space-between;
+
     align-items:center;
 
     margin-bottom:30px;
+
 }
 
+
 .calendar-header button{
+
     width:38px;
     height:38px;
 
@@ -670,13 +978,19 @@ a{
     font-size:25px;
 
     cursor:pointer;
+
 }
+
 
 .calendar-title{
+
     text-align:center;
+
 }
 
+
 .calendar-title strong{
+
     display:block;
 
     font-family:'Playfair Display',serif;
@@ -688,9 +1002,12 @@ a{
     color:#603c48;
 
     font-weight:500;
+
 }
 
+
 .calendar-title span{
+
     display:block;
 
     margin-top:3px;
@@ -700,39 +1017,55 @@ a{
     letter-spacing:3px;
 
     color:#a27b86;
+
 }
+
 
 .calendar-week,
 .calendar-days{
+
     display:grid;
 
     grid-template-columns:repeat(7,1fr);
 
     text-align:center;
+
 }
+
 
 .calendar-week{
+
     margin-bottom:14px;
+
 }
 
+
 .calendar-week span{
+
     font-size:8px;
 
     letter-spacing:1px;
 
     color:#a47b87;
+
 }
+
 
 .calendar-days{
+
     gap:7px 2px;
+
 }
 
+
 .calendar-day{
+
     aspect-ratio:1;
 
     display:flex;
 
     justify-content:center;
+
     align-items:center;
 
     position:relative;
@@ -740,20 +1073,30 @@ a{
     font-size:13px;
 
     color:#684650;
+
 }
+
 
 .calendar-day.empty{
+
     visibility:hidden;
+
 }
 
+
 .calendar-day.active{
+
     color:#fff;
+
     font-weight:700;
 
     z-index:1;
+
 }
 
+
 .calendar-day.active::before{
+
     content:"";
 
     position:absolute;
@@ -768,10 +1111,14 @@ a{
     z-index:-1;
 
     box-shadow:
-        0 7px 16px rgba(190,75,115,.25);
+        0 7px 16px
+        rgba(190,75,115,.25);
+
 }
 
+
 .calendar-day.active::after{
+
     content:"✿";
 
     position:absolute;
@@ -782,6 +1129,7 @@ a{
     font-size:11px;
 
     color:#e9a8bd;
+
 }
 
 
@@ -790,6 +1138,7 @@ a{
 ========================================================= */
 
 .selected-date{
+
     min-height:100%;
 
     padding:40px 25px;
@@ -799,6 +1148,7 @@ a{
     flex-direction:column;
 
     align-items:center;
+
     justify-content:center;
 
     text-align:center;
@@ -806,11 +1156,13 @@ a{
     color:#fff;
 
     background:
+
         radial-gradient(
             circle at 80% 15%,
             rgba(255,255,255,.2),
             transparent 30%
         ),
+
         linear-gradient(
             145deg,
             #d86e92,
@@ -820,9 +1172,12 @@ a{
     position:relative;
 
     overflow:hidden;
+
 }
 
+
 .selected-date::before{
+
     content:"";
 
     position:absolute;
@@ -830,15 +1185,19 @@ a{
     width:230px;
     height:230px;
 
-    border:1px solid rgba(255,255,255,.18);
+    border:1px solid
+        rgba(255,255,255,.18);
 
     border-radius:50%;
 
     top:-120px;
     right:-90px;
+
 }
 
+
 .selected-date::after{
+
     content:"";
 
     position:absolute;
@@ -846,31 +1205,41 @@ a{
     width:180px;
     height:180px;
 
-    border:1px solid rgba(255,255,255,.12);
+    border:1px solid
+        rgba(255,255,255,.12);
 
     border-radius:50%;
 
     bottom:-90px;
     left:-80px;
+
 }
 
+
 .selected-flower{
+
     font-size:32px;
 
     color:#ffdce7;
 
     margin-bottom:8px;
+
 }
 
+
 .selected-day{
+
     font-size:10px;
 
     text-transform:uppercase;
 
     letter-spacing:4px;
+
 }
 
+
 .selected-number{
+
     font-family:'Playfair Display',serif;
 
     font-size:105px;
@@ -878,24 +1247,33 @@ a{
     line-height:1;
 
     margin:5px 0;
+
 }
 
+
 .selected-month{
+
     font-family:'Playfair Display',serif;
 
     font-size:23px;
+
 }
 
+
 .selected-time{
+
     margin-top:18px;
 
     padding-top:15px;
 
-    border-top:1px solid rgba(255,255,255,.3);
+    border-top:
+        1px solid
+        rgba(255,255,255,.3);
 
     font-size:11px;
 
     letter-spacing:1px;
+
 }
 
 
@@ -904,9 +1282,11 @@ a{
 ========================================================= */
 
 .countdown-title{
+
     text-align:center;
 
     margin-top:62px;
+
     margin-bottom:22px;
 
     font-family:'Playfair Display',serif;
@@ -914,9 +1294,12 @@ a{
     font-size:23px;
 
     color:#704451;
+
 }
 
+
 .countdown{
+
     max-width:700px;
 
     margin:auto;
@@ -926,9 +1309,12 @@ a{
     grid-template-columns:repeat(4,1fr);
 
     gap:14px;
+
 }
 
+
 .time-box{
+
     padding:24px 10px;
 
     background:#fff;
@@ -936,9 +1322,12 @@ a{
     border:1px solid #efd5de;
 
     text-align:center;
+
 }
 
+
 .time-box strong{
+
     display:block;
 
     font-family:'Playfair Display',serif;
@@ -948,9 +1337,12 @@ a{
     font-weight:500;
 
     color:#bd5a7d;
+
 }
 
+
 .time-box span{
+
     display:block;
 
     margin-top:4px;
@@ -962,6 +1354,7 @@ a{
     text-transform:uppercase;
 
     color:#92727d;
+
 }
 
 
@@ -970,22 +1363,29 @@ a{
 ========================================================= */
 
 .photo-slider-section{
+
     padding:105px 0;
 
     background:#fff;
 
     overflow:hidden;
+
 }
 
+
 .photo-slider-heading{
+
     text-align:center;
 
     padding:0 20px;
 
     margin-bottom:42px;
+
 }
 
+
 .photo-slider-heading small{
+
     font-size:9px;
 
     letter-spacing:3px;
@@ -993,9 +1393,12 @@ a{
     text-transform:uppercase;
 
     color:#b45a7a;
+
 }
 
+
 .photo-slider-heading h2{
+
     margin-top:10px;
 
     font-family:'Playfair Display',serif;
@@ -1005,9 +1408,12 @@ a{
     font-weight:500;
 
     color:#583844;
+
 }
 
+
 .photo-track{
+
     display:flex;
 
     width:max-content;
@@ -1015,14 +1421,23 @@ a{
     gap:20px;
 
     animation:
-        photoMoving 38s linear infinite;
+        photoMoving
+        38s
+        linear
+        infinite;
+
 }
+
 
 .photo-track:hover{
+
     animation-play-state:paused;
+
 }
 
+
 .slide-photo{
+
     width:270px;
     height:350px;
 
@@ -1033,27 +1448,39 @@ a{
     background:#f7dce5;
 
     box-shadow:
-        0 16px 35px rgba(100,45,65,.12);
+        0 16px 35px
+        rgba(100,45,65,.12);
 
     cursor:pointer;
+
 }
+
 
 .slide-photo:nth-child(even){
+
     transform:translateY(30px);
+
 }
 
+
 .slide-photo img{
+
     width:100%;
     height:100%;
 
     object-fit:cover;
 
     transition:.5s;
+
 }
 
+
 .slide-photo:hover img{
+
     transform:scale(1.06);
+
 }
+
 
 @keyframes photoMoving{
 
@@ -1073,12 +1500,16 @@ a{
 ========================================================= */
 
 .venue{
+
     padding:110px 8%;
 
     background:#fff8fa;
+
 }
 
+
 .venue-layout{
+
     max-width:1100px;
 
     margin:auto;
@@ -1090,17 +1521,23 @@ a{
     gap:45px;
 
     align-items:center;
+
 }
 
+
 .venue-script{
+
     font-family:'Parisienne',cursive;
 
     font-size:43px;
 
     color:#c15a7d;
+
 }
 
+
 .venue-copy h2{
+
     margin-top:3px;
 
     font-family:'Playfair Display',serif;
@@ -1112,9 +1549,12 @@ a{
     font-weight:500;
 
     color:#583844;
+
 }
 
+
 .venue-copy p{
+
     margin-top:22px;
 
     font-size:14px;
@@ -1122,17 +1562,20 @@ a{
     line-height:1.9;
 
     color:#80656e;
+
 }
 
 
 /* =========================================================
-   MAP BUTTON - PINK LOCATION
+   MAP BUTTON
 ========================================================= */
 
 .map-button{
+
     display:inline-flex;
 
     align-items:center;
+
     justify-content:center;
 
     gap:9px;
@@ -1146,11 +1589,13 @@ a{
     text-decoration:none;
 
     font-size:11px;
+
     font-weight:600;
 
     color:#fff;
 
     background:
+
         linear-gradient(
             135deg,
             #d86e92,
@@ -1158,18 +1603,23 @@ a{
         );
 
     box-shadow:
-        0 10px 24px rgba(194,83,119,.22);
+        0 10px 24px
+        rgba(194,83,119,.22);
 
     transition:
         transform .3s ease,
         box-shadow .3s ease,
         background .3s ease;
+
 }
 
+
 .map-button:hover{
+
     transform:translateY(-3px);
 
     background:
+
         linear-gradient(
             135deg,
             #e07a9d,
@@ -1177,13 +1627,18 @@ a{
         );
 
     box-shadow:
-        0 14px 30px rgba(194,83,119,.30);
+        0 14px 30px
+        rgba(194,83,119,.30);
+
 }
 
 
-/* PIN LOKASI */
+/* =========================================================
+   PIN BUTTON
+========================================================= */
 
 .location-pin{
+
     width:15px;
     height:19px;
 
@@ -1199,9 +1654,12 @@ a{
     transform:rotate(-45deg);
 
     flex-shrink:0;
+
 }
 
+
 .location-pin::after{
+
     content:"";
 
     position:absolute;
@@ -1215,22 +1673,200 @@ a{
 
     top:4px;
     left:4px;
+
 }
 
+
+/* =========================================================
+   MAP BOX
+========================================================= */
+
 .map-box{
+
     padding:12px;
 
     background:#fff;
 
     box-shadow:
-        0 20px 45px rgba(120,60,80,.12);
+        0 20px 45px
+        rgba(120,60,80,.12);
+
+    border-radius:4px;
+
 }
 
-.map-box iframe{
+
+#map{
+
     width:100%;
+
     height:380px;
 
+    border-radius:2px;
+
+    overflow:hidden;
+
+}
+
+
+/* =========================================================
+   LEAFLET MAP
+========================================================= */
+
+.leaflet-container{
+
+    font-family:'DM Sans',sans-serif;
+
+}
+
+
+.leaflet-control-zoom a{
+
+    color:#a94668 !important;
+
+}
+
+
+.leaflet-control-attribution{
+
+    font-size:8px !important;
+
+}
+
+
+/* =========================================================
+   PINK MARKER
+========================================================= */
+
+.pink-map-marker{
+
+    background:transparent;
+
     border:0;
+
+}
+
+
+.pink-pin{
+
+    width:38px;
+    height:38px;
+
+    position:relative;
+
+    background:#d86489;
+
+    border:4px solid #fff;
+
+    border-radius:
+        50% 50% 50% 0;
+
+    transform:rotate(-45deg);
+
+    box-shadow:
+        0 6px 18px
+        rgba(170,55,95,.40);
+
+}
+
+
+.pink-pin::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:10px;
+    height:10px;
+
+    background:#fff;
+
+    border-radius:50%;
+
+    top:10px;
+    left:10px;
+
+}
+
+
+/* =========================================================
+   POPUP MAP
+========================================================= */
+
+.map-popup{
+
+    text-align:center;
+
+    line-height:1.6;
+
+    color:#563843;
+
+}
+
+
+.map-popup strong{
+
+    color:#b84e73;
+
+    font-family:'Playfair Display',serif;
+
+    font-size:14px;
+
+}
+
+
+.map-popup span{
+
+    font-size:10px;
+
+    color:#866c75;
+
+}
+
+
+.leaflet-popup-content-wrapper{
+
+    border-radius:12px;
+
+}
+
+
+.leaflet-popup-tip{
+
+    background:#fff;
+
+}
+
+
+/* =========================================================
+   COORDINATE
+========================================================= */
+
+.map-coordinate{
+
+    margin-top:10px;
+
+    padding:9px 12px;
+
+    text-align:center;
+
+    border-radius:10px;
+
+    background:#fff4f7;
+
+    color:#a94668;
+
+    font-size:10px;
+
+    letter-spacing:.5px;
+
+}
+
+
+.map-coordinate strong{
+
+    color:#c45c80;
+
 }
 
 
@@ -1239,12 +1875,16 @@ a{
 ========================================================= */
 
 .journey{
+
     padding:110px 8%;
 
     background:#f8e5eb;
+
 }
 
+
 .journey-grid{
+
     max-width:1000px;
 
     margin:auto;
@@ -1254,9 +1894,12 @@ a{
     grid-template-columns:repeat(3,1fr);
 
     gap:24px;
+
 }
 
+
 .journey-card{
+
     min-height:280px;
 
     padding:35px 28px;
@@ -1268,10 +1911,14 @@ a{
     position:relative;
 
     box-shadow:
-        0 15px 30px rgba(120,60,80,.07);
+        0 15px 30px
+        rgba(120,60,80,.07);
+
 }
 
+
 .journey-shape{
+
     width:62px;
     height:62px;
 
@@ -1280,16 +1927,21 @@ a{
     display:flex;
 
     justify-content:center;
+
     align-items:center;
 
-    border-radius:50% 50% 50% 0;
+    border-radius:
+        50% 50% 50% 0;
 
     transform:rotate(-45deg);
 
     background:#f4cbd9;
+
 }
 
+
 .journey-number{
+
     transform:rotate(45deg);
 
     font-family:'Playfair Display',serif;
@@ -1297,9 +1949,12 @@ a{
     color:#a94b6d;
 
     font-size:18px;
+
 }
 
+
 .journey-card h3{
+
     margin-top:25px;
 
     font-family:'Playfair Display',serif;
@@ -1307,9 +1962,12 @@ a{
     font-size:25px;
 
     font-weight:500;
+
 }
 
+
 .journey-card p{
+
     margin-top:12px;
 
     font-size:13px;
@@ -1317,6 +1975,7 @@ a{
     line-height:1.8;
 
     color:#876d76;
+
 }
 
 
@@ -1325,18 +1984,24 @@ a{
 ========================================================= */
 
 .wishes{
+
     padding:110px 8%;
 
     background:
+
         radial-gradient(
             circle at 20% 20%,
             #f7d6e2,
             transparent 25%
         ),
+
         #fff4f7;
+
 }
 
+
 .wishes-layout{
+
     max-width:1000px;
 
     margin:auto;
@@ -1346,17 +2011,23 @@ a{
     grid-template-columns:.8fr 1.2fr;
 
     gap:50px;
+
 }
 
+
 .wish-script{
+
     font-family:'Parisienne',cursive;
 
     font-size:43px;
 
     color:#c35b7e;
+
 }
 
+
 .wish-intro h2{
+
     margin-top:3px;
 
     font-family:'Playfair Display',serif;
@@ -1366,9 +2037,12 @@ a{
     line-height:1.1;
 
     font-weight:500;
+
 }
 
+
 .wish-intro p{
+
     margin-top:20px;
 
     font-size:14px;
@@ -1376,23 +2050,32 @@ a{
     line-height:1.9;
 
     color:#866b75;
+
 }
 
+
 .wish-form{
+
     padding:35px;
 
     background:#fff;
 
     box-shadow:
-        0 15px 40px rgba(120,60,80,.08);
+        0 15px 40px
+        rgba(120,60,80,.08);
+
 }
 
+
 .input{
+
     width:100%;
 
     border:0;
 
-    border-bottom:1px solid #ead2da;
+    border-bottom:
+        1px solid
+        #ead2da;
 
     background:transparent;
 
@@ -1405,15 +2088,21 @@ a{
     font-size:13px;
 
     color:#543943;
+
 }
 
+
 textarea.input{
+
     min-height:120px;
 
     resize:vertical;
+
 }
 
+
 .send-button{
+
     border:0;
 
     padding:13px 24px;
@@ -1429,35 +2118,52 @@ textarea.input{
     cursor:pointer;
 
     transition:.3s;
+
 }
 
+
 .send-button:hover{
+
     background:#aa486b;
 
     transform:translateY(-2px);
+
 }
+
 
 .wish-list{
+
     margin-top:30px;
+
 }
 
+
 .wish-card{
+
     padding:20px;
 
     margin-bottom:12px;
 
     background:#fff;
 
-    border-left:3px solid #d77a99;
+    border-left:
+        3px solid
+        #d77a99;
+
 }
 
+
 .wish-card strong{
+
     font-size:13px;
 
     color:#704451;
+
 }
 
+
 .wish-card p{
+
     margin-top:7px;
 
     font-size:12px;
@@ -1465,6 +2171,7 @@ textarea.input{
     line-height:1.7;
 
     color:#856a74;
+
 }
 
 
@@ -1473,6 +2180,7 @@ textarea.input{
 ========================================================= */
 
 .closing{
+
     padding:105px 20px;
 
     text-align:center;
@@ -1484,9 +2192,12 @@ textarea.input{
     position:relative;
 
     overflow:hidden;
+
 }
 
+
 .closing::before{
+
     content:"❀";
 
     position:absolute;
@@ -1496,10 +2207,14 @@ textarea.input{
 
     font-size:230px;
 
-    color:rgba(255,255,255,.04);
+    color:
+        rgba(255,255,255,.04);
+
 }
 
+
 .closing::after{
+
     content:"✿";
 
     position:absolute;
@@ -1509,18 +2224,25 @@ textarea.input{
 
     font-size:230px;
 
-    color:rgba(255,255,255,.04);
+    color:
+        rgba(255,255,255,.04);
+
 }
 
+
 .closing-script{
+
     font-family:'Parisienne',cursive;
 
     font-size:46px;
 
     color:#f1b6c9;
+
 }
 
+
 .closing h2{
+
     margin-top:8px;
 
     font-family:'Playfair Display',serif;
@@ -1528,9 +2250,12 @@ textarea.input{
     font-size:42px;
 
     font-weight:500;
+
 }
 
+
 .closing p{
+
     max-width:600px;
 
     margin:18px auto 0;
@@ -1540,9 +2265,12 @@ textarea.input{
     line-height:1.8;
 
     color:#e7cbd4;
+
 }
 
+
 .save-buttons{
+
     margin-top:30px;
 
     display:flex;
@@ -1552,9 +2280,12 @@ textarea.input{
     gap:12px;
 
     flex-wrap:wrap;
+
 }
 
+
 .save-button{
+
     display:inline-block;
 
     padding:13px 22px;
@@ -1574,18 +2305,27 @@ textarea.input{
     cursor:pointer;
 
     transition:.3s;
+
 }
+
 
 .save-button:hover{
+
     transform:translateY(-2px);
+
 }
 
+
 .save-button.secondary{
+
     background:transparent;
 
     color:#fff;
 
-    border:1px solid rgba(255,255,255,.45);
+    border:
+        1px solid
+        rgba(255,255,255,.45);
+
 }
 
 
@@ -1594,6 +2334,7 @@ textarea.input{
 ========================================================= */
 
 footer{
+
     padding:35px 20px;
 
     text-align:center;
@@ -1603,18 +2344,25 @@ footer{
     color:#dcbfc8;
 
     font-size:10px;
+
 }
 
+
 footer .footer-flower{
+
     font-size:25px;
 
     color:#efabc1;
 
     margin-bottom:8px;
+
 }
 
+
 footer span{
+
     color:#efabc1;
+
 }
 
 
@@ -1623,6 +2371,7 @@ footer span{
 ========================================================= */
 
 .music-button{
+
     position:fixed;
 
     right:20px;
@@ -1633,7 +2382,9 @@ footer span{
 
     border-radius:50%;
 
-    border:1px solid #e7b4c5;
+    border:
+        1px solid
+        #e7b4c5;
 
     background:#fff;
 
@@ -1644,13 +2395,18 @@ footer span{
     cursor:pointer;
 
     box-shadow:
-        0 8px 20px rgba(100,40,60,.12);
+        0 8px 20px
+        rgba(100,40,60,.12);
 
     transition:.3s;
+
 }
 
+
 .music-button:hover{
+
     transform:scale(1.06);
+
 }
 
 
@@ -1659,6 +2415,7 @@ footer span{
 ========================================================= */
 
 .lightbox{
+
     position:fixed;
 
     inset:0;
@@ -1668,25 +2425,37 @@ footer span{
     display:none;
 
     align-items:center;
+
     justify-content:center;
 
     padding:25px;
 
-    background:rgba(42,20,28,.93);
+    background:
+        rgba(42,20,28,.93);
+
 }
+
 
 .lightbox.show{
+
     display:flex;
+
 }
 
+
 .lightbox img{
+
     max-width:90%;
+
     max-height:85vh;
 
     object-fit:contain;
+
 }
 
+
 .lightbox-close{
+
     position:absolute;
 
     right:28px;
@@ -1697,6 +2466,7 @@ footer span{
     font-size:38px;
 
     cursor:pointer;
+
 }
 
 
@@ -1707,6 +2477,7 @@ footer span{
 @media(max-width:800px){
 
     .hero{
+
         grid-template-columns:1fr;
 
         padding:
@@ -1716,47 +2487,85 @@ footer span{
         gap:40px;
 
         text-align:center;
+
     }
+
 
     .hero-description{
+
         margin-left:auto;
         margin-right:auto;
+
     }
+
 
     .hero-photo-area{
+
         min-height:480px;
+
     }
+
 
     .photo-frame{
+
         height:440px;
+
     }
+
 
     .calendar-wrap{
+
         grid-template-columns:1fr;
+
     }
+
 
     .selected-date{
+
         min-height:300px;
+
     }
+
 
     .countdown{
+
         grid-template-columns:repeat(2,1fr);
+
     }
+
 
     .venue-layout{
+
         grid-template-columns:1fr;
+
     }
+
 
     .journey-grid{
+
         grid-template-columns:1fr;
+
     }
+
 
     .wishes-layout{
+
         grid-template-columns:1fr;
+
     }
 
+
     .wish-intro{
+
         text-align:center;
+
+    }
+
+
+    #map{
+
+        height:340px;
+
     }
 
 }
@@ -1765,73 +2574,137 @@ footer span{
 @media(max-width:500px){
 
     .opening-name{
+
         font-size:32px;
+
     }
+
 
     .opening-script{
+
         font-size:37px;
+
     }
+
 
     .hero h1{
+
         font-size:48px;
+
     }
+
 
     .hero-photo-area{
+
         min-height:430px;
+
     }
+
 
     .photo-frame{
+
         height:400px;
+
     }
+
 
     .section-heading h2{
+
         font-size:36px;
+
     }
+
 
     .calendar{
+
         padding:20px 14px;
+
     }
+
 
     .calendar-title strong{
+
         font-size:19px;
+
     }
+
 
     .calendar-day{
+
         font-size:11px;
+
     }
+
 
     .calendar-days{
+
         gap:5px 1px;
+
     }
+
 
     .calendar-day.active::before{
+
         width:34px;
         height:34px;
+
     }
+
 
     .selected-number{
+
         font-size:88px;
+
     }
+
 
     .selected-month{
+
         font-size:20px;
+
     }
+
 
     .photo-slider-heading h2{
+
         font-size:33px;
+
     }
+
 
     .slide-photo{
+
         width:220px;
         height:290px;
+
     }
+
 
     .venue-copy h2{
+
         font-size:38px;
+
     }
 
+
     .wish-intro h2{
+
         font-size:40px;
+
+    }
+
+
+    #map{
+
+        height:300px;
+
+    }
+
+
+    .map-coordinate{
+
+        font-size:9px;
+
     }
 
 }
@@ -1844,18 +2717,24 @@ footer span{
 @media(prefers-reduced-motion:reduce){
 
     html{
+
         scroll-behavior:auto;
+
     }
+
 
     .flower,
     .glow,
     .photo-track{
+
         animation:none !important;
+
     }
 
 }
 
 </style>
+
 </head>
 
 
@@ -1867,6 +2746,7 @@ footer span{
 ====================================================== -->
 
 <div id="flowerLayer"></div>
+
 <div id="glowLayer"></div>
 
 
@@ -1874,7 +2754,10 @@ footer span{
      OPENING
 ====================================================== -->
 
-<section class="opening" id="opening">
+<section
+    class="opening"
+    id="opening"
+>
 
     <div class="opening-card">
 
@@ -1882,24 +2765,32 @@ footer span{
             Graduation Invitation
         </div>
 
+
         <div class="opening-script">
             A New Chapter
         </div>
 
+
         <div class="opening-name">
+
             Intan Salma<br>
+
             Denaidy, S.Kom
+
         </div>
+
 
         <div class="opening-degree">
             Sarjana Komputer • S1 Sistem Informasi
         </div>
+
 
         <div class="guest-box">
 
             <div class="guest-label">
                 Dengan hormat, kami mengundang
             </div>
+
 
             <div
                 class="guest-name"
@@ -1909,6 +2800,7 @@ footer span{
             </div>
 
         </div>
+
 
         <button
             class="open-button"
@@ -1938,41 +2830,59 @@ footer span{
 
 <section class="hero">
 
+
     <div class="hero-text">
+
 
         <div class="hero-label">
             One Beautiful Milestone
         </div>
 
+
         <h1>
+
             Hello,
-            <span>New Chapter.</span>
+
+            <span>
+                New Chapter.
+            </span>
+
         </h1>
 
+
         <p class="hero-description">
+
             Setelah melewati hari-hari penuh cerita,
             akhirnya satu perjalanan sampai pada
             titik yang patut dirayakan.
+
         </p>
 
+
         <p class="hero-description">
+
             Dengan penuh kebahagiaan, Intan mengajak
             Bapak/Ibu/Saudara/i untuk hadir dan berbagi
             kebahagiaan di hari istimewa ini.
+
         </p>
+
 
     </div>
 
 
     <div class="hero-photo-area">
 
+
         <div class="hero-flower one">
             ❀
         </div>
 
+
         <div class="hero-flower two">
             ✿
         </div>
+
 
         <div class="photo-frame">
 
@@ -1983,12 +2893,14 @@ footer span{
 
         </div>
 
+
     </div>
 
 
     <div class="scroll-hint">
         Scroll to celebrate ↓
     </div>
+
 
 </section>
 
@@ -1999,41 +2911,53 @@ footer span{
 
 <section class="quote-section">
 
+
     <div class="quote-flower">
         ❀
     </div>
 
+
     <h2>
+
         “Satu langkah selesai,
         banyak cerita tersimpan,
         dan perjalanan baru menanti.”
+
     </h2>
 
+
     <p>
+
         Hari ini bukan hanya tentang sebuah pencapaian,
         tetapi juga tentang proses, pengalaman,
         dan orang-orang yang menjadi bagian dari
         perjalanan hingga sampai di titik ini.
+
     </p>
+
 
 </section>
 
 
 <!-- ======================================================
-     SAVE THIS DATE + CALENDAR + COUNTDOWN
+     SAVE THIS DATE
 ====================================================== -->
 
 <section class="date-section">
 
+
     <div class="section-heading">
+
 
         <small>
             Save This Date
         </small>
 
+
         <h2>
             Mark the Day
         </h2>
+
 
     </div>
 
@@ -2045,7 +2969,9 @@ footer span{
 
         <div class="calendar">
 
+
             <div class="calendar-header">
+
 
                 <button
                     onclick="changeMonth(-1)"
@@ -2057,13 +2983,20 @@ footer span{
 
                 <div class="calendar-title">
 
-                    <strong id="calendarMonth">
+
+                    <strong
+                        id="calendarMonth"
+                    >
                         SEPTEMBER
                     </strong>
 
-                    <span id="calendarYear">
+
+                    <span
+                        id="calendarYear"
+                    >
                         2026
                     </span>
+
 
                 </div>
 
@@ -2074,6 +3007,7 @@ footer span{
                 >
                     ›
                 </button>
+
 
             </div>
 
@@ -2096,6 +3030,7 @@ footer span{
                 id="calendarDays"
             ></div>
 
+
         </div>
 
 
@@ -2103,27 +3038,34 @@ footer span{
 
         <div class="selected-date">
 
+
             <div class="selected-flower">
                 ❀
             </div>
+
 
             <div class="selected-day">
                 Jumat
             </div>
 
+
             <div class="selected-number">
                 18
             </div>
+
 
             <div class="selected-month">
                 September 2026
             </div>
 
+
             <div class="selected-time">
                 13.00 — 15.00 WIB
             </div>
 
+
         </div>
+
 
     </div>
 
@@ -2136,6 +3078,7 @@ footer span{
 
 
     <div class="countdown">
+
 
         <div class="time-box">
 
@@ -2188,7 +3131,9 @@ footer span{
 
         </div>
 
+
     </div>
+
 
 </section>
 
@@ -2199,15 +3144,19 @@ footer span{
 
 <section class="photo-slider-section">
 
+
     <div class="photo-slider-heading">
+
 
         <small>
             Little Memories
         </small>
 
+
         <h2>
             Moments Along The Way
         </h2>
+
 
     </div>
 
@@ -2221,10 +3170,12 @@ footer span{
             class="slide-photo"
             onclick="openLightbox('foto-intan.jpg')"
         >
+
             <img
                 src="foto-intan.jpg"
                 alt="Intan Salma Denaidy, S.Kom"
             >
+
         </div>
 
 
@@ -2232,10 +3183,12 @@ footer span{
             class="slide-photo"
             onclick="openLightbox('foto-2.jpg')"
         >
+
             <img
                 src="foto-2.jpg"
                 alt="Memory 2"
             >
+
         </div>
 
 
@@ -2243,10 +3196,12 @@ footer span{
             class="slide-photo"
             onclick="openLightbox('foto-3.jpg')"
         >
+
             <img
                 src="foto-3.jpg"
                 alt="Memory 3"
             >
+
         </div>
 
 
@@ -2254,10 +3209,12 @@ footer span{
             class="slide-photo"
             onclick="openLightbox('foto-4.jpg')"
         >
+
             <img
                 src="foto-4.jpg"
                 alt="Memory 4"
             >
+
         </div>
 
 
@@ -2265,10 +3222,12 @@ footer span{
             class="slide-photo"
             onclick="openLightbox('foto-5.jpg')"
         >
+
             <img
                 src="foto-5.jpg"
                 alt="Memory 5"
             >
+
         </div>
 
 
@@ -2276,23 +3235,27 @@ footer span{
             class="slide-photo"
             onclick="openLightbox('foto-6.jpg')"
         >
+
             <img
                 src="foto-6.jpg"
                 alt="Memory 6"
             >
+
         </div>
 
 
-        <!-- SET 2 UNTUK LOOPING -->
+        <!-- SET 2 -->
 
         <div
             class="slide-photo"
             onclick="openLightbox('foto-intan.jpg')"
         >
+
             <img
                 src="foto-intan.jpg"
                 alt="Intan Salma Denaidy, S.Kom"
             >
+
         </div>
 
 
@@ -2300,10 +3263,12 @@ footer span{
             class="slide-photo"
             onclick="openLightbox('foto-2.jpg')"
         >
+
             <img
                 src="foto-2.jpg"
                 alt="Memory 2"
             >
+
         </div>
 
 
@@ -2311,10 +3276,12 @@ footer span{
             class="slide-photo"
             onclick="openLightbox('foto-3.jpg')"
         >
+
             <img
                 src="foto-3.jpg"
                 alt="Memory 3"
             >
+
         </div>
 
 
@@ -2322,10 +3289,12 @@ footer span{
             class="slide-photo"
             onclick="openLightbox('foto-4.jpg')"
         >
+
             <img
                 src="foto-4.jpg"
                 alt="Memory 4"
             >
+
         </div>
 
 
@@ -2333,10 +3302,12 @@ footer span{
             class="slide-photo"
             onclick="openLightbox('foto-5.jpg')"
         >
+
             <img
                 src="foto-5.jpg"
                 alt="Memory 5"
             >
+
         </div>
 
 
@@ -2344,13 +3315,17 @@ footer span{
             class="slide-photo"
             onclick="openLightbox('foto-6.jpg')"
         >
+
             <img
                 src="foto-6.jpg"
                 alt="Memory 6"
             >
+
         </div>
 
+
     </div>
+
 
 </section>
 
@@ -2361,36 +3336,53 @@ footer span{
 
 <section class="venue">
 
+
     <div class="venue-layout">
 
 
         <div class="venue-copy">
 
+
             <div class="venue-script">
                 Meet Me There
             </div>
 
+
             <h2>
+
                 The Place<br>
                 To Celebrate
+
             </h2>
 
+
             <p>
+
                 Sebuah tempat untuk bertemu,
                 berbagi cerita, dan merayakan
                 satu pencapaian bersama
                 orang-orang terkasih.
+
             </p>
+
 
             <p>
+
                 <strong>
+
                     Fakultas Teknologi Informasi<br>
                     Universitas Andalas
+
                 </strong>
+
                 <br>
+
                 Limau Manis, Padang
+
             </p>
 
+
+            <!-- GOOGLE MAPS BUTTON -->
 
             <a
                 class="map-button"
@@ -2407,20 +3399,38 @@ footer span{
 
             </a>
 
+
         </div>
 
+
+        <!-- ==================================================
+             OPENSTREETMAP + LEAFLET
+        ================================================== -->
 
         <div class="map-box">
 
-            <iframe
-                src="https://www.openstreetmap.org/export/embed.html?bbox=100.458%2C-0.916%2C100.475%2C-0.902&layer=mapnik"
-                loading="lazy"
-                title="Lokasi Fakultas Teknologi Informasi Universitas Andalas">
-            </iframe>
+
+            <div
+                id="map"
+            ></div>
+
+
+            <div class="map-coordinate">
+
+                📍 Koordinat lokasi:
+
+                <strong>
+                    -0.91482, 100.46039
+                </strong>
+
+            </div>
+
 
         </div>
 
+
     </div>
+
 
 </section>
 
@@ -2431,15 +3441,19 @@ footer span{
 
 <section class="journey">
 
+
     <div class="section-heading">
+
 
         <small>
             A Little Story
         </small>
 
+
         <h2>
             From Then To Now
         </h2>
+
 
     </div>
 
@@ -2449,6 +3463,7 @@ footer span{
 
         <div class="journey-card">
 
+
             <div class="journey-shape">
 
                 <div class="journey-number">
@@ -2457,20 +3472,26 @@ footer span{
 
             </div>
 
+
             <h3>
                 Memulai
             </h3>
 
+
             <p>
+
                 Sebuah langkah yang dimulai dengan
                 rasa ingin tahu, harapan, dan banyak
                 hal baru untuk dipelajari.
+
             </p>
+
 
         </div>
 
 
         <div class="journey-card">
+
 
             <div class="journey-shape">
 
@@ -2480,20 +3501,26 @@ footer span{
 
             </div>
 
+
             <h3>
                 Menyelesaikan
             </h3>
 
+
             <p>
+
                 Ada hari yang mudah dan ada pula
                 yang penuh tantangan. Semuanya
                 menjadi bagian dari perjalanan.
+
             </p>
+
 
         </div>
 
 
         <div class="journey-card">
+
 
             <div class="journey-shape">
 
@@ -2503,19 +3530,26 @@ footer span{
 
             </div>
 
+
             <h3>
                 Merayakan
             </h3>
 
+
             <p>
+
                 Sampai akhirnya tiba pada satu titik
                 yang layak dikenang dan dirayakan
                 bersama orang-orang terkasih.
+
             </p>
+
 
         </div>
 
+
     </div>
+
 
 </section>
 
@@ -2526,36 +3560,47 @@ footer span{
 
 <section class="wishes">
 
+
     <div class="wishes-layout">
 
 
         <div class="wish-intro">
 
+
             <div class="wish-script">
                 Your Words
             </div>
 
+
             <h2>
+
                 Leave<br>
                 A Little<br>
                 Love
+
             </h2>
 
+
             <p>
+
                 Tuliskan ucapan, doa, atau pesan kecil
                 untuk Intan. Setiap kata akan menjadi
                 bagian dari kenangan hari ini.
+
             </p>
+
 
         </div>
 
 
         <div>
 
+
             <form
                 class="wish-form"
                 onsubmit="addWish(event)"
             >
+
 
                 <input
                     class="input"
@@ -2579,8 +3624,11 @@ footer span{
                     class="send-button"
                     type="submit"
                 >
+
                     Kirim Ucapan ♡
+
                 </button>
+
 
             </form>
 
@@ -2590,9 +3638,12 @@ footer span{
                 id="wishList"
             ></div>
 
+
         </div>
 
+
     </div>
+
 
 </section>
 
@@ -2603,24 +3654,31 @@ footer span{
 
 <section class="closing">
 
+
     <div class="closing-script">
         See You On
     </div>
+
 
     <h2>
         18 September 2026
     </h2>
 
+
     <p>
+
         Terima kasih telah menjadi bagian dari
         perjalanan ini. Kehadiran dan doa baik
         dari Anda akan menjadi bagian indah
         dari hari yang berkesan.
+
     </p>
 
 
     <div class="save-buttons">
 
+
+        <!-- GOOGLE CALENDAR -->
 
         <a
             class="save-button"
@@ -2628,19 +3686,26 @@ footer span{
             target="_blank"
             rel="noopener"
         >
+
             ♡ Simpan ke Kalender
+
         </a>
 
+
+        <!-- DOWNLOAD ICS -->
 
         <button
             class="save-button secondary"
             onclick="downloadICS()"
         >
+
             ↓ Download .ICS
+
         </button>
 
 
     </div>
+
 
 </section>
 
@@ -2651,15 +3716,19 @@ footer span{
 
 <footer>
 
+
     <div class="footer-flower">
         ❀
     </div>
 
+
     Dibuat dengan penuh kasih untuk
+
 
     <span>
         Intan Salma Denaidy, S.Kom
     </span>
+
 
 </footer>
 
@@ -2677,6 +3746,7 @@ footer span{
     onclick="closeLightbox()"
 >
 
+
     <div
         class="lightbox-close"
         onclick="closeLightbox()"
@@ -2684,12 +3754,14 @@ footer span{
         ×
     </div>
 
+
     <img
         id="lightboxImage"
         src=""
         alt="Preview foto"
         onclick="event.stopPropagation()"
     >
+
 
 </div>
 
@@ -2702,7 +3774,8 @@ footer span{
     id="music"
     src="audio.mp3"
     loop
-    preload="auto">
+    preload="auto"
+>
 </audio>
 
 
@@ -2716,18 +3789,26 @@ footer span{
 </button>
 
 
+<!-- ======================================================
+     LEAFLET JS
+====================================================== -->
+
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+></script>
+
+
 <script>
 
 /* =========================================================
    GUEST NAME
-   Contoh:
-   ?to=Nama%20Tamu
 ========================================================= */
 
 const params =
     new URLSearchParams(
         window.location.search
     );
+
 
 const guest =
     params.get("to");
@@ -2752,27 +3833,49 @@ if(guest){
 function openInvitation(){
 
     const opening =
-        document.getElementById("opening");
+        document.getElementById(
+            "opening"
+        );
+
 
     const main =
-        document.getElementById("main");
+        document.getElementById(
+            "main"
+        );
+
 
     opening.classList.add("hide");
+
 
     setTimeout(function(){
 
         main.classList.add("show");
 
+        /* Perbaiki ukuran peta setelah main muncul */
+        if(window.weddingMap){
+
+            setTimeout(function(){
+
+                window.weddingMap.invalidateSize();
+
+            },500);
+
+        }
+
     },300);
 
 
     const music =
-        document.getElementById("music");
+        document.getElementById(
+            "music"
+        );
+
 
     music.volume = 0.35;
 
 
     music.play()
+
         .then(function(){
 
             document.getElementById(
@@ -2780,6 +3883,7 @@ function openInvitation(){
             ).textContent = "♫";
 
         })
+
         .catch(function(){
 
             document.getElementById(
@@ -2804,18 +3908,26 @@ function createFlowers(){
 
 
     const flowerTypes = [
+
         "❀",
         "✿",
         "❁",
         "✽",
         "♡"
+
     ];
 
 
-    for(let i = 0; i < 30; i++){
+    for(
+        let i = 0;
+        i < 30;
+        i++
+    ){
 
         const flower =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
 
         flower.className =
@@ -2836,22 +3948,35 @@ function createFlowers(){
 
 
         flower.style.fontSize =
-            (10 + Math.random() * 17) + "px";
+            (
+                10 +
+                Math.random() * 17
+            ) + "px";
 
 
         flower.style.animationDuration =
-            (7 + Math.random() * 9) + "s";
+            (
+                7 +
+                Math.random() * 9
+            ) + "s";
 
 
         flower.style.animationDelay =
-            (-Math.random() * 15) + "s";
+            (
+                -Math.random() * 15
+            ) + "s";
 
 
         flower.style.opacity =
-            (.25 + Math.random() * .55);
+            (
+                .25 +
+                Math.random() * .55
+            );
 
 
-        layer.appendChild(flower);
+        layer.appendChild(
+            flower
+        );
 
     }
 
@@ -2873,10 +3998,16 @@ function createGlow(){
         );
 
 
-    for(let i = 0; i < 20; i++){
+    for(
+        let i = 0;
+        i < 20;
+        i++
+    ){
 
         const dot =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
 
         dot.className =
@@ -2892,10 +4023,14 @@ function createGlow(){
 
 
         dot.style.animationDelay =
-            (-Math.random() * 5) + "s";
+            (
+                -Math.random() * 5
+            ) + "s";
 
 
-        layer.appendChild(dot);
+        layer.appendChild(
+            dot
+        );
 
     }
 
@@ -2931,17 +4066,21 @@ function updateCountdown(){
             "days"
         ).textContent = "00";
 
+
         document.getElementById(
             "hours"
         ).textContent = "00";
+
 
         document.getElementById(
             "minutes"
         ).textContent = "00";
 
+
         document.getElementById(
             "seconds"
         ).textContent = "00";
+
 
         return;
 
@@ -2957,24 +4096,30 @@ function updateCountdown(){
 
     const hours =
         Math.floor(
-            (distance %
-            (1000 * 60 * 60 * 24)) /
+            (
+                distance %
+                (1000 * 60 * 60 * 24)
+            ) /
             (1000 * 60 * 60)
         );
 
 
     const minutes =
         Math.floor(
-            (distance %
-            (1000 * 60 * 60)) /
+            (
+                distance %
+                (1000 * 60 * 60)
+            ) /
             (1000 * 60)
         );
 
 
     const seconds =
         Math.floor(
-            (distance %
-            (1000 * 60)) /
+            (
+                distance %
+                (1000 * 60)
+            ) /
             1000
         );
 
@@ -3019,10 +4164,12 @@ setInterval(
 ========================================================= */
 
 let calendarMonth = 8;
+
 let calendarYear = 2026;
 
 
 const monthNames = [
+
     "JANUARI",
     "FEBRUARI",
     "MARET",
@@ -3035,6 +4182,7 @@ const monthNames = [
     "OKTOBER",
     "NOVEMBER",
     "DESEMBER"
+
 ];
 
 
@@ -3062,7 +4210,9 @@ function renderCalendar(){
 
 
     monthTitle.textContent =
-        monthNames[calendarMonth];
+        monthNames[
+            calendarMonth
+        ];
 
 
     yearTitle.textContent =
@@ -3092,7 +4242,9 @@ function renderCalendar(){
     ){
 
         const empty =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
 
         empty.className =
@@ -3113,7 +4265,9 @@ function renderCalendar(){
     ){
 
         const cell =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
 
         cell.className =
@@ -3125,9 +4279,13 @@ function renderCalendar(){
 
 
         if(
+
             day === 18 &&
+
             calendarMonth === 8 &&
+
             calendarYear === 2026
+
         ){
 
             cell.classList.add(
@@ -3154,6 +4312,7 @@ function changeMonth(direction){
     if(calendarMonth < 0){
 
         calendarMonth = 11;
+
         calendarYear--;
 
     }
@@ -3162,6 +4321,7 @@ function changeMonth(direction){
     if(calendarMonth > 11){
 
         calendarMonth = 0;
+
         calendarYear++;
 
     }
@@ -3173,6 +4333,191 @@ function changeMonth(direction){
 
 
 renderCalendar();
+
+
+/* =========================================================
+   OPENSTREETMAP + LEAFLET
+========================================================= */
+
+/*
+    Koordinat:
+
+    Latitude  : -0.91482
+    Longitude : 100.46039
+
+    Map center diarahkan ke area Universitas Andalas
+    di kawasan Limau Manis, Padang.
+*/
+
+
+const mapLatitude =
+    -0.91482;
+
+
+const mapLongitude =
+    100.46039;
+
+
+const weddingMap =
+    L.map(
+        "map",
+        {
+            scrollWheelZoom:false,
+            zoomControl:true
+        }
+    );
+
+
+window.weddingMap =
+    weddingMap;
+
+
+weddingMap.setView(
+
+    [
+        mapLatitude,
+        mapLongitude
+    ],
+
+    17
+
+);
+
+
+/* =========================================================
+   OPENSTREETMAP TILE
+========================================================= */
+
+L.tileLayer(
+
+    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+
+    {
+
+        maxZoom:19,
+
+        attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
+
+    }
+
+).addTo(
+    weddingMap
+);
+
+
+/* =========================================================
+   CUSTOM PINK MARKER
+========================================================= */
+
+const pinkPinIcon =
+    L.divIcon({
+
+        className:
+            "pink-map-marker",
+
+        html:
+            '<div class="pink-pin"></div>',
+
+        iconSize:
+            [46,46],
+
+        iconAnchor:
+            [23,42],
+
+        popupAnchor:
+            [0,-42]
+
+    });
+
+
+/* =========================================================
+   MARKER
+========================================================= */
+
+const locationMarker =
+    L.marker(
+
+        [
+            mapLatitude,
+            mapLongitude
+        ],
+
+        {
+            icon:
+                pinkPinIcon
+        }
+
+    ).addTo(
+        weddingMap
+    );
+
+
+/* =========================================================
+   POPUP MARKER
+========================================================= */
+
+locationMarker.bindPopup(`
+
+    <div class="map-popup">
+
+        <strong>
+            Fakultas Teknologi Informasi
+        </strong>
+
+        <br>
+
+        <span>
+            Universitas Andalas<br>
+            Limau Manis, Padang
+        </span>
+
+    </div>
+
+`);
+
+
+/* =========================================================
+   BUKA POPUP OTOMATIS
+========================================================= */
+
+setTimeout(function(){
+
+    locationMarker.openPopup();
+
+},800);
+
+
+/* =========================================================
+   FIX MAP AFTER PAGE LOAD
+========================================================= */
+
+window.addEventListener(
+    "load",
+    function(){
+
+        setTimeout(function(){
+
+            weddingMap.invalidateSize();
+
+        },500);
+
+    }
+);
+
+
+/* =========================================================
+   FIX MAP AFTER RESIZE
+========================================================= */
+
+window.addEventListener(
+    "resize",
+    function(){
+
+        weddingMap.invalidateSize();
+
+    }
+);
 
 
 /* =========================================================
@@ -3196,18 +4541,24 @@ function toggleMusic(){
     if(music.paused){
 
         music.play()
+
             .then(function(){
 
-                button.textContent = "♫";
+                button.textContent =
+                    "♫";
 
             })
+
             .catch(function(){
 
-                button.textContent = "♪";
+                button.textContent =
+                    "♪";
 
             });
 
-    }else{
+    }
+
+    else{
 
         music.pause();
 
@@ -3237,7 +4588,8 @@ function openLightbox(src){
         );
 
 
-    image.src = src;
+    image.src =
+        src;
 
 
     lightbox.classList.add(
@@ -3250,8 +4602,12 @@ function openLightbox(src){
 function closeLightbox(){
 
     document
-        .getElementById("lightbox")
-        .classList.remove("show");
+        .getElementById(
+            "lightbox"
+        )
+        .classList.remove(
+            "show"
+        );
 
 }
 
@@ -3267,16 +4623,20 @@ function addWish(event){
 
     const name =
         document
-        .getElementById("wishName")
-        .value
-        .trim();
+            .getElementById(
+                "wishName"
+            )
+            .value
+            .trim();
 
 
     const message =
         document
-        .getElementById("wishMessage")
-        .value
-        .trim();
+            .getElementById(
+                "wishMessage"
+            )
+            .value
+            .trim();
 
 
     if(
@@ -3290,7 +4650,9 @@ function addWish(event){
 
 
     const card =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
 
     card.className =
@@ -3298,7 +4660,9 @@ function addWish(event){
 
 
     const nameElement =
-        document.createElement("strong");
+        document.createElement(
+            "strong"
+        );
 
 
     nameElement.textContent =
@@ -3306,7 +4670,9 @@ function addWish(event){
 
 
     const messageElement =
-        document.createElement("p");
+        document.createElement(
+            "p"
+        );
 
 
     messageElement.textContent =
@@ -3324,17 +4690,25 @@ function addWish(event){
 
 
     document
-        .getElementById("wishList")
-        .prepend(card);
+        .getElementById(
+            "wishList"
+        )
+        .prepend(
+            card
+        );
 
 
     document
-        .getElementById("wishName")
+        .getElementById(
+            "wishName"
+        )
         .value = "";
 
 
     document
-        .getElementById("wishMessage")
+        .getElementById(
+            "wishMessage"
+        )
         .value = "";
 
 }
@@ -3366,22 +4740,31 @@ END:VCALENDAR`;
 
     const blob =
         new Blob(
+
             [ics],
+
             {
-                type:"text/calendar;charset=utf-8"
+                type:
+                    "text/calendar;charset=utf-8"
             }
+
         );
 
 
     const url =
-        URL.createObjectURL(blob);
+        URL.createObjectURL(
+            blob
+        );
 
 
     const link =
-        document.createElement("a");
+        document.createElement(
+            "a"
+        );
 
 
-    link.href = url;
+    link.href =
+        url;
 
 
     link.download =
@@ -3401,7 +4784,9 @@ END:VCALENDAR`;
     );
 
 
-    URL.revokeObjectURL(url);
+    URL.revokeObjectURL(
+        url
+    );
 
 }
 
@@ -3411,19 +4796,25 @@ END:VCALENDAR`;
 ========================================================= */
 
 document.addEventListener(
+
     "keydown",
+
     function(event){
 
-        if(event.key === "Escape"){
+        if(
+            event.key === "Escape"
+        ){
 
             closeLightbox();
 
         }
 
     }
+
 );
 
 </script>
+
 
 </body>
 </html>
