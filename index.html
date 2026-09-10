@@ -24,11 +24,6 @@
     rel="stylesheet"
 >
 
-
-<!-- =========================================================
-     LEAFLET
-========================================================= -->
-
 <link
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -1205,7 +1200,7 @@ a{
 
     width:max-content;
 
-    align-items:center;
+    align-items:flex-start;
 
     gap:20px;
 
@@ -1221,7 +1216,7 @@ a{
 
 
 /* =========================================================
-   SLIDE PHOTO
+   SLIDE PHOTO DEFAULT = PORTRAIT
 ========================================================= */
 
 .slide-photo{
@@ -1248,17 +1243,20 @@ a{
 }
 
 
-/* FOTO GENAP TETAP SEDIKIT TURUN */
+/* FOTO GENAP SEDIKIT TURUN */
 
 .slide-photo:nth-child(even){
     transform:translateY(30px);
 }
 
 
-/* FOTO NORMAL */
+/* =========================================================
+   IMAGE DEFAULT
+========================================================= */
 
 .slide-photo img{
     width:100%;
+
     height:100%;
 
     display:block;
@@ -1268,9 +1266,11 @@ a{
     object-position:center;
 
     border:0 !important;
+
     outline:0 !important;
 
     margin:0;
+
     padding:0;
 
     transition:
@@ -1279,23 +1279,16 @@ a{
 
 
 /* =========================================================
-   FOTO LANDSCAPE OTOMATIS
+   LANDSCAPE OTOMATIS
 ========================================================= */
-
-/*
-   Class ini ditambahkan otomatis oleh JavaScript
-   berdasarkan ukuran asli foto.
-
-   Jadi:
-   - landscape = mengikuti rasio asli
-   - portrait = tetap seperti desain awal
-*/
 
 .slide-photo.is-landscape{
 
     width:min(420px,78vw);
 
     height:auto;
+
+    flex-shrink:0;
 
     overflow:hidden;
 
@@ -1309,11 +1302,9 @@ a{
 
     padding:0;
 
-    border-radius:0;
+    margin:0;
 }
 
-
-/* FOTO LANDSCAPE */
 
 .slide-photo.is-landscape img{
 
@@ -1335,22 +1326,20 @@ a{
 
     outline:0 !important;
 
-    border-radius:0;
-
     margin:0;
 
     padding:0;
 }
 
 
-/* HOVER LANDSCAPE */
+/* LANDSCAPE HOVER */
 
 .slide-photo.is-landscape:hover img{
-    transform:scale(1.035);
+    transform:scale(1.02);
 }
 
 
-/* HOVER FOTO NORMAL */
+/* PORTRAIT HOVER */
 
 .slide-photo:not(.is-landscape):hover img{
     transform:scale(1.06);
@@ -2281,6 +2270,7 @@ footer .footer-flower{
     max-height:88vh;
 
     width:auto;
+
     height:auto;
 
     object-fit:contain;
@@ -2288,6 +2278,7 @@ footer .footer-flower{
     display:block;
 
     border:0 !important;
+
     outline:0 !important;
 
     background:transparent;
@@ -2455,10 +2446,7 @@ footer .footer-flower{
         height:290px;
     }
 
-    /*
-       Landscape di HP otomatis lebih kecil,
-       tetapi tetap mengikuti rasio asli.
-    */
+    /* LANDSCAPE HP */
 
     .slide-photo.is-landscape{
 
@@ -2597,23 +2585,19 @@ footer .footer-flower{
             Graduation Day
         </div>
 
-
         <div class="opening-name">
             Intan Salma Denaidy, S.Kom
         </div>
 
-
         <div class="opening-degree">
             Sarjana Komputer • S1 Sistem Informasi
         </div>
-
 
         <div class="guest-box">
 
             <div class="guest-label">
                 Dengan hormat, kami mengundang
             </div>
-
 
             <div
                 class="guest-name"
@@ -2623,7 +2607,6 @@ footer .footer-flower{
             </div>
 
         </div>
-
 
         <button
             class="open-button"
@@ -2659,19 +2642,16 @@ footer .footer-flower{
             One Beautiful Milestone
         </div>
 
-
         <h1>
             Hello,
             <span>New Chapter.</span>
         </h1>
-
 
         <p class="hero-description">
             Setelah melewati hari-hari penuh cerita,
             akhirnya satu perjalanan sampai pada
             titik yang patut dirayakan.
         </p>
-
 
         <p class="hero-description">
             Dengan penuh kebahagiaan, Intan mengajak
@@ -2688,11 +2668,9 @@ footer .footer-flower{
             ❀
         </div>
 
-
         <div class="hero-flower two">
             ✿
         </div>
-
 
         <div class="photo-frame">
 
@@ -2723,13 +2701,11 @@ footer .footer-flower{
         ❀
     </div>
 
-
     <h2>
         “Satu langkah selesai,
         banyak cerita tersimpan,
         dan perjalanan baru menanti.”
     </h2>
-
 
     <p>
         Hari ini bukan hanya tentang sebuah pencapaian,
@@ -2753,7 +2729,6 @@ footer .footer-flower{
             Save This Date
         </small>
 
-
         <h2>
             Mark the Day
         </h2>
@@ -2763,8 +2738,6 @@ footer .footer-flower{
 
     <div class="calendar-wrap">
 
-
-        <!-- CALENDAR -->
 
         <div class="calendar">
 
@@ -2822,29 +2795,23 @@ footer .footer-flower{
         </div>
 
 
-        <!-- SELECTED DATE -->
-
         <div class="selected-date">
 
             <div class="selected-flower">
                 ❀
             </div>
 
-
             <div class="selected-day">
                 Jumat
             </div>
-
 
             <div class="selected-number">
                 18
             </div>
 
-
             <div class="selected-month">
                 September 2026
             </div>
-
 
             <div class="selected-time">
                 13.00 — 15.00 WIB
@@ -2854,8 +2821,6 @@ footer .footer-flower{
 
     </div>
 
-
-    <!-- COUNTDOWN -->
 
     <div class="countdown-title">
         Counting Down To The Day
@@ -2921,7 +2886,8 @@ footer .footer-flower{
 
 
 <!-- ======================================================
-     PHOTO SLIDER - 20 FOTO
+     PHOTO SLIDER
+     FOTO 1 - FOTO 20
 ====================================================== -->
 
 <section class="photo-slider-section">
@@ -2931,7 +2897,6 @@ footer .footer-flower{
         <small>
             Little Memories
         </small>
-
 
         <h2>
             Moments Along The Way
@@ -2952,12 +2917,12 @@ footer .footer-flower{
 
             <div
                 class="slide-photo"
-                onclick="openLightbox('foto-intan.jpg')"
+                onclick="openLightbox('foto-1.jpg')"
             >
 
                 <img
-                    src="foto-intan.jpg"
-                    alt="Intan Salma Denaidy"
+                    src="foto-1.jpg"
+                    alt="Memory 1"
                 >
 
             </div>
@@ -3262,19 +3227,16 @@ footer .footer-flower{
 
     <div class="venue-layout">
 
-
         <div class="venue-copy">
 
             <div class="venue-script">
                 Meet Me There
             </div>
 
-
             <h2>
                 The Place<br>
                 To Celebrate
             </h2>
-
 
             <p>
 
@@ -3288,7 +3250,6 @@ footer .footer-flower{
                 Limau Manis, Padang
 
             </p>
-
 
             <a
                 class="map-button"
@@ -3308,15 +3269,12 @@ footer .footer-flower{
         </div>
 
 
-        <!-- MAP -->
-
         <div class="map-box">
 
             <div
                 id="map"
                 aria-label="Peta lokasi Fakultas Teknologi Informasi Universitas Andalas"
             ></div>
-
 
             <div class="map-coordinate">
 
@@ -3347,7 +3305,6 @@ footer .footer-flower{
             “
         </div>
 
-
         <div class="quote-content">
 
             <p class="final-quote">
@@ -3357,13 +3314,11 @@ footer .footer-flower{
 
             </p>
 
-
             <span class="final-quote-author">
                 (Nadin Amizah - Kekal)
             </span>
 
         </div>
-
 
         <div class="quote-decoration quote-right">
             ”
@@ -3382,20 +3337,17 @@ footer .footer-flower{
 
     <div class="wishes-layout">
 
-
         <div class="wish-intro">
 
             <div class="wish-script">
                 Your Wishes
             </div>
 
-
             <h2>
                 Leave<br>
                 A Little<br>
                 Memory
             </h2>
-
 
             <p>
 
@@ -3424,14 +3376,12 @@ footer .footer-flower{
                     required
                 >
 
-
                 <textarea
                     class="input"
                     id="wishMessage"
                     placeholder="Tulis ucapan dan doa..."
                     required
                 ></textarea>
-
 
                 <button
                     class="send-button"
@@ -3465,11 +3415,9 @@ footer .footer-flower{
         See You On
     </div>
 
-
     <h2>
         18 September 2026
     </h2>
-
 
     <p>
 
@@ -3482,7 +3430,6 @@ footer .footer-flower{
 
 
     <div class="save-buttons">
-
 
         <a
             class="save-button"
@@ -3500,7 +3447,6 @@ footer .footer-flower{
         >
             ↓ Download .ICS
         </button>
-
 
     </div>
 
@@ -3584,10 +3530,8 @@ const params =
         window.location.search
     );
 
-
 const guest =
     params.get("to");
-
 
 if(guest){
 
@@ -3610,13 +3554,10 @@ function openInvitation(){
     const opening =
         document.getElementById("opening");
 
-
     const main =
         document.getElementById("main");
 
-
     opening.classList.add("hide");
-
 
     setTimeout(function(){
 
@@ -3624,13 +3565,10 @@ function openInvitation(){
 
     },300);
 
-
     const music =
         document.getElementById("music");
 
-
     music.volume = 0.35;
-
 
     music.play()
 
@@ -3664,7 +3602,6 @@ function createFlowers(){
             "flowerLayer"
         );
 
-
     const flowerTypes = [
 
         "❀",
@@ -3675,7 +3612,6 @@ function createFlowers(){
 
     ];
 
-
     for(
         let i = 0;
         i < 30;
@@ -3685,10 +3621,8 @@ function createFlowers(){
         const flower =
             document.createElement("div");
 
-
         flower.className =
             "flower";
-
 
         flower.textContent =
             flowerTypes[
@@ -3698,33 +3632,26 @@ function createFlowers(){
                 )
             ];
 
-
         flower.style.left =
             Math.random() * 100 + "%";
-
 
         flower.style.fontSize =
             (10 + Math.random() * 17) + "px";
 
-
         flower.style.animationDuration =
             (7 + Math.random() * 9) + "s";
-
 
         flower.style.animationDelay =
             (-Math.random() * 15) + "s";
 
-
         flower.style.opacity =
             (.25 + Math.random() * .55);
-
 
         layer.appendChild(flower);
 
     }
 
 }
-
 
 createFlowers();
 
@@ -3740,7 +3667,6 @@ function createGlow(){
             "glowLayer"
         );
 
-
     for(
         let i = 0;
         i < 20;
@@ -3750,29 +3676,23 @@ function createGlow(){
         const dot =
             document.createElement("div");
 
-
         dot.className =
             "glow";
-
 
         dot.style.left =
             Math.random() * 100 + "%";
 
-
         dot.style.top =
             Math.random() * 100 + "%";
 
-
         dot.style.animationDelay =
             (-Math.random() * 5) + "s";
-
 
         layer.appendChild(dot);
 
     }
 
 }
-
 
 createGlow();
 
@@ -3792,10 +3712,8 @@ function updateCountdown(){
     const now =
         new Date().getTime();
 
-
     const distance =
         targetDate - now;
-
 
     if(distance <= 0){
 
@@ -3803,33 +3721,27 @@ function updateCountdown(){
             "days"
         ).textContent = "00";
 
-
         document.getElementById(
             "hours"
         ).textContent = "00";
-
 
         document.getElementById(
             "minutes"
         ).textContent = "00";
 
-
         document.getElementById(
             "seconds"
         ).textContent = "00";
 
-
         return;
 
     }
-
 
     const days =
         Math.floor(
             distance /
             (1000 * 60 * 60 * 24)
         );
-
 
     const hours =
         Math.floor(
@@ -3840,7 +3752,6 @@ function updateCountdown(){
             (1000 * 60 * 60)
         );
 
-
     const minutes =
         Math.floor(
             (
@@ -3849,7 +3760,6 @@ function updateCountdown(){
             ) /
             (1000 * 60)
         );
-
 
     const seconds =
         Math.floor(
@@ -3860,24 +3770,20 @@ function updateCountdown(){
             1000
         );
 
-
     document.getElementById(
         "days"
     ).textContent =
         String(days).padStart(2,"0");
-
 
     document.getElementById(
         "hours"
     ).textContent =
         String(hours).padStart(2,"0");
 
-
     document.getElementById(
         "minutes"
     ).textContent =
         String(minutes).padStart(2,"0");
-
 
     document.getElementById(
         "seconds"
@@ -3886,9 +3792,7 @@ function updateCountdown(){
 
 }
 
-
 updateCountdown();
-
 
 setInterval(
     updateCountdown,
@@ -3903,7 +3807,6 @@ setInterval(
 let calendarMonth = 8;
 
 let calendarYear = 2026;
-
 
 const monthNames = [
 
@@ -3930,29 +3833,23 @@ function renderCalendar(){
             "calendarDays"
         );
 
-
     const monthTitle =
         document.getElementById(
             "calendarMonth"
         );
-
 
     const yearTitle =
         document.getElementById(
             "calendarYear"
         );
 
-
     daysContainer.innerHTML = "";
-
 
     monthTitle.textContent =
         monthNames[calendarMonth];
 
-
     yearTitle.textContent =
         calendarYear;
-
 
     const firstDay =
         new Date(
@@ -3961,14 +3858,12 @@ function renderCalendar(){
             1
         ).getDay();
 
-
     const totalDays =
         new Date(
             calendarYear,
             calendarMonth + 1,
             0
         ).getDate();
-
 
     for(
         let i = 0;
@@ -3979,17 +3874,14 @@ function renderCalendar(){
         const empty =
             document.createElement("div");
 
-
         empty.className =
             "calendar-day empty";
-
 
         daysContainer.appendChild(
             empty
         );
 
     }
-
 
     for(
         let day = 1;
@@ -4000,14 +3892,11 @@ function renderCalendar(){
         const cell =
             document.createElement("div");
 
-
         cell.className =
             "calendar-day";
 
-
         cell.textContent =
             day;
-
 
         if(
 
@@ -4025,7 +3914,6 @@ function renderCalendar(){
 
         }
 
-
         daysContainer.appendChild(
             cell
         );
@@ -4039,7 +3927,6 @@ function changeMonth(direction){
 
     calendarMonth += direction;
 
-
     if(calendarMonth < 0){
 
         calendarMonth = 11;
@@ -4047,7 +3934,6 @@ function changeMonth(direction){
         calendarYear--;
 
     }
-
 
     if(calendarMonth > 11){
 
@@ -4057,18 +3943,16 @@ function changeMonth(direction){
 
     }
 
-
     renderCalendar();
 
 }
-
 
 renderCalendar();
 
 
 /* =========================================================
    PHOTO SLIDER
-   DUPLIKASI OTOMATIS
+   FOTO 1 - FOTO 20
 ========================================================= */
 
 const photoTrack =
@@ -4084,8 +3968,7 @@ const originalPhotos =
 
 
 /*
-   Gandakan semua foto agar slider
-   berjalan tanpa putus.
+   Gandakan FOTO 1-20.
 */
 
 originalPhotos.forEach(function(photo){
@@ -4093,12 +3976,10 @@ originalPhotos.forEach(function(photo){
     const clone =
         photo.cloneNode(true);
 
-
     clone.setAttribute(
         "aria-hidden",
         "true"
     );
-
 
     photoTrack.appendChild(
         clone
@@ -4108,23 +3989,8 @@ originalPhotos.forEach(function(photo){
 
 
 /* =========================================================
-   DETEKSI OTOMATIS PORTRAIT / LANDSCAPE
+   DETEKSI OTOMATIS LANDSCAPE
 ========================================================= */
-
-/*
-   Fungsi ini membaca:
-   
-   naturalWidth
-   naturalHeight
-
-   dari setiap foto.
-
-   Jika lebar > tinggi:
-       LANDSCAPE
-
-   Jika tinggi >= lebar:
-       PORTRAIT
-*/
 
 function detectPhotoOrientation(){
 
@@ -4147,6 +4013,11 @@ function detectPhotoOrientation(){
 
         function checkOrientation(){
 
+            /*
+               LANDSCAPE:
+               lebar > tinggi
+            */
+
             if(
                 image.naturalWidth >
                 image.naturalHeight
@@ -4157,6 +4028,11 @@ function detectPhotoOrientation(){
                 );
 
             }
+
+            /*
+               PORTRAIT / SQUARE:
+               tinggi >= lebar
+            */
 
             else{
 
@@ -4170,10 +4046,13 @@ function detectPhotoOrientation(){
 
 
         /*
-           Jika gambar sudah selesai dimuat.
+           Jika foto sudah selesai dimuat.
         */
 
-        if(image.complete){
+        if(
+            image.complete &&
+            image.naturalWidth > 0
+        ){
 
             checkOrientation();
 
@@ -4181,7 +4060,8 @@ function detectPhotoOrientation(){
 
 
         /*
-           Jika gambar baru selesai dimuat.
+           Jika foto belum selesai dimuat,
+           cek setelah selesai.
         */
 
         image.addEventListener(
@@ -4195,16 +4075,15 @@ function detectPhotoOrientation(){
 
 
 /*
-   Jalankan setelah seluruh elemen
-   foto selesai dibuat.
+   Jalankan setelah clone selesai.
 */
 
 detectPhotoOrientation();
 
 
 /*
-   Jalankan sekali lagi setelah halaman
-   benar-benar selesai dimuat.
+   Jalankan kembali ketika semua
+   resource halaman selesai dimuat.
 */
 
 window.addEventListener(
@@ -4224,12 +4103,9 @@ window.addEventListener(
 const FTI_LAT =
     -0.91482;
 
-
 const FTI_LNG =
     100.46039;
 
-
-/* Membuat peta */
 
 const map =
     L.map(
@@ -4250,8 +4126,6 @@ const map =
         }
     );
 
-
-/* Tile OpenStreetMap */
 
 L.tileLayer(
 
@@ -4301,8 +4175,6 @@ const pinkPinIcon =
     });
 
 
-/* Marker */
-
 const marker =
 
     L.marker(
@@ -4318,8 +4190,6 @@ const marker =
 
     ).addTo(map);
 
-
-/* Popup */
 
 marker.bindPopup(`
 
@@ -4340,8 +4210,6 @@ marker.bindPopup(`
 
 `);
 
-
-/* Buka popup */
 
 marker.openPopup();
 
@@ -4377,7 +4245,6 @@ function toggleMusic(){
         document.getElementById(
             "music"
         );
-
 
     const button =
         document.getElementById(
@@ -4427,7 +4294,6 @@ function openLightbox(src){
         document.getElementById(
             "lightbox"
         );
-
 
     const image =
         document.getElementById(
@@ -4645,7 +4511,6 @@ document.addEventListener(
 );
 
 </script>
-
 
 </body>
 </html>
