@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Undangan Wisuda Intan Salma Denaidy</title>
+<title>Undangan Wisuda Intan Salma Denaidy, S.Kom</title>
 
 <meta name="description" content="Undangan Wisuda Intan Salma Denaidy, S.Kom">
 
@@ -1034,6 +1034,8 @@ a{
 
     box-shadow:
         0 16px 35px rgba(100,45,65,.12);
+
+    cursor:pointer;
 }
 
 .slide-photo:nth-child(even){
@@ -1122,8 +1124,18 @@ a{
     color:#80656e;
 }
 
+
+/* =========================================================
+   MAP BUTTON - PINK LOCATION
+========================================================= */
+
 .map-button{
-    display:inline-block;
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:9px;
 
     margin-top:22px;
 
@@ -1134,10 +1146,75 @@ a{
     text-decoration:none;
 
     font-size:11px;
+    font-weight:600;
 
     color:#fff;
 
+    background:
+        linear-gradient(
+            135deg,
+            #d86e92,
+            #bd5277
+        );
+
+    box-shadow:
+        0 10px 24px rgba(194,83,119,.22);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        background .3s ease;
+}
+
+.map-button:hover{
+    transform:translateY(-3px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #e07a9d,
+            #aa4569
+        );
+
+    box-shadow:
+        0 14px 30px rgba(194,83,119,.30);
+}
+
+
+/* PIN LOKASI */
+
+.location-pin{
+    width:15px;
+    height:19px;
+
+    position:relative;
+
+    display:inline-block;
+
+    background:#ffb5cb;
+
+    border-radius:
+        50% 50% 50% 0;
+
+    transform:rotate(-45deg);
+
+    flex-shrink:0;
+}
+
+.location-pin::after{
+    content:"";
+
+    position:absolute;
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
     background:#c45c80;
+
+    top:4px;
+    left:4px;
 }
 
 .map-box{
@@ -1350,6 +1427,14 @@ textarea.input{
     font-size:11px;
 
     cursor:pointer;
+
+    transition:.3s;
+}
+
+.send-button:hover{
+    background:#aa486b;
+
+    transform:translateY(-2px);
 }
 
 .wish-list{
@@ -1487,6 +1572,12 @@ textarea.input{
     border:0;
 
     cursor:pointer;
+
+    transition:.3s;
+}
+
+.save-button:hover{
+    transform:translateY(-2px);
 }
 
 .save-button.secondary{
@@ -1554,6 +1645,12 @@ footer span{
 
     box-shadow:
         0 8px 20px rgba(100,40,60,.12);
+
+    transition:.3s;
+}
+
+.music-button:hover{
+    transform:scale(1.06);
 }
 
 
@@ -1791,7 +1888,7 @@ footer span{
 
         <div class="opening-name">
             Intan Salma<br>
-            Denaidy
+            Denaidy, S.Kom
         </div>
 
         <div class="opening-degree">
@@ -1879,10 +1976,9 @@ footer span{
 
         <div class="photo-frame">
 
-            <!-- FOTO UTAMA -->
             <img
                 src="foto-intan.jpg"
-                alt="Intan Salma Denaidy"
+                alt="Intan Salma Denaidy, S.Kom"
             >
 
         </div>
@@ -2032,7 +2128,7 @@ footer span{
     </div>
 
 
-    <!-- COUNTDOWN LANGSUNG DI BAWAH KALENDER -->
+    <!-- COUNTDOWN -->
 
     <div class="countdown-title">
         Counting Down To The Day
@@ -2127,7 +2223,7 @@ footer span{
         >
             <img
                 src="foto-intan.jpg"
-                alt="Intan"
+                alt="Intan Salma Denaidy, S.Kom"
             >
         </div>
 
@@ -2195,7 +2291,7 @@ footer span{
         >
             <img
                 src="foto-intan.jpg"
-                alt="Intan"
+                alt="Intan Salma Denaidy, S.Kom"
             >
         </div>
 
@@ -2302,7 +2398,13 @@ footer span{
                 target="_blank"
                 rel="noopener"
             >
-                ♧ Buka Google Maps
+
+                <span class="location-pin"></span>
+
+                <span>
+                    Buka Google Maps
+                </span>
+
             </a>
 
         </div>
@@ -2522,7 +2624,7 @@ footer span{
 
         <a
             class="save-button"
-            href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wisuda+Intan+Salma+Denaidy&dates=20260918T130000/20260918T150000&details=Perayaan+Wisuda+Intan+Salma+Denaidy%2C+S.Kom&location=Fakultas+Teknologi+Informasi%2C+Universitas+Andalas%2C+Limau+Manis%2C+Padang"
+            href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wisuda+Intan+Salma+Denaidy%2C+S.Kom&dates=20260918T130000/20260918T150000&details=Perayaan+Wisuda+Intan+Salma+Denaidy%2C+S.Kom&location=Fakultas+Teknologi+Informasi%2C+Universitas+Andalas%2C+Limau+Manis%2C+Padang"
             target="_blank"
             rel="noopener"
         >
@@ -2536,6 +2638,7 @@ footer span{
         >
             ↓ Download .ICS
         </button>
+
 
     </div>
 
@@ -2553,8 +2656,9 @@ footer span{
     </div>
 
     Dibuat dengan penuh kasih untuk
+
     <span>
-        Intan Salma Denaidy
+        Intan Salma Denaidy, S.Kom
     </span>
 
 </footer>
@@ -2631,7 +2735,8 @@ const guest =
 
 if(guest){
 
-    document.getElementById("guestName")
+    document
+        .getElementById("guestName")
         .textContent =
         decodeURIComponent(
             guest.replace(/\+/g," ")
@@ -2980,8 +3085,6 @@ function renderCalendar(){
         ).getDate();
 
 
-    /* KOSONG SEBELUM TANGGAL 1 */
-
     for(
         let i = 0;
         i < firstDay;
@@ -3002,8 +3105,6 @@ function renderCalendar(){
 
     }
 
-
-    /* TANGGAL */
 
     for(
         let day = 1;
@@ -3053,7 +3154,6 @@ function changeMonth(direction){
     if(calendarMonth < 0){
 
         calendarMonth = 11;
-
         calendarYear--;
 
     }
@@ -3062,7 +3162,6 @@ function changeMonth(direction){
     if(calendarMonth > 11){
 
         calendarMonth = 0;
-
         calendarYear++;
 
     }
@@ -3096,10 +3195,17 @@ function toggleMusic(){
 
     if(music.paused){
 
-        music.play();
+        music.play()
+            .then(function(){
 
-        button.textContent =
-            "♫";
+                button.textContent = "♫";
+
+            })
+            .catch(function(){
+
+                button.textContent = "♪";
+
+            });
 
     }else{
 
@@ -3244,12 +3350,14 @@ function downloadICS(){
 `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Undangan Wisuda Intan Salma Denaidy//ID
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
 BEGIN:VEVENT
 UID:intan-salma-denaidy-wisuda-2026
 DTSTAMP:20260910T000000Z
 DTSTART:20260918T130000
 DTEND:20260918T150000
-SUMMARY:Wisuda Intan Salma Denaidy
+SUMMARY:Wisuda Intan Salma Denaidy, S.Kom
 DESCRIPTION:Perayaan Wisuda Intan Salma Denaidy, S.Kom
 LOCATION:Fakultas Teknologi Informasi, Universitas Andalas, Limau Manis, Padang
 END:VEVENT
@@ -3260,7 +3368,7 @@ END:VCALENDAR`;
         new Blob(
             [ics],
             {
-                type:"text/calendar"
+                type:"text/calendar;charset=utf-8"
             }
         );
 
