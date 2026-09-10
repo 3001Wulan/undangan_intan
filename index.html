@@ -1,1928 +1,2252 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Undangan Wisuda Intan Salma Denaidy</title>
 
 <meta property="og:title" content="Undangan Wisuda Intan Salma Denaidy">
-<meta property="og:description" content="Undangan Wisuda Intan Salma Denaidy, S.Kom">
+<meta property="og:description" content="A New Chapter Begins — Intan Salma Denaidy, S.Kom">
 <meta property="og:type" content="website">
-<meta property="og:image" content="foto-intan.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Parisienne&display=swap" rel="stylesheet">
 
 <style>
-
-:root{
-  --pink-deep:#6d3048;
-  --pink:#a95d78;
-  --pink-soft:#d99aad;
-  --pink-light:#f3cbd5;
-  --blush:#fae8ec;
-  --cream:#fff9f8;
-  --rose:#b76e86;
-  --gold:#c59b62;
-  --text:#5d3a46;
-  --line:rgba(169,93,120,.25);
-}
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
-  box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html{
-  scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-  margin:0;
-  background:
-    radial-gradient(circle at 20% 0%, rgba(255,255,255,.9), transparent 30%),
-    linear-gradient(180deg,#fff7f8 0%,#fcebed 45%,#fff8f8 100%);
-  color:var(--text);
-  font-family:'DM Sans',sans-serif;
-  text-align:center;
-  overflow-x:hidden;
-}
-
-h1,h2,h3,.display{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:500;
-  color:var(--pink-deep);
+    font-family:'DM Sans', sans-serif;
+    background:#fff8fa;
+    color:#51343e;
+    overflow-x:hidden;
 }
 
 button,
 a{
-  -webkit-tap-highlight-color:transparent;
+    font-family:inherit;
 }
 
-.eyebrow{
-  font-family:'Cormorant Garamond',serif;
-  font-style:italic;
-  letter-spacing:.22em;
-  font-size:.9rem;
-  color:var(--rose);
+img{
+    max-width:100%;
+    display:block;
 }
 
-.ornament{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:12px;
-  width:min(300px,80%);
-  margin:22px auto;
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root{
+    --pink:#d96c91;
+    --pink-dark:#a94368;
+    --pink-light:#f8dce6;
+    --rose:#efb3c6;
+    --cream:#fff8fa;
+    --white:#ffffff;
+    --text:#51343e;
+    --muted:#8d6e78;
+    --line:#efd4dd;
 }
 
-.ornament .line{
-  height:1px;
-  flex:1;
-  background:linear-gradient(
-    90deg,
-    transparent,
-    var(--pink-soft),
-    transparent
-  );
+/* =========================================================
+   FLOWER FALLING EFFECT
+========================================================= */
+
+#flower-layer{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:9999;
+    overflow:hidden;
 }
 
 .flower{
-  color:var(--pink);
-  font-size:18px;
+    position:absolute;
+    top:-50px;
+    color:#e99ab5;
+    opacity:.75;
+    animation:fallFlower linear infinite;
+    filter:drop-shadow(0 2px 4px rgba(180,70,110,.12));
 }
 
+@keyframes fallFlower{
+    0%{
+        transform:translate3d(0,-60px,0) rotate(0deg);
+        opacity:0;
+    }
 
-/* =========================
+    10%{
+        opacity:.8;
+    }
+
+    50%{
+        transform:translate3d(80px,55vh,0) rotate(180deg);
+    }
+
+    100%{
+        transform:translate3d(-100px,110vh,0) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* =========================================================
+   GLOW PARTICLES
+========================================================= */
+
+.glow-layer{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:2;
+}
+
+.glow{
+    position:absolute;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:#f4b8cc;
+    opacity:.5;
+    animation:glowMove 5s ease-in-out infinite;
+}
+
+@keyframes glowMove{
+    0%,100%{
+        transform:translateY(0) scale(.8);
+        opacity:.25;
+    }
+
+    50%{
+        transform:translateY(-25px) scale(1.4);
+        opacity:.8;
+    }
+}
+
+/* =========================================================
    OPENING
-========================= */
+========================================================= */
 
-#opening{
-  position:fixed;
-  inset:0;
-  z-index:999;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:25px;
-  background:
-    radial-gradient(circle at 50% 25%,#fff,#f8dfe5 45%,#e9b6c4 100%);
-  overflow:hidden;
+.opening{
+    position:fixed;
+    inset:0;
+    z-index:5000;
+    background:
+        radial-gradient(circle at 15% 20%,rgba(255,255,255,.9),transparent 28%),
+        radial-gradient(circle at 85% 75%,rgba(255,214,227,.8),transparent 30%),
+        linear-gradient(145deg,#fff8fa,#f7d9e4);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:25px;
+    transition:opacity .8s ease, visibility .8s ease;
 }
 
-#opening::before{
-  content:"";
-  position:absolute;
-  inset:16px;
-  border:1px solid rgba(169,93,120,.3);
-  border-radius:28px;
+.opening.hide{
+    opacity:0;
+    visibility:hidden;
 }
 
-#opening::after{
-  content:"";
-  position:absolute;
-  width:320px;
-  height:320px;
-  border:1px solid rgba(255,255,255,.8);
-  border-radius:50%;
-  top:-130px;
-  right:-130px;
+.opening-card{
+    width:min(520px,100%);
+    padding:60px 35px;
+    position:relative;
 }
 
-.opening-frame{
-  position:relative;
-  z-index:2;
-  width:min(430px,100%);
-  padding:38px 25px;
+.opening-card::before,
+.opening-card::after{
+    content:"❀";
+    position:absolute;
+    color:#d9799a;
+    font-size:70px;
+    opacity:.25;
 }
 
-.flower-logo{
-  width:76px;
-  height:76px;
-  margin:0 auto 18px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  border-radius:50%;
-  background:rgba(255,255,255,.7);
-  border:1px solid var(--pink-soft);
-  color:var(--pink);
-  font-size:32px;
-  box-shadow:0 12px 30px rgba(169,93,120,.15);
+.opening-card::before{
+    top:-15px;
+    left:0;
+    transform:rotate(-20deg);
 }
 
-.opening-frame h1{
-  margin:8px 0 4px;
-  font-size:clamp(2.2rem,8vw,3rem);
-  line-height:1.05;
+.opening-card::after{
+    bottom:-20px;
+    right:0;
+    transform:rotate(25deg);
 }
 
-.opening-frame .degree{
-  color:var(--rose);
-  font-size:.95rem;
-  line-height:1.6;
+.small-title{
+    letter-spacing:4px;
+    font-size:11px;
+    text-transform:uppercase;
+    color:var(--pink-dark);
+    margin-bottom:18px;
 }
 
-.to-label{
-  margin-top:30px;
-  font-size:.75rem;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  color:var(--rose);
+.opening-script{
+    font-family:'Parisienne',cursive;
+    font-size:44px;
+    color:var(--pink-dark);
+    margin-bottom:5px;
+}
+
+.opening-name{
+    font-family:'Playfair Display',serif;
+    font-size:42px;
+    line-height:1.15;
+    color:#5d3945;
+}
+
+.opening-degree{
+    margin-top:12px;
+    color:var(--muted);
+    font-size:14px;
+}
+
+.guest-box{
+    margin:38px auto 28px;
+    padding:16px 25px;
+    border-top:1px solid rgba(169,67,104,.2);
+    border-bottom:1px solid rgba(169,67,104,.2);
+}
+
+.guest-label{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    color:#9c7b85;
 }
 
 .guest-name{
-  margin:7px 0 28px;
-  font-family:'Cormorant Garamond',serif;
-  font-style:italic;
-  font-size:1.5rem;
-  color:var(--pink-deep);
+    margin-top:7px;
+    font-family:'Playfair Display',serif;
+    font-size:21px;
+    color:#704451;
 }
 
 .open-btn{
-  border:0;
-  background:var(--pink);
-  color:white;
-  padding:13px 30px;
-  border-radius:30px;
-  font-family:'DM Sans',sans-serif;
-  font-size:.78rem;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  cursor:pointer;
-  box-shadow:0 10px 25px rgba(169,93,120,.25);
-  transition:.3s;
+    border:0;
+    background:#c85e84;
+    color:white;
+    padding:15px 30px;
+    border-radius:50px;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(183,74,112,.25);
+    transition:.3s;
 }
 
 .open-btn:hover{
-  transform:translateY(-2px);
-  background:var(--pink-deep);
+    transform:translateY(-3px);
+    background:#ad486d;
 }
 
-
-/* =========================
+/* =========================================================
    MAIN
-========================= */
+========================================================= */
 
-#main{
-  display:none;
-}
-
-#main.show{
-  display:block;
-  animation:fadeIn 1.2s ease;
-}
-
-@keyframes fadeIn{
-  from{
+.main{
     opacity:0;
-  }
-  to{
-    opacity:1;
-  }
+    transition:opacity 1s ease;
 }
 
+.main.show{
+    opacity:1;
+}
 
-/* =========================
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero{
-  position:relative;
-  padding:80px 24px 70px;
-  overflow:hidden;
-  background:
-    radial-gradient(circle at 50% 0%,rgba(255,255,255,.9),transparent 45%),
-    linear-gradient(180deg,#f8dfe5,#fff7f8);
+    min-height:100vh;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:70px;
+    padding:80px 9%;
+    background:
+        radial-gradient(circle at 80% 15%,#f8dce6 0,transparent 28%),
+        linear-gradient(135deg,#fff8fa,#fff);
+    position:relative;
+    overflow:hidden;
 }
 
 .hero::before{
-  content:"";
-  position:absolute;
-  width:260px;
-  height:260px;
-  border:1px solid rgba(169,93,120,.12);
-  border-radius:50%;
-  top:-120px;
-  left:-120px;
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    border:1px solid #f0c8d5;
+    right:-200px;
+    top:-200px;
 }
 
-.hero::after{
-  content:"";
-  position:absolute;
-  width:200px;
-  height:200px;
-  border:1px solid rgba(169,93,120,.12);
-  border-radius:50%;
-  bottom:-100px;
-  right:-80px;
+.hero-text{
+    position:relative;
+    z-index:3;
 }
 
-.hero > *{
-  position:relative;
-  z-index:2;
-}
-
-.hero .eyebrow{
-  margin-bottom:15px;
+.hero-label{
+    display:inline-block;
+    padding:8px 15px;
+    border-radius:30px;
+    background:#fbe8ee;
+    color:#a54a6b;
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:22px;
 }
 
 .hero h1{
-  font-size:clamp(2.4rem,9vw,3.5rem);
-  line-height:1.05;
-  margin:0;
+    font-family:'Playfair Display',serif;
+    font-size:clamp(45px,6vw,80px);
+    line-height:1;
+    font-weight:500;
+    color:#553641;
 }
 
-.hero .subtitle{
-  display:block;
-  margin-top:12px;
-  font-family:'DM Sans',sans-serif;
-  font-size:.95rem;
-  line-height:1.7;
-  color:var(--rose);
+.hero h1 span{
+    color:#c65c82;
+    font-family:'Parisienne',cursive;
+    font-size:1.05em;
 }
 
-
-/* =========================
-   FOTO
-========================= */
-
-.hero-photo{
-  width:175px;
-  height:210px;
-  margin:0 auto 25px;
-  padding:7px;
-  background:linear-gradient(
-    145deg,
-    white,
-    var(--pink-light),
-    var(--gold)
-  );
-  border-radius:90px 90px 45px 45px;
-  box-shadow:0 18px 40px rgba(169,93,120,.18);
+.hero-description{
+    max-width:500px;
+    margin-top:28px;
+    line-height:1.9;
+    color:#80656e;
+    font-size:15px;
 }
 
-.hero-photo-inner{
-  width:100%;
-  height:100%;
-  overflow:hidden;
-  border-radius:84px 84px 40px 40px;
-  background:#f5dce2;
+.hero-date{
+    margin-top:32px;
+    display:flex;
+    gap:30px;
+    align-items:center;
 }
 
-.hero-photo-inner img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
+.hero-date strong{
+    font-family:'Playfair Display',serif;
+    font-size:30px;
+    color:#ad4d70;
 }
 
-
-/* =========================
-   SECTION
-========================= */
-
-section{
-  padding:65px 24px;
+.hero-date div{
+    border-left:1px solid #e6c3cf;
+    padding-left:25px;
+    font-size:13px;
+    color:#8d6e78;
 }
 
-section:nth-of-type(even){
-  background:rgba(255,255,255,.45);
+.hero-photo-area{
+    position:relative;
+    min-height:600px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-.section-title{
-  margin:0;
-  font-size:clamp(1.8rem,6vw,2.3rem);
+.photo-frame{
+    width:min(410px,90%);
+    height:520px;
+    padding:14px;
+    background:white;
+    box-shadow:0 25px 60px rgba(112,54,75,.15);
+    transform:rotate(3deg);
+    position:relative;
 }
 
-.section-sub{
-  margin:8px auto 28px;
-  color:#9b7180;
-  font-size:.88rem;
+.photo-frame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
-
-/* =========================
-   DECORATIVE CARD
-========================= */
-
-.card{
-  position:relative;
-  width:min(430px,100%);
-  margin:0 auto;
-  padding:30px 25px;
-  border-radius:22px;
-  background:rgba(255,255,255,.72);
-  border:1px solid rgba(169,93,120,.2);
-  box-shadow:0 18px 45px rgba(169,93,120,.09);
+.photo-frame::before{
+    content:"";
+    position:absolute;
+    inset:-25px;
+    border:1px solid #e7a9bd;
+    z-index:-1;
+    transform:rotate(-6deg);
 }
 
-.card::before{
-  content:"♡";
-  position:absolute;
-  top:12px;
-  right:18px;
-  color:var(--pink-soft);
-  font-size:18px;
+.flower-decoration{
+    position:absolute;
+    font-size:100px;
+    color:#d9799a;
+    opacity:.3;
 }
 
-.big{
-  font-family:'Cormorant Garamond',serif;
-  color:var(--pink-deep);
-  font-size:1.65rem;
+.flower-one{
+    top:30px;
+    left:0;
+    transform:rotate(-20deg);
 }
 
-.small{
-  margin-top:5px;
-  color:var(--rose);
-  font-size:.9rem;
+.flower-two{
+    bottom:30px;
+    right:0;
+    transform:rotate(25deg);
 }
 
-
-/* =========================
-   CALENDAR
-========================= */
-
-.mini-calendar{
-  width:min(320px,100%);
-  margin:0 auto 25px;
-  padding:20px;
-  border-radius:20px;
-  background:white;
-  border:1px solid var(--line);
-  box-shadow:0 15px 35px rgba(169,93,120,.08);
+.scroll-hint{
+    position:absolute;
+    bottom:25px;
+    left:50%;
+    transform:translateX(-50%);
+    color:#a27c87;
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
 }
 
-.mc-header{
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.3rem;
-  color:var(--pink-deep);
-  margin-bottom:15px;
+/* =========================================================
+   INTRO QUOTE
+========================================================= */
+
+.quote-section{
+    padding:120px 10%;
+    background:#fff;
+    text-align:center;
 }
 
-.mc-grid{
-  display:grid;
-  grid-template-columns:repeat(7,1fr);
-  gap:5px;
+.quote-flower{
+    color:#d46e91;
+    font-size:38px;
+    margin-bottom:25px;
 }
 
-.mc-dow{
-  font-size:.62rem;
-  color:var(--rose);
-  padding-bottom:6px;
+.quote-section h2{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(30px,4vw,48px);
+    font-weight:500;
+    color:#583844;
+    max-width:800px;
+    margin:auto;
+    line-height:1.4;
 }
 
-.mc-day{
-  padding:7px 0;
-  font-size:.8rem;
-  border-radius:50%;
+.quote-section p{
+    max-width:650px;
+    margin:25px auto 0;
+    line-height:1.9;
+    color:#876d76;
+    font-size:14px;
 }
 
-.mc-highlight{
-  background:var(--pink);
-  color:white;
-  font-weight:500;
+/* =========================================================
+   DATE SECTION
+========================================================= */
+
+.date-section{
+    padding:100px 8%;
+    background:#fdf0f4;
 }
 
-
-/* =========================
-   CALENDAR BUTTON
-========================= */
-
-.add-to-calendar{
-  margin-top:18px;
-  padding-top:15px;
-  border-top:1px solid var(--line);
+.section-heading{
+    text-align:center;
+    margin-bottom:55px;
 }
 
-.btn{
-  display:inline-block;
-  text-decoration:none;
-  background:var(--pink);
-  color:white;
-  border-radius:25px;
-  padding:11px 23px;
-  font-size:.78rem;
-  letter-spacing:.05em;
-  transition:.3s;
+.section-heading small{
+    text-transform:uppercase;
+    letter-spacing:3px;
+    color:#b65a7a;
+    font-size:10px;
 }
 
-.btn:hover{
-  background:var(--pink-deep);
-  transform:translateY(-2px);
+.section-heading h2{
+    font-family:'Playfair Display',serif;
+    font-size:43px;
+    font-weight:500;
+    margin-top:10px;
+    color:#583844;
 }
 
-.ics-link{
-  display:block;
-  margin:13px auto 0;
-  border:0;
-  background:none;
-  color:var(--rose);
-  text-decoration:underline;
-  cursor:pointer;
-  font-family:'DM Sans',sans-serif;
-  font-size:.75rem;
+.date-layout{
+    max-width:1000px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:30px;
 }
 
+.date-big{
+    background:#fff;
+    min-height:390px;
+    padding:55px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    border-radius:4px;
+    box-shadow:0 15px 40px rgba(140,65,90,.08);
+}
 
-/* =========================
+.date-big .month{
+    text-transform:uppercase;
+    letter-spacing:5px;
+    color:#b75a7b;
+    font-size:13px;
+}
+
+.date-big .number{
+    font-family:'Playfair Display',serif;
+    font-size:145px;
+    line-height:.95;
+    color:#cb6488;
+}
+
+.date-big .day{
+    font-family:'Playfair Display',serif;
+    font-size:30px;
+    color:#62414b;
+}
+
+.event-details{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.detail-item{
+    background:#fff;
+    padding:25px;
+    min-height:115px;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    box-shadow:0 10px 30px rgba(140,65,90,.06);
+}
+
+.detail-icon{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:#f7dbe5;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#ad4d70;
+    font-size:21px;
+    flex-shrink:0;
+}
+
+.detail-item small{
+    color:#a1818a;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    font-size:9px;
+}
+
+.detail-item p{
+    margin-top:5px;
+    color:#5e414b;
+    line-height:1.5;
+    font-size:14px;
+}
+
+/* =========================================================
    COUNTDOWN
-========================= */
+========================================================= */
 
-.countdown-grid{
-  width:min(430px,100%);
-  margin:25px auto;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:8px;
+.countdown-section{
+    padding:80px 8%;
+    text-align:center;
+    background:#fff;
 }
 
-.count-box{
-  padding:15px 5px;
-  background:white;
-  border-radius:16px;
-  border:1px solid var(--line);
+.countdown{
+    max-width:700px;
+    margin:35px auto 0;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
 }
 
-.count-box .num{
-  display:block;
-  font-family:'Cormorant Garamond',serif;
-  color:var(--pink-deep);
-  font-size:1.7rem;
+.time-box{
+    padding:25px 10px;
+    border:1px solid #efd5de;
+    background:#fffafb;
 }
 
-.count-box .unit{
-  font-size:.6rem;
-  color:var(--rose);
-  text-transform:uppercase;
-  letter-spacing:.08em;
+.time-box strong{
+    display:block;
+    font-family:'Playfair Display',serif;
+    font-size:38px;
+    color:#bd5a7d;
 }
 
-
-/* =========================
-   DETAIL ACARA
-========================= */
-
-.event-summary{
-  text-align:left;
-  display:flex;
-  flex-direction:column;
-  gap:17px;
+.time-box span{
+    font-size:9px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    color:#92727d;
 }
 
-.event-row{
-  display:flex;
-  gap:13px;
-  padding-bottom:15px;
-  border-bottom:1px solid var(--line);
+/* =========================================================
+   VENUE
+========================================================= */
+
+.venue{
+    padding:110px 8%;
+    background:#fff8fa;
 }
 
-.event-row:last-child{
-  border-bottom:0;
-  padding-bottom:0;
+.venue-layout{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:.85fr 1.15fr;
+    gap:40px;
+    align-items:center;
 }
 
-.ico{
-  width:28px;
-  color:var(--pink);
-  font-size:1.15rem;
+.venue-copy{
+    padding:20px;
 }
 
-.label{
-  display:block;
-  color:var(--rose);
-  font-size:.62rem;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  margin-bottom:4px;
+.venue-copy .script{
+    font-family:'Parisienne',cursive;
+    font-size:42px;
+    color:#c25b80;
 }
 
-.value{
-  color:var(--text);
-  font-size:.88rem;
-  line-height:1.5;
+.venue-copy h2{
+    font-family:'Playfair Display',serif;
+    font-size:48px;
+    font-weight:500;
+    margin:5px 0 20px;
 }
 
-
-/* =========================
-   MAP
-========================= */
-
-.map-embed{
-  width:min(430px,100%);
-  margin:25px auto 0;
-  overflow:hidden;
-  border-radius:20px;
-  border:1px solid var(--line);
-  box-shadow:0 15px 35px rgba(169,93,120,.08);
+.venue-copy p{
+    color:#80656e;
+    line-height:1.9;
+    font-size:14px;
 }
 
-.map-embed iframe{
-  width:100%;
-  height:260px;
-  border:0;
-  display:block;
+.map-box{
+    background:white;
+    padding:12px;
+    box-shadow:0 20px 45px rgba(120,60,80,.12);
 }
 
-
-/* =========================
-   TIMELINE
-========================= */
-
-.timeline{
-  width:min(430px,100%);
-  margin:auto;
-  text-align:left;
+.map-box iframe{
+    width:100%;
+    height:380px;
+    border:0;
 }
 
-.tl-item{
-  position:relative;
-  display:flex;
-  gap:18px;
-  padding:18px 0 18px 5px;
-  border-left:1px solid var(--pink-soft);
+.map-button{
+    display:inline-block;
+    margin-top:20px;
+    background:#c45c80;
+    color:white;
+    text-decoration:none;
+    padding:13px 22px;
+    border-radius:30px;
+    font-size:12px;
 }
 
-.tl-item::before{
-  content:"";
-  position:absolute;
-  width:9px;
-  height:9px;
-  border-radius:50%;
-  background:var(--pink);
-  left:-5px;
-  top:23px;
-  box-shadow:0 0 0 5px var(--blush);
+/* =========================================================
+   JOURNEY
+========================================================= */
+
+.journey{
+    padding:110px 8%;
+    background:#f8e5eb;
 }
 
-.tl-year{
-  min-width:55px;
-  padding-left:15px;
-  font-family:'Cormorant Garamond',serif;
-  color:var(--pink);
-  font-size:1.15rem;
+.journey-grid{
+    max-width:1000px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
 }
 
-.tl-text{
-  font-size:.87rem;
-  line-height:1.6;
-  color:var(--text);
+.journey-card{
+    background:#fff;
+    padding:38px 30px;
+    text-align:center;
+    position:relative;
+    min-height:280px;
+    box-shadow:0 15px 30px rgba(120,60,80,.07);
 }
 
+.journey-card::before{
+    content:"";
+    position:absolute;
+    width:65px;
+    height:65px;
+    border-radius:50% 50% 50% 0;
+    transform:rotate(-45deg);
+    background:#f5cedb;
+    top:25px;
+    left:50%;
+    margin-left:-32px;
+}
 
-/* =========================
+.journey-number{
+    position:relative;
+    z-index:1;
+    font-family:'Playfair Display',serif;
+    font-size:22px;
+    color:#a94b6d;
+    margin-bottom:75px;
+}
+
+.journey-card h3{
+    font-family:'Playfair Display',serif;
+    font-size:25px;
+    font-weight:500;
+    margin-bottom:12px;
+}
+
+.journey-card p{
+    color:#876d76;
+    font-size:13px;
+    line-height:1.8;
+}
+
+/* =========================================================
    GALLERY
-========================= */
+========================================================= */
+
+.gallery{
+    padding:110px 6%;
+    background:#fff;
+}
 
 .gallery-grid{
-  width:min(440px,100%);
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
+    max-width:1100px;
+    margin:auto;
+    columns:3 250px;
+    column-gap:18px;
 }
 
 .gallery-item{
-  position:relative;
-  overflow:hidden;
-  border-radius:18px;
-  aspect-ratio:3/4;
-  border:4px solid white;
-  box-shadow:0 10px 25px rgba(169,93,120,.12);
-  cursor:pointer;
-}
-
-.gallery-item:first-child{
-  grid-row:span 2;
-  aspect-ratio:auto;
+    margin-bottom:18px;
+    break-inside:avoid;
+    overflow:hidden;
+    cursor:pointer;
+    position:relative;
 }
 
 .gallery-item img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-  transition:.5s;
+    width:100%;
+    transition:.5s ease;
 }
 
 .gallery-item:hover img{
-  transform:scale(1.05);
+    transform:scale(1.05);
 }
 
-.gallery-caption{
-  position:absolute;
-  bottom:0;
-  left:0;
-  right:0;
-  padding:22px 10px 10px;
-  color:white;
-  font-size:.7rem;
-  text-align:left;
-  background:linear-gradient(transparent,rgba(90,40,55,.6));
-}
-
-
-/* =========================
-   LIGHTBOX
-========================= */
-
-#lightbox{
-  position:fixed;
-  inset:0;
-  z-index:998;
-  display:none;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
-  background:rgba(55,25,35,.9);
-}
-
-#lightbox.show{
-  display:flex;
-}
-
-#lightbox img{
-  max-width:95%;
-  max-height:90vh;
-  border-radius:15px;
-  border:4px solid white;
-}
-
-
-/* =========================
+/* =========================================================
    WISHES
-========================= */
+========================================================= */
 
-.wishes-list{
-  width:min(440px,100%);
-  margin:0 auto 25px;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-  text-align:left;
+.wishes{
+    padding:110px 8%;
+    background:
+        radial-gradient(circle at 20% 20%,#f7d6e2,transparent 25%),
+        #fff4f7;
 }
 
-.wish-card{
-  display:flex;
-  gap:12px;
-  padding:17px;
-  background:white;
-  border:1px solid var(--line);
-  border-radius:17px;
-  box-shadow:0 8px 20px rgba(169,93,120,.06);
+.wishes-layout{
+    max-width:1000px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+    gap:50px;
 }
 
-.wish-avatar{
-  flex-shrink:0;
-  width:38px;
-  height:38px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  border-radius:50%;
-  background:var(--pink-light);
-  color:var(--pink-deep);
-  font-family:'Cormorant Garamond',serif;
-  font-weight:600;
+.wish-intro h2{
+    font-family:'Playfair Display',serif;
+    font-size:50px;
+    font-weight:500;
+    line-height:1.15;
 }
 
-.wish-name{
-  margin-bottom:3px;
-  font-family:'Cormorant Garamond',serif;
-  color:var(--pink-deep);
-  font-size:1.05rem;
-}
-
-.wish-text{
-  margin:0;
-  color:var(--text);
-  font-size:.83rem;
-  line-height:1.55;
+.wish-intro p{
+    margin-top:20px;
+    color:#866b75;
+    line-height:1.9;
+    font-size:14px;
 }
 
 .wish-form{
-  width:min(430px,100%);
-  margin:auto;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
+    background:white;
+    padding:35px;
+    box-shadow:0 15px 40px rgba(120,60,80,.08);
 }
 
-.wish-form input,
-.wish-form textarea{
-  width:100%;
-  border:1px solid var(--line);
-  background:white;
-  border-radius:13px;
-  padding:12px 14px;
-  font-family:'DM Sans',sans-serif;
-  color:var(--text);
-  font-size:.85rem;
+.input{
+    width:100%;
+    border:0;
+    border-bottom:1px solid #ead2da;
+    padding:15px 5px;
+    margin-bottom:20px;
+    outline:none;
+    font-size:13px;
+    color:#543943;
+    background:transparent;
 }
 
-.wish-form textarea{
-  min-height:85px;
-  resize:vertical;
+textarea.input{
+    min-height:120px;
+    resize:vertical;
 }
 
-.wish-form input:focus,
-.wish-form textarea:focus{
-  outline:none;
-  border-color:var(--pink);
+.send-btn{
+    border:0;
+    background:#c45c80;
+    color:white;
+    padding:13px 25px;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:12px;
 }
 
-.wish-form button{
-  align-self:center;
-  border:0;
-  background:var(--pink);
-  color:white;
-  padding:11px 25px;
-  border-radius:25px;
-  cursor:pointer;
+.wish-list{
+    margin-top:35px;
 }
 
-.wish-note{
-  margin-top:15px;
-  color:var(--rose);
-  font-size:.72rem;
+.wish-card{
+    background:#fff;
+    padding:20px;
+    margin-bottom:12px;
+    border-left:3px solid #d77a99;
 }
 
+.wish-card strong{
+    font-size:13px;
+    color:#704451;
+}
 
-/* =========================
+.wish-card p{
+    margin-top:7px;
+    color:#856a74;
+    font-size:12px;
+    line-height:1.7;
+}
+
+/* =========================================================
+   SAVE DATE
+========================================================= */
+
+.save-section{
+    padding:100px 20px;
+    text-align:center;
+    background:#5d3945;
+    color:white;
+    position:relative;
+    overflow:hidden;
+}
+
+.save-section::before{
+    content:"❀";
+    position:absolute;
+    font-size:230px;
+    left:-80px;
+    top:-80px;
+    color:rgba(255,255,255,.04);
+}
+
+.save-section::after{
+    content:"❀";
+    position:absolute;
+    font-size:230px;
+    right:-80px;
+    bottom:-100px;
+    color:rgba(255,255,255,.04);
+}
+
+.save-script{
+    font-family:'Parisienne',cursive;
+    color:#f0b4c8;
+    font-size:45px;
+}
+
+.save-section h2{
+    font-family:'Playfair Display',serif;
+    font-size:42px;
+    font-weight:500;
+    margin:8px 0 15px;
+}
+
+.save-section p{
+    color:#e8cbd4;
+    font-size:13px;
+}
+
+.save-buttons{
+    margin-top:30px;
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.save-btn{
+    display:inline-block;
+    text-decoration:none;
+    color:#613b48;
+    background:#fff;
+    padding:13px 22px;
+    border-radius:30px;
+    font-size:12px;
+}
+
+.save-btn.secondary{
+    background:transparent;
+    color:#fff;
+    border:1px solid rgba(255,255,255,.5);
+}
+
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer{
-  padding:55px 24px 65px;
-  background:#f4d6de;
+    text-align:center;
+    padding:35px 20px;
+    background:#4d303a;
+    color:#dcbfc8;
+    font-size:11px;
+    letter-spacing:.5px;
 }
 
-.signature{
-  font-family:'Cormorant Garamond',serif;
-  font-style:italic;
-  font-size:1.45rem;
-  color:var(--pink-deep);
+footer span{
+    color:#efabc1;
 }
 
-footer p{
-  color:var(--rose);
-  font-size:.78rem;
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+
+.lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(42,20,28,.92);
+    z-index:10000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:25px;
 }
 
-
-/* =========================
-   REVEAL
-========================= */
-
-.reveal{
-  opacity:0;
-  transform:translateY(22px);
-  transition:
-    opacity .8s ease,
-    transform .8s ease;
+.lightbox.show{
+    display:flex;
 }
 
-.reveal.show{
-  opacity:1;
-  transform:none;
+.lightbox img{
+    max-width:90%;
+    max-height:85vh;
+    object-fit:contain;
 }
 
-
-/* =========================
-   MUSIC
-========================= */
-
-.music-toggle{
-  position:fixed;
-  right:18px;
-  bottom:18px;
-  z-index:50;
-  width:46px;
-  height:46px;
-  border-radius:50%;
-  border:1px solid var(--pink-soft);
-  background:white;
-  color:var(--pink);
-  box-shadow:0 8px 25px rgba(169,93,120,.18);
-  cursor:pointer;
+.lightbox-close{
+    position:absolute;
+    top:25px;
+    right:30px;
+    color:white;
+    font-size:35px;
+    cursor:pointer;
 }
 
+/* =========================================================
+   MUSIC BUTTON
+========================================================= */
 
-/* =========================
+.music-button{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    border:1px solid #e7b4c5;
+    background:white;
+    color:#b44f72;
+    z-index:100;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(100,40,60,.12);
+}
+
+/* =========================================================
    RESPONSIVE
-========================= */
+========================================================= */
 
-@media(max-width:380px){
+@media(max-width:800px){
 
-  .hero{
-    padding-left:18px;
-    padding-right:18px;
-  }
+    .hero{
+        grid-template-columns:1fr;
+        padding:90px 7% 70px;
+        gap:40px;
+        text-align:center;
+    }
 
-  section{
-    padding-left:18px;
-    padding-right:18px;
-  }
+    .hero-description{
+        margin-left:auto;
+        margin-right:auto;
+    }
 
-  .countdown-grid{
-    gap:5px;
-  }
+    .hero-date{
+        justify-content:center;
+    }
 
-  .count-box .num{
-    font-size:1.5rem;
-  }
+    .hero-photo-area{
+        min-height:480px;
+    }
 
+    .photo-frame{
+        height:450px;
+    }
+
+    .date-layout{
+        grid-template-columns:1fr;
+    }
+
+    .date-big{
+        min-height:330px;
+        padding:40px;
+    }
+
+    .date-big .number{
+        font-size:110px;
+    }
+
+    .venue-layout{
+        grid-template-columns:1fr;
+    }
+
+    .journey-grid{
+        grid-template-columns:1fr;
+    }
+
+    .wishes-layout{
+        grid-template-columns:1fr;
+    }
+
+    .wish-intro{
+        text-align:center;
+    }
+
+    .countdown{
+        grid-template-columns:repeat(2,1fr);
+    }
 }
 
+@media(max-width:500px){
+
+    .opening-name{
+        font-size:32px;
+    }
+
+    .opening-script{
+        font-size:37px;
+    }
+
+    .hero h1{
+        font-size:48px;
+    }
+
+    .hero-date{
+        gap:15px;
+    }
+
+    .hero-date strong{
+        font-size:25px;
+    }
+
+    .hero-photo-area{
+        min-height:430px;
+    }
+
+    .photo-frame{
+        height:400px;
+    }
+
+    .section-heading h2{
+        font-size:36px;
+    }
+
+    .date-big .number{
+        font-size:90px;
+    }
+
+    .venue-copy h2{
+        font-size:38px;
+    }
+
+    .wish-intro h2{
+        font-size:40px;
+    }
+}
+
+@media(prefers-reduced-motion:reduce){
+
+    html{
+        scroll-behavior:auto;
+    }
+
+    .flower,
+    .glow{
+        animation:none;
+        display:none;
+    }
+}
 </style>
 </head>
 
-
 <body>
 
+<!-- ======================================================
+     BUNGA JATUH
+====================================================== -->
 
-<!-- =========================
+<div id="flower-layer"></div>
+<div class="glow-layer" id="glowLayer"></div>
+
+<!-- ======================================================
      OPENING
-========================= -->
+====================================================== -->
 
-<div id="opening">
+<section class="opening" id="opening">
 
-  <div class="opening-frame">
+    <div class="opening-card">
 
-    <div class="flower-logo">
-      🌷
+        <div class="small-title">
+            Graduation Invitation
+        </div>
+
+        <div class="opening-script">
+            A New Chapter
+        </div>
+
+        <div class="opening-name">
+            Intan Salma<br>
+            Denaidy
+        </div>
+
+        <div class="opening-degree">
+            Sarjana Komputer • S1 Sistem Informasi
+        </div>
+
+        <div class="guest-box">
+
+            <div class="guest-label">
+                Dengan hormat, kami mengundang
+            </div>
+
+            <div class="guest-name" id="guestName">
+                Tamu Undangan
+            </div>
+
+        </div>
+
+        <button class="open-btn" onclick="openInvitation()">
+            ✿ Buka Undangan
+        </button>
+
     </div>
 
-    <p class="eyebrow">
-      Undangan Wisuda
-    </p>
-
-    <h1>
-      Intan Salma Denaidy
-    </h1>
-
-    <p class="degree">
-      Sarjana Komputer<br>
-      S1 Sistem Informasi
-    </p>
-
-    <div class="ornament">
-      <span class="line"></span>
-      <span class="flower">✿</span>
-      <span class="line"></span>
-    </div>
-
-    <p class="to-label">
-      Kepada Yth.
-    </p>
-
-    <p class="guest-name" id="guestName">
-      Bapak/Ibu/Saudara/i
-    </p>
-
-    <button class="open-btn" onclick="openInvite()">
-      Buka Undangan
-    </button>
-
-  </div>
-
-</div>
+</section>
 
 
-<!-- =========================
+<!-- ======================================================
      MAIN
-========================= -->
+====================================================== -->
 
-<div id="main">
+<main class="main" id="main">
 
 
-<!-- HERO -->
+<!-- ======================================================
+     HERO
+====================================================== -->
 
-<div class="hero">
+<section class="hero">
 
-  <p class="eyebrow">
-    Dengan Penuh Syukur
-  </p>
+    <div class="hero-text">
 
-  <div class="hero-photo">
-
-    <div class="hero-photo-inner">
-
-      <img
-        src="foto-intan.jpg"
-        alt="Foto Intan Salma Denaidy"
-      >
-
-    </div>
-
-  </div>
-
-  <h1>
-    Intan Salma Denaidy, S.Kom
-
-    <span class="subtitle">
-      telah menyelesaikan pendidikan
-      Sarjana Komputer - S1 Sistem Informasi
-    </span>
-  </h1>
-
-  <div class="ornament">
-    <span class="line"></span>
-    <span class="flower">✿</span>
-    <span class="line"></span>
-  </div>
-
-  <p>
-    Assalamualaikum warahmatullahi wabarakatuh.
-  </p>
-
-  <p style="max-width:430px;margin:18px auto 0;line-height:1.8;color:#956d7c;font-size:.9rem;">
-    Puji syukur atas nikmat dan karunia yang diberikan.
-    Dengan penuh kebahagiaan, kami mengundang
-    Bapak/Ibu/Saudara/i untuk turut hadir dan
-    memberikan doa serta restu pada momen kelulusan ini.
-  </p>
-
-</div>
-
-
-<!-- WAKTU -->
-
-<section id="waktu-tempat">
-
-  <p class="eyebrow reveal">
-    Waktu & Tempat
-  </p>
-
-  <h2 class="section-title reveal">
-    Prosesi Wisuda
-  </h2>
-
-  <div class="ornament reveal">
-    <span class="line"></span>
-    <span class="flower">♡</span>
-    <span class="line"></span>
-  </div>
-
-
-  <!-- CALENDAR -->
-
-  <div class="mini-calendar reveal">
-
-    <div class="mc-header">
-      September 2026
-    </div>
-
-    <div class="mc-grid">
-
-      <span class="mc-dow">Min</span>
-      <span class="mc-dow">Sen</span>
-      <span class="mc-dow">Sel</span>
-      <span class="mc-dow">Rab</span>
-      <span class="mc-dow">Kam</span>
-      <span class="mc-dow">Jum</span>
-      <span class="mc-dow">Sab</span>
-
-      <span></span>
-      <span></span>
-
-      <span class="mc-day">1</span>
-      <span class="mc-day">2</span>
-      <span class="mc-day">3</span>
-      <span class="mc-day">4</span>
-      <span class="mc-day">5</span>
-
-      <span class="mc-day">6</span>
-      <span class="mc-day">7</span>
-      <span class="mc-day">8</span>
-      <span class="mc-day">9</span>
-      <span class="mc-day">10</span>
-      <span class="mc-day">11</span>
-      <span class="mc-day">12</span>
-
-      <span class="mc-day">13</span>
-      <span class="mc-day">14</span>
-      <span class="mc-day">15</span>
-      <span class="mc-day">16</span>
-      <span class="mc-day">17</span>
-      <span class="mc-day mc-highlight">18</span>
-      <span class="mc-day">19</span>
-
-      <span class="mc-day">20</span>
-      <span class="mc-day">21</span>
-      <span class="mc-day">22</span>
-      <span class="mc-day">23</span>
-      <span class="mc-day">24</span>
-      <span class="mc-day">25</span>
-      <span class="mc-day">26</span>
-
-      <span class="mc-day">27</span>
-      <span class="mc-day">28</span>
-      <span class="mc-day">29</span>
-      <span class="mc-day">30</span>
-
-      <span></span>
-      <span></span>
-      <span></span>
-
-    </div>
-
-
-    <div class="add-to-calendar">
-
-      <a
-        class="btn"
-        href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wisuda+Intan+Salma+Denaidy,+S.Kom&dates=20260918T060000Z/20260918T080000Z&details=Prosesi+Wisuda+Intan+Salma+Denaidy,+S.Kom+(S1+Sistem+Informasi+Universitas+Andalas)&location=Fakultas+Teknologi+Informasi,+Universitas+Andalas,+Padang"
-        target="_blank"
-        rel="noopener"
-      >
-        📅 Tambahkan ke Calendar
-      </a>
-
-      <button
-        class="ics-link"
-        onclick="downloadICS()"
-        type="button"
-      >
-        atau unduh file .ics
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <!-- COUNTDOWN -->
-
-  <div class="countdown-grid reveal">
-
-    <div class="count-box">
-      <span class="num" id="cd-days">00</span>
-      <span class="unit">Hari</span>
-    </div>
-
-    <div class="count-box">
-      <span class="num" id="cd-hours">00</span>
-      <span class="unit">Jam</span>
-    </div>
-
-    <div class="count-box">
-      <span class="num" id="cd-mins">00</span>
-      <span class="unit">Menit</span>
-    </div>
-
-    <div class="count-box">
-      <span class="num" id="cd-secs">00</span>
-      <span class="unit">Detik</span>
-    </div>
-
-  </div>
-
-
-  <div class="card reveal">
-
-    <div class="big">
-      Jumat, 18 September 2026
-    </div>
-
-    <div class="small">
-      Pukul 13.00 — 15.00 WIB
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- DETAIL -->
-
-<section>
-
-  <p class="eyebrow reveal">
-    Detail Acara
-  </p>
-
-  <h2 class="section-title reveal">
-    Gedung FTI
-  </h2>
-
-  <p class="section-sub reveal">
-    Tempat pelaksanaan prosesi wisuda
-  </p>
-
-
-  <div class="card reveal">
-
-    <div class="event-summary">
-
-      <div class="event-row">
-
-        <span class="ico">♡</span>
-
-        <div>
-
-          <span class="label">
-            Hari & Tanggal
-          </span>
-
-          <span class="value">
-            Jumat, 18 September 2026
-          </span>
-
+        <div class="hero-label">
+            One Beautiful Milestone
         </div>
 
-      </div>
-
-
-      <div class="event-row">
-
-        <span class="ico">◷</span>
-
-        <div>
-
-          <span class="label">
-            Waktu
-          </span>
-
-          <span class="value">
-            13.00 — 15.00 WIB
-          </span>
-
-        </div>
-
-      </div>
-
-
-      <div class="event-row">
-
-        <span class="ico">⌖</span>
-
-        <div>
-
-          <span class="label">
-            Lokasi
-          </span>
-
-          <span class="value">
-            Fakultas Teknologi Informasi,
-            Universitas Andalas,
-            Limau Manis, Padang
-          </span>
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <a
-      class="btn"
-      href="https://www.google.com/maps/search/?api=1&query=Fakultas+Teknologi+Informasi+Universitas+Andalas"
-      target="_blank"
-      rel="noopener"
-    >
-      Lihat Lokasi
-    </a>
-
-  </div>
-
-
-  <div class="map-embed reveal">
-
-    <iframe
-      title="Peta Fakultas Teknologi Informasi Universitas Andalas"
-      src="https://www.openstreetmap.org/export/embed.html?bbox=100.4560%2C-0.9165%2C100.4630%2C-0.9125&layer=mapnik&marker=-0.9145%2C100.4595"
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-
-  </div>
-
-</section>
-
-
-<!-- PERJALANAN -->
-
-<section>
-
-  <p class="eyebrow reveal">
-    Perjalanan Studi
-  </p>
-
-  <h2 class="section-title reveal">
-    Sekilas Perjalanan
-  </h2>
-
-
-  <div class="ornament reveal">
-    <span class="line"></span>
-    <span class="flower">✿</span>
-    <span class="line"></span>
-  </div>
-
-
-  <div class="timeline">
-
-    <div class="tl-item reveal">
-
-      <div class="tl-year">
-        2022
-      </div>
-
-      <div class="tl-text">
-        Memulai perjalanan perkuliahan
-        S1 Sistem Informasi di
-        Universitas Andalas.
-      </div>
-
-    </div>
-
-
-    <div class="tl-item reveal">
-
-      <div class="tl-year">
-        2025
-      </div>
-
-      <div class="tl-text">
-        Menyelesaikan proses penelitian,
-        skripsi, dan tugas akhir.
-      </div>
-
-    </div>
-
-
-    <div class="tl-item reveal">
-
-      <div class="tl-year">
-        2026
-      </div>
-
-      <div class="tl-text">
-        Menyelesaikan pendidikan dan
-        menyandang gelar S.Kom.
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- GALERI -->
-
-<section>
-
-  <p class="eyebrow reveal">
-    Kenangan
-  </p>
-
-  <h2 class="section-title reveal">
-    Galeri Foto
-  </h2>
-
-  <p class="section-sub reveal">
-    Beberapa momen dalam perjalanan
-  </p>
-
-
-  <div class="gallery-grid">
-
-    <div
-      class="gallery-item reveal"
-      onclick="openPhoto('foto-intan.jpg')"
-    >
-
-      <img
-        src="foto-intan.jpg"
-        alt="Foto Intan"
-        loading="lazy"
-      >
-
-      <div class="gallery-caption">
-        Intan Salma Denaidy
-      </div>
-
-    </div>
-
-
-    <div
-      class="gallery-item reveal"
-      onclick="openPhoto('foto-2.jpg')"
-    >
-
-      <img
-        src="foto-2.jpg"
-        alt="Kenangan"
-        loading="lazy"
-      >
-
-    </div>
-
-
-    <div
-      class="gallery-item reveal"
-      onclick="openPhoto('foto-3.jpg')"
-    >
-
-      <img
-        src="foto-3.jpg"
-        alt="Kenangan"
-        loading="lazy"
-      >
-
-    </div>
-
-
-    <div
-      class="gallery-item reveal"
-      onclick="openPhoto('foto-4.jpg')"
-    >
-
-      <img
-        src="foto-4.jpg"
-        alt="Kenangan"
-        loading="lazy"
-      >
-
-    </div>
-
-
-    <div
-      class="gallery-item reveal"
-      onclick="openPhoto('foto-5.jpg')"
-    >
-
-      <img
-        src="foto-5.jpg"
-        alt="Kenangan"
-        loading="lazy"
-      >
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- UCAPAN -->
-
-<section>
-
-  <p class="eyebrow reveal">
-    Doa & Ucapan
-  </p>
-
-  <h2 class="section-title reveal">
-    Berikan Ucapan
-  </h2>
-
-  <p class="section-sub reveal">
-    Tinggalkan doa dan ucapan terbaik
-  </p>
-
-
-  <div
-    class="wishes-list reveal"
-    id="wishesList"
-  >
-
-    <div class="wish-card">
-
-      <div class="wish-avatar">
-        A
-      </div>
-
-      <div>
-
-        <div class="wish-name">
-          Ahmad
-        </div>
-
-        <p class="wish-text">
-          Selamat atas kelulusannya
-          Intan Salma Denaidy, S.Kom!
-          Semoga sukses dan lancar
-          untuk langkah selanjutnya.
+        <h1>
+            Hello,<br>
+            <span>New Chapter.</span>
+        </h1>
+
+        <p class="hero-description">
+            Setelah melewati hari-hari penuh cerita,
+            akhirnya satu perjalanan sampai pada titik
+            yang patut dirayakan.
         </p>
 
-      </div>
+        <p class="hero-description">
+            Dengan segala kerendahan hati dan penuh
+            kebahagiaan, Intan mengajak Bapak/Ibu/Saudara/i
+            untuk hadir dan berbagi kebahagiaan di hari istimewa ini.
+        </p>
+
+        <div class="hero-date">
+
+            <strong>
+                18.09.26
+            </strong>
+
+            <div>
+                Jumat<br>
+                13.00 — 15.00 WIB
+            </div>
+
+        </div>
 
     </div>
 
-  </div>
+
+    <div class="hero-photo-area">
+
+        <div class="flower-decoration flower-one">
+            ❀
+        </div>
+
+        <div class="flower-decoration flower-two">
+            ✿
+        </div>
+
+        <div class="photo-frame">
+
+            <!-- GANTI FOTO UTAMA DI SINI -->
+            <img
+                src="foto-intan.jpg"
+                alt="Intan Salma Denaidy"
+            >
+
+        </div>
+
+    </div>
 
 
-  <form
-    class="wish-form reveal"
-    onsubmit="addWish(event)"
-  >
-
-    <input
-      type="text"
-      id="wishName"
-      placeholder="Nama Anda"
-      required
-    >
-
-    <textarea
-      id="wishMessage"
-      placeholder="Tuliskan ucapan & doa Anda..."
-      required
-    ></textarea>
-
-    <button type="submit">
-      Kirim Ucapan
-    </button>
-
-  </form>
-
-
-  <p class="wish-note reveal">
-    Terima kasih atas doa dan ucapan terbaik yang diberikan.
-  </p>
+    <div class="scroll-hint">
+        Scroll to celebrate ↓
+    </div>
 
 </section>
 
 
-<!-- FOOTER -->
+<!-- ======================================================
+     QUOTE
+====================================================== -->
+
+<section class="quote-section">
+
+    <div class="quote-flower">
+        ❀
+    </div>
+
+    <h2>
+        “Satu langkah selesai,
+        banyak cerita tersimpan,
+        dan perjalanan baru menanti.”
+    </h2>
+
+    <p>
+        Hari ini bukan sekadar tentang sebuah pencapaian,
+        tetapi tentang proses panjang, orang-orang baik,
+        dan setiap momen yang akhirnya membawa sampai
+        pada hari ini.
+    </p>
+
+</section>
+
+
+<!-- ======================================================
+     DATE
+====================================================== -->
+
+<section class="date-section">
+
+    <div class="section-heading">
+
+        <small>
+            Mark the Day
+        </small>
+
+        <h2>
+            Save This Date
+        </h2>
+
+    </div>
+
+
+    <div class="date-layout">
+
+        <div class="date-big">
+
+            <div class="month">
+                September
+            </div>
+
+            <div class="number">
+                18
+            </div>
+
+            <div class="day">
+                Jumat, 2026
+            </div>
+
+        </div>
+
+
+        <div class="event-details">
+
+            <div class="detail-item">
+
+                <div class="detail-icon">
+                    ♡
+                </div>
+
+                <div>
+                    <small>
+                        Waktu
+                    </small>
+
+                    <p>
+                        13.00 — 15.00 WIB
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <div class="detail-icon">
+                    ♧
+                </div>
+
+                <div>
+                    <small>
+                        Acara
+                    </small>
+
+                    <p>
+                        Perayaan Wisuda<br>
+                        Intan Salma Denaidy, S.Kom
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <div class="detail-icon">
+                    ✿
+                </div>
+
+                <div>
+                    <small>
+                        Dress Moment
+                    </small>
+
+                    <p>
+                        Hadir dengan senyum<br>
+                        dan doa terbaik.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     COUNTDOWN
+====================================================== -->
+
+<section class="countdown-section">
+
+    <div class="section-heading">
+
+        <small>
+            Counting the moments
+        </small>
+
+        <h2>
+            See You Soon
+        </h2>
+
+    </div>
+
+
+    <div class="countdown">
+
+        <div class="time-box">
+            <strong id="days">00</strong>
+            <span>Hari</span>
+        </div>
+
+        <div class="time-box">
+            <strong id="hours">00</strong>
+            <span>Jam</span>
+        </div>
+
+        <div class="time-box">
+            <strong id="minutes">00</strong>
+            <span>Menit</span>
+        </div>
+
+        <div class="time-box">
+            <strong id="seconds">00</strong>
+            <span>Detik</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     VENUE
+====================================================== -->
+
+<section class="venue">
+
+    <div class="venue-layout">
+
+        <div class="venue-copy">
+
+            <div class="script">
+                Meet Me There
+            </div>
+
+            <h2>
+                The Place<br>
+                to Celebrate
+            </h2>
+
+            <p>
+                Sebuah tempat untuk berbagi cerita,
+                bertemu orang-orang terkasih,
+                dan merayakan satu pencapaian
+                yang telah dinantikan.
+            </p>
+
+            <br>
+
+            <p>
+                <strong>
+                    Fakultas Teknologi Informasi<br>
+                    Universitas Andalas
+                </strong>
+                <br>
+                Limau Manis, Padang
+            </p>
+
+            <a
+                class="map-button"
+                href="https://www.google.com/maps/search/?api=1&query=Fakultas+Teknologi+Informasi+Universitas+Andalas"
+                target="_blank"
+            >
+                ♧ Buka Google Maps
+            </a>
+
+        </div>
+
+
+        <div class="map-box">
+
+            <iframe
+                src="https://www.openstreetmap.org/export/embed.html?bbox=100.458%2C-0.916%2C100.475%2C-0.902&layer=mapnik"
+                loading="lazy">
+            </iframe>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     JOURNEY
+====================================================== -->
+
+<section class="journey">
+
+    <div class="section-heading">
+
+        <small>
+            A little story
+        </small>
+
+        <h2>
+            From Then to Now
+        </h2>
+
+    </div>
+
+
+    <div class="journey-grid">
+
+        <div class="journey-card">
+
+            <div class="journey-number">
+                01
+            </div>
+
+            <h3>
+                Memulai
+            </h3>
+
+            <p>
+                Sebuah langkah kecil yang dimulai
+                dengan rasa ingin tahu, harapan,
+                dan banyak hal baru untuk dipelajari.
+            </p>
+
+        </div>
+
+
+        <div class="journey-card">
+
+            <div class="journey-number">
+                02
+            </div>
+
+            <h3>
+                Menyelesaikan
+            </h3>
+
+            <p>
+                Ada hari yang mudah dan ada pula
+                yang penuh tantangan. Semuanya
+                menjadi bagian dari perjalanan.
+            </p>
+
+        </div>
+
+
+        <div class="journey-card">
+
+            <div class="journey-number">
+                03
+            </div>
+
+            <h3>
+                Merayakan
+            </h3>
+
+            <p>
+                Sampai akhirnya tiba di satu titik
+                yang layak dikenang dan dirayakan
+                bersama orang-orang terkasih.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     GALLERY
+====================================================== -->
+
+<section class="gallery">
+
+    <div class="section-heading">
+
+        <small>
+            Little memories
+        </small>
+
+        <h2>
+            Pieces of the Journey
+        </h2>
+
+    </div>
+
+
+    <div class="gallery-grid">
+
+        <div class="gallery-item">
+            <img
+                src="foto-intan.jpg"
+                alt="Memory 1"
+                onclick="openLightbox(this.src)"
+            >
+        </div>
+
+        <div class="gallery-item">
+            <img
+                src="foto-2.jpg"
+                alt="Memory 2"
+                onclick="openLightbox(this.src)"
+            >
+        </div>
+
+        <div class="gallery-item">
+            <img
+                src="foto-3.jpg"
+                alt="Memory 3"
+                onclick="openLightbox(this.src)"
+            >
+        </div>
+
+        <div class="gallery-item">
+            <img
+                src="foto-4.jpg"
+                alt="Memory 4"
+                onclick="openLightbox(this.src)"
+            >
+        </div>
+
+        <div class="gallery-item">
+            <img
+                src="foto-5.jpg"
+                alt="Memory 5"
+                onclick="openLightbox(this.src)"
+            >
+        </div>
+
+        <div class="gallery-item">
+            <img
+                src="foto-6.jpg"
+                alt="Memory 6"
+                onclick="openLightbox(this.src)"
+            >
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     WISHES
+====================================================== -->
+
+<section class="wishes">
+
+    <div class="wishes-layout">
+
+        <div class="wish-intro">
+
+            <div class="script">
+                Your Words
+            </div>
+
+            <h2>
+                Leave<br>
+                A Little<br>
+                Love
+            </h2>
+
+            <p>
+                Tuliskan ucapan, doa, atau pesan kecil
+                untuk Intan. Setiap kata akan menjadi
+                bagian dari kenangan hari ini.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <form
+                class="wish-form"
+                onsubmit="addWish(event)"
+            >
+
+                <input
+                    class="input"
+                    id="wishName"
+                    type="text"
+                    placeholder="Nama"
+                    required
+                >
+
+                <textarea
+                    class="input"
+                    id="wishMessage"
+                    placeholder="Tulis ucapan dan doa..."
+                    required
+                ></textarea>
+
+                <button
+                    class="send-btn"
+                    type="submit"
+                >
+                    Kirim Ucapan ♡
+                </button>
+
+            </form>
+
+
+            <div
+                class="wish-list"
+                id="wishList"
+            ></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     SAVE DATE
+====================================================== -->
+
+<section class="save-section">
+
+    <div class="save-script">
+        See You on
+    </div>
+
+    <h2>
+        18 September 2026
+    </h2>
+
+    <p>
+        Thank you for being part of this beautiful chapter.
+    </p>
+
+
+    <div class="save-buttons">
+
+        <a
+            class="save-btn"
+            href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wisuda+Intan+Salma+Denaidy&dates=20260918T130000/20260918T150000&details=Perayaan+Wisuda+Intan+Salma+Denaidy%2C+S.Kom&location=Fakultas+Teknologi+Informasi%2C+Universitas+Andalas%2C+Limau+Manis%2C+Padang"
+            target="_blank"
+        >
+            ♡ Simpan ke Kalender
+        </a>
+
+
+        <button
+            class="save-btn secondary"
+            onclick="downloadICS()"
+        >
+            ↓ Download .ICS
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     FOOTER
+====================================================== -->
 
 <footer>
 
-  <div class="signature">
-    Intan Salma Denaidy, S.Kom
-  </div>
+    <div style="font-size:25px;margin-bottom:8px;">
+        ❀
+    </div>
 
-  <p>
-    Universitas Andalas — 2026
-  </p>
+    Dibuat dengan penuh kasih untuk
+    <span>Intan Salma Denaidy</span>
 
 </footer>
 
-</div>
+</main>
 
 
-<!-- LIGHTBOX -->
+<!-- ======================================================
+     LIGHTBOX
+====================================================== -->
 
 <div
-  id="lightbox"
-  onclick="closeLightbox()"
+    class="lightbox"
+    id="lightbox"
+    onclick="closeLightbox()"
 >
 
-  <img
-    id="lightboxImg"
-    src=""
-    alt="Foto diperbesar"
-  >
+    <div
+        class="lightbox-close"
+        onclick="closeLightbox()"
+    >
+        ×
+    </div>
+
+    <img
+        id="lightboxImage"
+        src=""
+        alt="Preview"
+        onclick="event.stopPropagation()"
+    >
 
 </div>
 
 
-<!-- MUSIC -->
+<!-- ======================================================
+     MUSIC
+====================================================== -->
+
+<audio
+    id="music"
+    src="audio.mp3"
+    loop
+    preload="auto"
+></audio>
 
 <button
-  class="music-toggle"
-  id="musicToggle"
-  onclick="toggleMusic()"
-  aria-label="Toggle Music"
+    class="music-button"
+    id="musicButton"
+    onclick="toggleMusic()"
 >
-  🎵
+    ♫
 </button>
-
-<audio id="bgMusic" loop>
-
-  <source
-    src="audio.mp3"
-    type="audio/mpeg"
-  >
-
-</audio>
 
 
 <script>
 
-/* =========================
-   NAMA TAMU
-========================= */
+/* =========================================================
+   GUEST NAME
+========================================================= */
 
-const urlParams =
-  new URLSearchParams(window.location.search);
+const params = new URLSearchParams(window.location.search);
 
 const guest =
-  urlParams.get('to');
+    params.get("to");
 
 if(guest){
 
-  document.getElementById('guestName')
-    .innerText = guest;
+    document.getElementById("guestName").textContent =
+        decodeURIComponent(guest.replace(/\+/g," "));
 
 }
 
 
-/* =========================
+/* =========================================================
    OPEN INVITATION
-========================= */
+========================================================= */
 
-function openInvite(){
+function openInvitation(){
 
-  document.getElementById('opening')
-    .style.display='none';
+    const opening =
+        document.getElementById("opening");
 
-  const main =
-    document.getElementById('main');
+    const main =
+        document.getElementById("main");
 
-  main.classList.add('show');
+    opening.classList.add("hide");
 
-  initObserver();
+    setTimeout(() => {
 
-  startCountdown();
+        main.classList.add("show");
 
-  playMusic();
+    },300);
+
+
+    const music =
+        document.getElementById("music");
+
+    music.volume = 0.35;
+
+    music.play().then(() => {
+
+        document.getElementById("musicButton")
+            .textContent = "♫";
+
+    }).catch(() => {
+
+        document.getElementById("musicButton")
+            .textContent = "♪";
+
+    });
 
 }
 
 
-/* =========================
-   COUNTDOWN
-========================= */
+/* =========================================================
+   FLOWERS
+========================================================= */
 
-function startCountdown(){
+function createFlowers(){
 
-  const targetDate =
-    new Date(
-      'September 18, 2026 13:00:00 GMT+0700'
-    ).getTime();
+    const layer =
+        document.getElementById("flower-layer");
 
-  function updateCountdown(){
+    const flowers = [
+        "❀",
+        "✿",
+        "❁",
+        "✽",
+        "♡"
+    ];
 
-    const now =
-      new Date().getTime();
+    for(let i=0;i<28;i++){
 
-    const diff =
-      targetDate-now;
+        const flower =
+            document.createElement("div");
 
-    if(diff<=0){
+        flower.className =
+            "flower";
 
-      document.getElementById('cd-days')
-        .innerText='00';
+        flower.textContent =
+            flowers[
+                Math.floor(
+                    Math.random()*flowers.length
+                )
+            ];
 
-      document.getElementById('cd-hours')
-        .innerText='00';
+        flower.style.left =
+            Math.random()*100 + "%";
 
-      document.getElementById('cd-mins')
-        .innerText='00';
+        flower.style.fontSize =
+            (10 + Math.random()*17) + "px";
 
-      document.getElementById('cd-secs')
-        .innerText='00';
+        flower.style.animationDuration =
+            (7 + Math.random()*8) + "s";
 
-      return;
+        flower.style.animationDelay =
+            (-Math.random()*15) + "s";
+
+        flower.style.opacity =
+            (.25 + Math.random()*.55);
+
+        layer.appendChild(flower);
 
     }
 
+}
+
+createFlowers();
+
+
+/* =========================================================
+   GLOW
+========================================================= */
+
+function createGlow(){
+
+    const layer =
+        document.getElementById("glowLayer");
+
+    for(let i=0;i<20;i++){
+
+        const dot =
+            document.createElement("div");
+
+        dot.className =
+            "glow";
+
+        dot.style.left =
+            Math.random()*100 + "%";
+
+        dot.style.top =
+            Math.random()*100 + "%";
+
+        dot.style.animationDelay =
+            (-Math.random()*5) + "s";
+
+        layer.appendChild(dot);
+
+    }
+
+}
+
+createGlow();
+
+
+/* =========================================================
+   COUNTDOWN
+========================================================= */
+
+const targetDate =
+    new Date(
+        "2026-09-18T13:00:00+07:00"
+    ).getTime();
+
+
+function updateCountdown(){
+
+    const now =
+        new Date().getTime();
+
+    const distance =
+        targetDate - now;
+
+
+    if(distance <= 0){
+
+        document.getElementById("days").textContent = "00";
+        document.getElementById("hours").textContent = "00";
+        document.getElementById("minutes").textContent = "00";
+        document.getElementById("seconds").textContent = "00";
+
+        return;
+
+    }
+
+
     const days =
-      Math.floor(
-        diff/(1000*60*60*24)
-      );
+        Math.floor(
+            distance /
+            (1000*60*60*24)
+        );
 
     const hours =
-      Math.floor(
-        (diff%(1000*60*60*24))
-        /(1000*60*60)
-      );
+        Math.floor(
+            (distance %
+            (1000*60*60*24)) /
+            (1000*60*60)
+        );
 
-    const mins =
-      Math.floor(
-        (diff%(1000*60*60))
-        /(1000*60)
-      );
+    const minutes =
+        Math.floor(
+            (distance %
+            (1000*60*60)) /
+            (1000*60)
+        );
 
-    const secs =
-      Math.floor(
-        (diff%(1000*60))
-        /1000
-      );
+    const seconds =
+        Math.floor(
+            (distance %
+            (1000*60)) /
+            1000
+        );
 
-    document.getElementById('cd-days')
-      .innerText =
-      String(days).padStart(2,'0');
 
-    document.getElementById('cd-hours')
-      .innerText =
-      String(hours).padStart(2,'0');
+    document.getElementById("days")
+        .textContent =
+        String(days).padStart(2,"0");
 
-    document.getElementById('cd-mins')
-      .innerText =
-      String(mins).padStart(2,'0');
+    document.getElementById("hours")
+        .textContent =
+        String(hours).padStart(2,"0");
 
-    document.getElementById('cd-secs')
-      .innerText =
-      String(secs).padStart(2,'0');
+    document.getElementById("minutes")
+        .textContent =
+        String(minutes).padStart(2,"0");
 
-  }
-
-  updateCountdown();
-
-  setInterval(updateCountdown,1000);
+    document.getElementById("seconds")
+        .textContent =
+        String(seconds).padStart(2,"0");
 
 }
 
+updateCountdown();
 
-/* =========================
-   REVEAL
-========================= */
-
-function initObserver(){
-
-  const observer =
-    new IntersectionObserver(
-      entries=>{
-
-        entries.forEach(entry=>{
-
-          if(entry.isIntersecting){
-
-            entry.target
-              .classList
-              .add('show');
-
-          }
-
-        });
-
-      },
-      {
-        threshold:.12
-      }
-    );
-
-  document
-    .querySelectorAll('.reveal')
-    .forEach(el=>{
-      observer.observe(el);
-    });
-
-}
+setInterval(
+    updateCountdown,
+    1000
+);
 
 
-/* =========================
-   ICS
-========================= */
-
-function downloadICS(){
-
-  const icsData =
-`BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//Undangan Wisuda Intan Salma Denaidy//ID
-BEGIN:VEVENT
-SUMMARY:Wisuda Intan Salma Denaidy, S.Kom
-DESCRIPTION:Prosesi Wisuda S1 Sistem Informasi Universitas Andalas
-LOCATION:Fakultas Teknologi Informasi, Universitas Andalas, Padang
-DTSTART:20260918T060000Z
-DTEND:20260918T080000Z
-END:VEVENT
-END:VCALENDAR`;
-
-  const blob =
-    new Blob(
-      [icsData],
-      {
-        type:'text/calendar;charset=utf-8;'
-      }
-    );
-
-  const link =
-    document.createElement('a');
-
-  link.href =
-    window.URL.createObjectURL(blob);
-
-  link.download =
-    'wisuda-intan-salma-denaidy.ics';
-
-  document.body.appendChild(link);
-
-  link.click();
-
-  document.body.removeChild(link);
-
-}
-
-
-/* =========================
-   LIGHTBOX
-========================= */
-
-function openPhoto(src){
-
-  document.getElementById('lightboxImg')
-    .src=src;
-
-  document.getElementById('lightbox')
-    .classList.add('show');
-
-}
-
-function closeLightbox(){
-
-  document.getElementById('lightbox')
-    .classList.remove('show');
-
-}
-
-
-/* =========================
+/* =========================================================
    MUSIC
-========================= */
-
-const bgMusic =
-  document.getElementById('bgMusic');
-
-let isPlaying=false;
-
-function playMusic(){
-
-  bgMusic.play()
-    .then(()=>{
-
-      isPlaying=true;
-
-      document.getElementById(
-        'musicToggle'
-      ).innerText='🎵';
-
-    })
-    .catch(()=>{
-
-      isPlaying=false;
-
-      document.getElementById(
-        'musicToggle'
-      ).innerText='🔇';
-
-    });
-
-}
+========================================================= */
 
 function toggleMusic(){
 
-  if(isPlaying){
+    const music =
+        document.getElementById("music");
 
-    bgMusic.pause();
+    const button =
+        document.getElementById("musicButton");
 
-    isPlaying=false;
 
-    document.getElementById(
-      'musicToggle'
-    ).innerText='🔇';
+    if(music.paused){
 
-  }
-  else{
+        music.play();
 
-    bgMusic.play();
+        button.textContent =
+            "♫";
 
-    isPlaying=true;
+    }else{
 
-    document.getElementById(
-      'musicToggle'
-    ).innerText='🎵';
+        music.pause();
 
-  }
+        button.textContent =
+            "♪";
+
+    }
 
 }
 
 
-/* =========================
-   UCAPAN
-========================= */
+/* =========================================================
+   LIGHTBOX
+========================================================= */
 
-function addWish(e){
+function openLightbox(src){
 
-  e.preventDefault();
+    const lightbox =
+        document.getElementById("lightbox");
 
-  const name =
-    document.getElementById(
-      'wishName'
-    ).value.trim();
+    const image =
+        document.getElementById("lightboxImage");
 
-  const msg =
-    document.getElementById(
-      'wishMessage'
-    ).value.trim();
+    image.src = src;
 
-  if(!name || !msg){
-    return;
-  }
+    lightbox.classList.add("show");
 
-  const list =
-    document.getElementById(
-      'wishesList'
-    );
-
-  const card =
-    document.createElement('div');
-
-  card.className='wish-card';
-
-  /*
-    textContent digunakan agar
-    input pengguna tidak dianggap
-    sebagai HTML.
-  */
-
-  const avatar =
-    document.createElement('div');
-
-  avatar.className='wish-avatar';
-
-  avatar.textContent =
-    name.charAt(0).toUpperCase();
+}
 
 
-  const content =
-    document.createElement('div');
+function closeLightbox(){
+
+    document
+        .getElementById("lightbox")
+        .classList.remove("show");
+
+}
 
 
-  const wishName =
-    document.createElement('div');
+/* =========================================================
+   WISHES
+========================================================= */
 
-  wishName.className='wish-name';
+function addWish(event){
 
-  wishName.textContent=name;
-
-
-  const wishText =
-    document.createElement('p');
-
-  wishText.className='wish-text';
-
-  wishText.textContent=msg;
+    event.preventDefault();
 
 
-  content.appendChild(wishName);
-
-  content.appendChild(wishText);
-
-  card.appendChild(avatar);
-
-  card.appendChild(content);
-
-  list.prepend(card);
+    const name =
+        document
+        .getElementById("wishName")
+        .value
+        .trim();
 
 
-  document.getElementById(
-    'wishName'
-  ).value='';
+    const message =
+        document
+        .getElementById("wishMessage")
+        .value
+        .trim();
 
-  document.getElementById(
-    'wishMessage'
-  ).value='';
+
+    if(!name || !message){
+
+        return;
+
+    }
+
+
+    const card =
+        document.createElement("div");
+
+    card.className =
+        "wish-card";
+
+
+    const strong =
+        document.createElement("strong");
+
+    strong.textContent =
+        name;
+
+
+    const p =
+        document.createElement("p");
+
+    p.textContent =
+        message;
+
+
+    card.appendChild(strong);
+    card.appendChild(p);
+
+
+    document
+        .getElementById("wishList")
+        .prepend(card);
+
+
+    document
+        .getElementById("wishName")
+        .value = "";
+
+
+    document
+        .getElementById("wishMessage")
+        .value = "";
+
+}
+
+
+/* =========================================================
+   DOWNLOAD ICS
+========================================================= */
+
+function downloadICS(){
+
+    const ics =
+`BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Undangan Wisuda Intan//ID
+BEGIN:VEVENT
+UID:intan-wisuda-2026
+DTSTAMP:20260910T000000Z
+DTSTART:20260918T130000
+DTEND:20260918T150000
+SUMMARY:Wisuda Intan Salma Denaidy
+DESCRIPTION:Perayaan Wisuda Intan Salma Denaidy, S.Kom
+LOCATION:Fakultas Teknologi Informasi, Universitas Andalas, Limau Manis, Padang
+END:VEVENT
+END:VCALENDAR`;
+
+
+    const blob =
+        new Blob(
+            [ics],
+            {type:"text/calendar"}
+        );
+
+
+    const url =
+        URL.createObjectURL(blob);
+
+
+    const a =
+        document.createElement("a");
+
+    a.href = url;
+
+    a.download =
+        "wisuda-intan-salma-denaidy.ics";
+
+    document.body.appendChild(a);
+
+    a.click();
+
+    document.body.removeChild(a);
+
+    URL.revokeObjectURL(url);
 
 }
 
