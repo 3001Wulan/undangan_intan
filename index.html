@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
 
 <title>Undangan Wisuda Intan Salma Denaidy, S.Kom</title>
 
@@ -18,6 +23,7 @@
     href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Parisienne&family=Playfair+Display:wght@400;500;600;700&display=swap"
     rel="stylesheet"
 >
+
 
 <!-- =========================================================
      LEAFLET
@@ -71,9 +77,13 @@ html{
 
 body{
     margin:0;
+
     font-family:'DM Sans',sans-serif;
+
     color:var(--text);
+
     background:var(--cream);
+
     overflow-x:hidden;
 }
 
@@ -94,24 +104,37 @@ a{
 
 
 /* =========================================================
-   BUNGA JATUH
+   FLOWER FALLING
 ========================================================= */
 
 #flowerLayer{
     position:fixed;
+
     inset:0;
+
     pointer-events:none;
+
     overflow:hidden;
+
     z-index:9999;
 }
 
 .flower{
     position:absolute;
+
     top:-60px;
+
     color:#df87a5;
+
     opacity:.65;
-    animation:fallFlower linear infinite;
-    filter:drop-shadow(0 2px 3px rgba(160,60,90,.12));
+
+    animation:
+        fallFlower linear infinite;
+
+    filter:
+        drop-shadow(
+            0 2px 3px rgba(160,60,90,.12)
+        );
 }
 
 @keyframes fallFlower{
@@ -120,6 +143,7 @@ a{
         transform:
             translate3d(0,-70px,0)
             rotate(0deg);
+
         opacity:0;
     }
 
@@ -137,8 +161,10 @@ a{
         transform:
             translate3d(-100px,110vh,0)
             rotate(360deg);
+
         opacity:0;
     }
+
 }
 
 
@@ -148,30 +174,45 @@ a{
 
 #glowLayer{
     position:fixed;
+
     inset:0;
+
     pointer-events:none;
+
     z-index:2;
 }
 
 .glow{
     position:absolute;
+
     width:4px;
     height:4px;
+
     border-radius:50%;
+
     background:#efa9bf;
+
     opacity:.5;
-    animation:glowAnimation 5s ease-in-out infinite;
+
+    animation:
+        glowAnimation 5s ease-in-out infinite;
 }
 
 @keyframes glowAnimation{
 
     0%,100%{
-        transform:translateY(0) scale(.7);
+        transform:
+            translateY(0)
+            scale(.7);
+
         opacity:.2;
     }
 
     50%{
-        transform:translateY(-25px) scale(1.5);
+        transform:
+            translateY(-25px)
+            scale(1.5);
+
         opacity:.8;
     }
 
@@ -184,10 +225,13 @@ a{
 
 .opening{
     position:fixed;
+
     inset:0;
+
     z-index:5000;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
@@ -196,16 +240,19 @@ a{
     text-align:center;
 
     background:
+
         radial-gradient(
             circle at 15% 15%,
             rgba(255,255,255,.95),
             transparent 28%
         ),
+
         radial-gradient(
             circle at 85% 80%,
             rgba(247,197,213,.8),
             transparent 32%
         ),
+
         linear-gradient(
             135deg,
             #fff9fb,
@@ -219,34 +266,49 @@ a{
 
 .opening.hide{
     opacity:0;
+
     visibility:hidden;
 }
 
 .opening-card{
     width:min(540px,100%);
+
     padding:50px 30px;
+
     position:relative;
 }
 
 .opening-card::before{
     content:"❀";
+
     position:absolute;
+
     top:-20px;
     left:5px;
+
     color:#d66f91;
+
     font-size:75px;
+
     opacity:.22;
+
     transform:rotate(-20deg);
 }
 
 .opening-card::after{
     content:"✿";
+
     position:absolute;
+
     bottom:-25px;
     right:5px;
+
     color:#d66f91;
+
     font-size:85px;
+
     opacity:.22;
+
     transform:rotate(20deg);
 }
 
@@ -257,8 +319,11 @@ a{
 
 .opening-script{
     font-family:'Parisienne',cursive;
+
     color:var(--pink-dark);
+
     font-size:52px;
+
     line-height:1.1;
 }
 
@@ -271,9 +336,13 @@ a{
     margin-top:12px;
 
     font-family:'Playfair Display',serif;
+
     font-size:42px;
+
     line-height:1.15;
+
     font-weight:500;
+
     color:#5b3743;
 
     white-space:nowrap;
@@ -281,7 +350,9 @@ a{
 
 .opening-degree{
     margin-top:14px;
+
     font-size:13px;
+
     color:var(--muted);
 }
 
@@ -292,23 +363,33 @@ a{
 
 .guest-box{
     margin:35px auto 27px;
+
     padding:17px 20px;
 
-    border-top:1px solid rgba(169,67,104,.2);
-    border-bottom:1px solid rgba(169,67,104,.2);
+    border-top:
+        1px solid rgba(169,67,104,.2);
+
+    border-bottom:
+        1px solid rgba(169,67,104,.2);
 }
 
 .guest-label{
     font-size:9px;
+
     text-transform:uppercase;
+
     letter-spacing:2px;
+
     color:#9a7883;
 }
 
 .guest-name{
     margin-top:8px;
+
     font-family:'Playfair Display',serif;
+
     font-size:21px;
+
     color:#704451;
 }
 
@@ -319,14 +400,17 @@ a{
 
 .open-button{
     border:0;
+
     padding:15px 30px;
 
     border-radius:50px;
 
     color:#fff;
+
     background:#c55c80;
 
     font-size:12px;
+
     font-weight:600;
 
     cursor:pointer;
@@ -339,6 +423,7 @@ a{
 
 .open-button:hover{
     transform:translateY(-3px);
+
     background:#aa486b;
 }
 
@@ -349,7 +434,9 @@ a{
 
 .main{
     opacity:0;
-    transition:opacity 1s ease;
+
+    transition:
+        opacity 1s ease;
 }
 
 .main.show{
@@ -365,7 +452,9 @@ a{
     min-height:100vh;
 
     display:grid;
+
     grid-template-columns:1fr 1fr;
+
     align-items:center;
 
     gap:70px;
@@ -373,14 +462,17 @@ a{
     padding:90px 9%;
 
     position:relative;
+
     overflow:hidden;
 
     background:
+
         radial-gradient(
             circle at 85% 15%,
             #f7dbe5,
             transparent 28%
         ),
+
         linear-gradient(
             135deg,
             #fff9fb,
@@ -396,7 +488,9 @@ a{
     width:520px;
     height:520px;
 
-    border:1px solid #edc5d2;
+    border:
+        1px solid #edc5d2;
+
     border-radius:50%;
 
     right:-250px;
@@ -405,6 +499,7 @@ a{
 
 .hero-text{
     position:relative;
+
     z-index:3;
 }
 
@@ -422,6 +517,7 @@ a{
     font-size:10px;
 
     letter-spacing:2px;
+
     text-transform:uppercase;
 }
 
@@ -457,6 +553,7 @@ a{
     margin-top:27px;
 
     font-size:14px;
+
     line-height:1.9;
 
     color:#80666f;
@@ -465,14 +562,15 @@ a{
 
 /* =========================================================
    HERO PHOTO
-   TANPA PUTIH
 ========================================================= */
 
 .hero-photo-area{
     min-height:610px;
 
     display:flex;
+
     justify-content:center;
+
     align-items:center;
 
     position:relative;
@@ -480,6 +578,7 @@ a{
 
 .photo-frame{
     width:min(410px,90%);
+
     height:530px;
 
     padding:0;
@@ -503,7 +602,8 @@ a{
 
     inset:-25px;
 
-    border:1px solid #e7a9bd;
+    border:
+        1px solid #e7a9bd;
 
     z-index:-1;
 
@@ -520,7 +620,9 @@ a{
     width:80px;
     height:80px;
 
-    border:1px solid #e5a7bb;
+    border:
+        1px solid #e5a7bb;
+
     border-radius:50%;
 
     right:-55px;
@@ -538,6 +640,7 @@ a{
     display:block;
 
     object-fit:cover;
+
     object-position:center;
 
     border:0;
@@ -564,12 +667,14 @@ a{
 .hero-flower.one{
     top:30px;
     left:5px;
+
     transform:rotate(-20deg);
 }
 
 .hero-flower.two{
     right:0;
     bottom:35px;
+
     transform:rotate(25deg);
 }
 
@@ -582,6 +687,7 @@ a{
     transform:translateX(-50%);
 
     font-size:9px;
+
     letter-spacing:3px;
 
     color:#a47d88;
@@ -604,12 +710,15 @@ a{
 
 .quote-flower{
     color:#d76c8e;
+
     font-size:36px;
+
     margin-bottom:25px;
 }
 
 .quote-section h2{
     max-width:820px;
+
     margin:auto;
 
     font-family:'Playfair Display',serif;
@@ -629,6 +738,7 @@ a{
     margin:25px auto 0;
 
     font-size:14px;
+
     line-height:1.9;
 
     color:#856b75;
@@ -636,7 +746,7 @@ a{
 
 
 /* =========================================================
-   SAVE THIS DATE
+   DATE
 ========================================================= */
 
 .date-section{
@@ -647,6 +757,7 @@ a{
 
 .section-heading{
     text-align:center;
+
     margin-bottom:50px;
 }
 
@@ -709,6 +820,7 @@ a{
     display:flex;
 
     justify-content:space-between;
+
     align-items:center;
 
     margin-bottom:30px;
@@ -720,7 +832,8 @@ a{
 
     border-radius:50%;
 
-    border:1px solid #efd3dd;
+    border:
+        1px solid #efd3dd;
 
     background:#fff8fa;
 
@@ -792,6 +905,7 @@ a{
     display:flex;
 
     justify-content:center;
+
     align-items:center;
 
     position:relative;
@@ -807,6 +921,7 @@ a{
 
 .calendar-day.active{
     color:#fff;
+
     font-weight:700;
 
     z-index:1;
@@ -858,6 +973,7 @@ a{
     flex-direction:column;
 
     align-items:center;
+
     justify-content:center;
 
     text-align:center;
@@ -865,11 +981,13 @@ a{
     color:#fff;
 
     background:
+
         radial-gradient(
             circle at 80% 15%,
             rgba(255,255,255,.2),
             transparent 30%
         ),
+
         linear-gradient(
             145deg,
             #d86e92,
@@ -889,7 +1007,8 @@ a{
     width:230px;
     height:230px;
 
-    border:1px solid rgba(255,255,255,.18);
+    border:
+        1px solid rgba(255,255,255,.18);
 
     border-radius:50%;
 
@@ -905,7 +1024,8 @@ a{
     width:180px;
     height:180px;
 
-    border:1px solid rgba(255,255,255,.12);
+    border:
+        1px solid rgba(255,255,255,.12);
 
     border-radius:50%;
 
@@ -950,7 +1070,8 @@ a{
 
     padding-top:15px;
 
-    border-top:1px solid rgba(255,255,255,.3);
+    border-top:
+        1px solid rgba(255,255,255,.3);
 
     font-size:11px;
 
@@ -966,6 +1087,7 @@ a{
     text-align:center;
 
     margin-top:62px;
+
     margin-bottom:22px;
 
     font-family:'Playfair Display',serif;
@@ -992,7 +1114,8 @@ a{
 
     background:#fff;
 
-    border:1px solid #efd5de;
+    border:
+        1px solid #efd5de;
 
     text-align:center;
 }
@@ -1066,6 +1189,17 @@ a{
     color:#583844;
 }
 
+
+/* =========================================================
+   PHOTO TRACK
+========================================================= */
+
+.photo-slider-window{
+    width:100%;
+
+    overflow:hidden;
+}
+
 .photo-track{
     display:flex;
 
@@ -1074,15 +1208,23 @@ a{
     gap:20px;
 
     animation:
-        photoMoving 38s linear infinite;
+        photoMoving 90s linear infinite;
+
+    will-change:transform;
 }
 
 .photo-track:hover{
     animation-play-state:paused;
 }
 
+
+/* =========================================================
+   SLIDE PHOTO
+========================================================= */
+
 .slide-photo{
     width:270px;
+
     height:350px;
 
     flex-shrink:0;
@@ -1095,6 +1237,8 @@ a{
         0 16px 35px rgba(100,45,65,.12);
 
     cursor:pointer;
+
+    position:relative;
 }
 
 .slide-photo:nth-child(even){
@@ -1108,17 +1252,24 @@ a{
     display:block;
 
     object-fit:cover;
+
     object-position:center;
 
     border:0;
     outline:0;
 
-    transition:.5s;
+    transition:
+        transform .5s ease;
 }
 
 .slide-photo:hover img{
     transform:scale(1.06);
 }
+
+
+/* =========================================================
+   PHOTO ANIMATION
+========================================================= */
 
 @keyframes photoMoving{
 
@@ -1127,7 +1278,7 @@ a{
     }
 
     to{
-        transform:translateX(-50%);
+        transform:translateX(calc(-50% - 10px));
     }
 
 }
@@ -1198,6 +1349,7 @@ a{
     display:inline-flex;
 
     align-items:center;
+
     justify-content:center;
 
     gap:9px;
@@ -1211,6 +1363,7 @@ a{
     text-decoration:none;
 
     font-size:11px;
+
     font-weight:600;
 
     color:#fff;
@@ -1302,6 +1455,7 @@ a{
 
 #map{
     width:100%;
+
     height:380px;
 
     border:0;
@@ -1311,7 +1465,7 @@ a{
 
 
 /* =========================================================
-   LEAFLET MAP
+   LEAFLET
 ========================================================= */
 
 .leaflet-container{
@@ -1333,11 +1487,12 @@ a{
 
 
 /* =========================================================
-   PINK CUSTOM MARKER
+   CUSTOM PINK MARKER
 ========================================================= */
 
 .pink-map-marker{
     background:transparent;
+
     border:0;
 }
 
@@ -1395,7 +1550,8 @@ a{
 
     border-radius:50%;
 
-    border:1px solid rgba(216,100,137,.25);
+    border:
+        1px solid rgba(216,100,137,.25);
 
     animation:
         markerPulse 2s ease-out infinite;
@@ -1438,7 +1594,9 @@ a{
 
 .map-popup strong{
     color:#b44f72;
+
     font-family:'Playfair Display',serif;
+
     font-size:14px;
 }
 
@@ -1448,7 +1606,7 @@ a{
 
 
 /* =========================================================
-   KOORDINAT
+   COORDINATE
 ========================================================= */
 
 .map-coordinate{
@@ -1495,6 +1653,7 @@ a{
     overflow:hidden;
 
     background:
+
         linear-gradient(
             145deg,
             #fff8fb 0%,
@@ -1502,13 +1661,16 @@ a{
             #fff9fb 100%
         );
 
-    border:1px solid rgba(216,100,137,.22);
+    border:
+        1px solid rgba(216,100,137,.22);
 
     border-radius:30px;
 
     box-shadow:
         0 20px 50px rgba(169,70,104,.12),
-        inset 0 1px 0 rgba(255,255,255,.8);
+
+        inset 0 1px 0
+        rgba(255,255,255,.8);
 
     text-align:center;
 }
@@ -1526,7 +1688,8 @@ a{
 
     border-radius:50%;
 
-    background:rgba(216,100,137,.08);
+    background:
+        rgba(216,100,137,.08);
 }
 
 .final-quote-card::after{
@@ -1542,7 +1705,8 @@ a{
 
     border-radius:50%;
 
-    background:rgba(216,100,137,.07);
+    background:
+        rgba(216,100,137,.07);
 }
 
 
@@ -1610,7 +1774,7 @@ a{
 
 
 /* =========================================================
-   FINAL QUOTE AUTHOR
+   AUTHOR
 ========================================================= */
 
 .final-quote-author{
@@ -1666,11 +1830,13 @@ a{
     padding:110px 8%;
 
     background:
+
         radial-gradient(
             circle at 20% 20%,
             #f7d6e2,
             transparent 25%
         ),
+
         #fff4f7;
 }
 
@@ -1730,7 +1896,8 @@ a{
 
     border:0;
 
-    border-bottom:1px solid #ead2da;
+    border-bottom:
+        1px solid #ead2da;
 
     background:transparent;
 
@@ -1786,7 +1953,8 @@ textarea.input{
 
     background:#fff;
 
-    border-left:3px solid #d77a99;
+    border-left:
+        3px solid #d77a99;
 }
 
 .wish-card strong{
@@ -1923,7 +2091,8 @@ textarea.input{
 
     color:#fff;
 
-    border:1px solid rgba(255,255,255,.45);
+    border:
+        1px solid rgba(255,255,255,.45);
 }
 
 
@@ -1967,7 +2136,8 @@ footer .footer-flower{
 
     border-radius:50%;
 
-    border:1px solid #e7b4c5;
+    border:
+        1px solid #e7b4c5;
 
     background:#fff;
 
@@ -2002,11 +2172,13 @@ footer .footer-flower{
     display:none;
 
     align-items:center;
+
     justify-content:center;
 
     padding:25px;
 
-    background:rgba(42,20,28,.93);
+    background:
+        rgba(42,20,28,.93);
 }
 
 .lightbox.show{
@@ -2015,9 +2187,13 @@ footer .footer-flower{
 
 .lightbox img{
     max-width:90%;
+
     max-height:85vh;
 
     object-fit:contain;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.35);
 }
 
 .lightbox-close{
@@ -2032,6 +2208,8 @@ footer .footer-flower{
     font-size:38px;
 
     cursor:pointer;
+
+    z-index:2;
 }
 
 
@@ -2097,10 +2275,20 @@ footer .footer-flower{
 }
 
 
+/* =========================================================
+   MOBILE SMALL
+========================================================= */
+
 @media(max-width:500px){
 
     .opening-name{
-        font-size:clamp(20px,7vw,32px);
+        font-size:
+            clamp(
+                20px,
+                7vw,
+                32px
+            );
+
         letter-spacing:-.4px;
 
         white-space:normal;
@@ -2120,6 +2308,7 @@ footer .footer-flower{
 
     .photo-frame{
         width:88%;
+
         height:400px;
     }
 
@@ -2162,6 +2351,7 @@ footer .footer-flower{
 
     .slide-photo{
         width:220px;
+
         height:290px;
     }
 
@@ -2178,7 +2368,8 @@ footer .footer-flower{
     }
 
     .final-quote-card{
-        padding:50px 25px 55px;
+        padding:
+            50px 25px 55px;
 
         border-radius:24px;
     }
@@ -2199,12 +2390,15 @@ footer .footer-flower{
 
     .final-quote{
         font-size:21px;
+
         line-height:1.6;
     }
 
     .final-quote-author{
         margin-top:22px;
+
         font-size:11px;
+
         letter-spacing:1px;
     }
 
@@ -2239,6 +2433,7 @@ footer .footer-flower{
 }
 
 </style>
+
 </head>
 
 
@@ -2250,6 +2445,7 @@ footer .footer-flower{
 ====================================================== -->
 
 <div id="flowerLayer"></div>
+
 <div id="glowLayer"></div>
 
 
@@ -2257,29 +2453,34 @@ footer .footer-flower{
      OPENING
 ====================================================== -->
 
-<section class="opening" id="opening">
+<section
+    class="opening"
+    id="opening"
+>
 
     <div class="opening-card">
-
-        <!-- Graduation Invitation DIHAPUS -->
 
         <div class="opening-script">
             Graduation Day
         </div>
 
+
         <div class="opening-name">
             Intan Salma Denaidy, S.Kom
         </div>
 
+
         <div class="opening-degree">
             Sarjana Komputer • S1 Sistem Informasi
         </div>
+
 
         <div class="guest-box">
 
             <div class="guest-label">
                 Dengan hormat, kami mengundang
             </div>
+
 
             <div
                 class="guest-name"
@@ -2289,6 +2490,7 @@ footer .footer-flower{
             </div>
 
         </div>
+
 
         <button
             class="open-button"
@@ -2324,16 +2526,19 @@ footer .footer-flower{
             One Beautiful Milestone
         </div>
 
+
         <h1>
             Hello,
             <span>New Chapter.</span>
         </h1>
+
 
         <p class="hero-description">
             Setelah melewati hari-hari penuh cerita,
             akhirnya satu perjalanan sampai pada
             titik yang patut dirayakan.
         </p>
+
 
         <p class="hero-description">
             Dengan penuh kebahagiaan, Intan mengajak
@@ -2350,9 +2555,11 @@ footer .footer-flower{
             ❀
         </div>
 
+
         <div class="hero-flower two">
             ✿
         </div>
+
 
         <div class="photo-frame">
 
@@ -2383,11 +2590,13 @@ footer .footer-flower{
         ❀
     </div>
 
+
     <h2>
         “Satu langkah selesai,
         banyak cerita tersimpan,
         dan perjalanan baru menanti.”
     </h2>
+
 
     <p>
         Hari ini bukan hanya tentang sebuah pencapaian,
@@ -2400,7 +2609,7 @@ footer .footer-flower{
 
 
 <!-- ======================================================
-     SAVE THIS DATE + CALENDAR + COUNTDOWN
+     DATE
 ====================================================== -->
 
 <section class="date-section">
@@ -2410,6 +2619,7 @@ footer .footer-flower{
         <small>
             Save This Date
         </small>
+
 
         <h2>
             Mark the Day
@@ -2487,17 +2697,21 @@ footer .footer-flower{
                 ❀
             </div>
 
+
             <div class="selected-day">
                 Jumat
             </div>
+
 
             <div class="selected-number">
                 18
             </div>
 
+
             <div class="selected-month">
                 September 2026
             </div>
+
 
             <div class="selected-time">
                 13.00 — 15.00 WIB
@@ -2574,7 +2788,7 @@ footer .footer-flower{
 
 
 <!-- ======================================================
-     PHOTO SLIDER
+     PHOTO SLIDER - 20 FOTO
 ====================================================== -->
 
 <section class="photo-slider-section">
@@ -2585,6 +2799,7 @@ footer .footer-flower{
             Little Memories
         </small>
 
+
         <h2>
             Moments Along The Way
         </h2>
@@ -2592,142 +2807,313 @@ footer .footer-flower{
     </div>
 
 
-    <div class="photo-track">
-
-
-        <!-- SET 1 -->
+    <div class="photo-slider-window">
 
         <div
-            class="slide-photo"
-            onclick="openLightbox('foto-intan.jpg')"
+            class="photo-track"
+            id="photoTrack"
         >
-            <img
-                src="foto-intan.jpg"
-                alt="Intan Salma Denaidy, S.Kom"
+
+
+            <!-- FOTO 1 -->
+
+            <div
+                class="slide-photo"
+                onclick="openLightbox('foto-intan.jpg')"
             >
-        </div>
+
+                <img
+                    src="foto-intan.jpg"
+                    alt="Intan Salma Denaidy"
+                >
+
+            </div>
 
 
-        <div
-            class="slide-photo"
-            onclick="openLightbox('foto-2.jpg')"
-        >
-            <img
-                src="foto-2.jpg"
-                alt="Memory 2"
+            <!-- FOTO 2 -->
+
+            <div
+                class="slide-photo"
+                onclick="openLightbox('foto-2.jpg')"
             >
-        </div>
+
+                <img
+                    src="foto-2.jpg"
+                    alt="Memory 2"
+                >
+
+            </div>
 
 
-        <div
-            class="slide-photo"
-            onclick="openLightbox('foto-3.jpg')"
-        >
-            <img
-                src="foto-3.jpg"
-                alt="Memory 3"
+            <!-- FOTO 3 -->
+
+            <div
+                class="slide-photo"
+                onclick="openLightbox('foto-3.jpg')"
             >
-        </div>
+
+                <img
+                    src="foto-3.jpg"
+                    alt="Memory 3"
+                >
+
+            </div>
 
 
-        <div
-            class="slide-photo"
-            onclick="openLightbox('foto-4.jpg')"
-        >
-            <img
-                src="foto-4.jpg"
-                alt="Memory 4"
+            <!-- FOTO 4 -->
+
+            <div
+                class="slide-photo"
+                onclick="openLightbox('foto-4.jpg')"
             >
-        </div>
+
+                <img
+                    src="foto-4.jpg"
+                    alt="Memory 4"
+                >
+
+            </div>
 
 
-        <div
-            class="slide-photo"
-            onclick="openLightbox('foto-5.jpg')"
-        >
-            <img
-                src="foto-5.jpg"
-                alt="Memory 5"
+            <!-- FOTO 5 -->
+
+            <div
+                class="slide-photo"
+                onclick="openLightbox('foto-5.jpg')"
             >
-        </div>
+
+                <img
+                    src="foto-5.jpg"
+                    alt="Memory 5"
+                >
+
+            </div>
 
 
-        <div
-            class="slide-photo"
-            onclick="openLightbox('foto-6.jpg')"
-        >
-            <img
-                src="foto-6.jpg"
-                alt="Memory 6"
+            <!-- FOTO 6 -->
+
+            <div
+                class="slide-photo"
+                onclick="openLightbox('foto-6.jpg')"
             >
-        </div>
+
+                <img
+                    src="foto-6.jpg"
+                    alt="Memory 6"
+                >
+
+            </div>
 
 
-        <!-- SET 2 -->
+            <!-- FOTO 7 -->
 
-        <div
-            class="slide-photo"
-            onclick="openLightbox('foto-intan.jpg')"
-        >
-            <img
-                src="foto-intan.jpg"
-                alt="Intan Salma Denaidy, S.Kom"
+            <div
+                class="slide-photo"
+                onclick="openLightbox('foto-7.jpg')"
             >
-        </div>
+
+                <img
+                    src="foto-7.jpg"
+                    alt="Memory 7"
+                >
+
+            </div>
 
 
-        <div
-            class="slide-photo"
-            onclick="openLightbox('foto-2.jpg')"
-        >
-            <img
-                src="foto-2.jpg"
-                alt="Memory 2"
+            <!-- FOTO 8 -->
+
+            <div
+                class="slide-photo"
+                onclick="openLightbox('foto-8.jpg')"
             >
-        </div>
+
+                <img
+                    src="foto-8.jpg"
+                    alt="Memory 8"
+                >
+
+            </div>
 
 
-        <div
-            class="slide-photo"
-            onclick="openLightbox('foto-3.jpg')"
-        >
-            <img
-                src="foto-3.jpg"
-                alt="Memory 3"
+            <!-- FOTO 9 -->
+
+            <div
+                class="slide-photo"
+                onclick="openLightbox('foto-9.jpg')"
             >
-        </div>
+
+                <img
+                    src="foto-9.jpg"
+                    alt="Memory 9"
+                >
+
+            </div>
 
 
-        <div
-            class="slide-photo"
-            onclick="openLightbox('foto-4.jpg')"
-        >
-            <img
-                src="foto-4.jpg"
-                alt="Memory 4"
+            <!-- FOTO 10 -->
+
+            <div
+                class="slide-photo"
+                onclick="openLightbox('foto-10.jpg')"
             >
-        </div>
+
+                <img
+                    src="foto-10.jpg"
+                    alt="Memory 10"
+                >
+
+            </div>
 
 
-        <div
-            class="slide-photo"
-            onclick="openLightbox('foto-5.jpg')"
-        >
-            <img
-                src="foto-5.jpg"
-                alt="Memory 5"
+            <!-- FOTO 11 -->
+
+            <div
+                class="slide-photo"
+                onclick="openLightbox('foto-11.jpg')"
             >
-        </div>
+
+                <img
+                    src="foto-11.jpg"
+                    alt="Memory 11"
+                >
+
+            </div>
 
 
-        <div
-            class="slide-photo"
-            onclick="openLightbox('foto-6.jpg')"
-        >
-            <img
-                src="foto-6.jpg"
-                alt="Memory 6"
+            <!-- FOTO 12 -->
+
+            <div
+                class="slide-photo"
+                onclick="openLightbox('foto-12.jpg')"
             >
+
+                <img
+                    src="foto-12.jpg"
+                    alt="Memory 12"
+                >
+
+            </div>
+
+
+            <!-- FOTO 13 -->
+
+            <div
+                class="slide-photo"
+                onclick="openLightbox('foto-13.jpg')"
+            >
+
+                <img
+                    src="foto-13.jpg"
+                    alt="Memory 13"
+                >
+
+            </div>
+
+
+            <!-- FOTO 14 -->
+
+            <div
+                class="slide-photo"
+                onclick="openLightbox('foto-14.jpg')"
+            >
+
+                <img
+                    src="foto-14.jpg"
+                    alt="Memory 14"
+                >
+
+            </div>
+
+
+            <!-- FOTO 15 -->
+
+            <div
+                class="slide-photo"
+                onclick="openLightbox('foto-15.jpg')"
+            >
+
+                <img
+                    src="foto-15.jpg"
+                    alt="Memory 15"
+                >
+
+            </div>
+
+
+            <!-- FOTO 16 -->
+
+            <div
+                class="slide-photo"
+                onclick="openLightbox('foto-16.jpg')"
+            >
+
+                <img
+                    src="foto-16.jpg"
+                    alt="Memory 16"
+                >
+
+            </div>
+
+
+            <!-- FOTO 17 -->
+
+            <div
+                class="slide-photo"
+                onclick="openLightbox('foto-17.jpg')"
+            >
+
+                <img
+                    src="foto-17.jpg"
+                    alt="Memory 17"
+                >
+
+            </div>
+
+
+            <!-- FOTO 18 -->
+
+            <div
+                class="slide-photo"
+                onclick="openLightbox('foto-18.jpg')"
+            >
+
+                <img
+                    src="foto-18.jpg"
+                    alt="Memory 18"
+                >
+
+            </div>
+
+
+            <!-- FOTO 19 -->
+
+            <div
+                class="slide-photo"
+                onclick="openLightbox('foto-19.jpg')"
+            >
+
+                <img
+                    src="foto-19.jpg"
+                    alt="Memory 19"
+                >
+
+            </div>
+
+
+            <!-- FOTO 20 -->
+
+            <div
+                class="slide-photo"
+                onclick="openLightbox('foto-20.jpg')"
+            >
+
+                <img
+                    src="foto-20.jpg"
+                    alt="Memory 20"
+                >
+
+            </div>
+
         </div>
 
     </div>
@@ -2750,6 +3136,7 @@ footer .footer-flower{
                 Meet Me There
             </div>
 
+
             <h2>
                 The Place<br>
                 To Celebrate
@@ -2757,12 +3144,16 @@ footer .footer-flower{
 
 
             <p>
+
                 <strong>
                     Fakultas Teknologi Informasi<br>
                     Universitas Andalas
                 </strong>
+
                 <br>
+
                 Limau Manis, Padang
+
             </p>
 
 
@@ -2784,9 +3175,7 @@ footer .footer-flower{
         </div>
 
 
-        <!-- =================================================
-             OPENSTREETMAP + LEAFLET
-        ================================================== -->
+        <!-- MAP -->
 
         <div class="map-box">
 
@@ -2795,11 +3184,15 @@ footer .footer-flower{
                 aria-label="Peta lokasi Fakultas Teknologi Informasi Universitas Andalas"
             ></div>
 
+
             <div class="map-coordinate">
+
                 📍 Lokasi:
+
                 <strong>
                     Fakultas Teknologi Informasi, Universitas Andalas
                 </strong>
+
             </div>
 
         </div>
@@ -2821,18 +3214,23 @@ footer .footer-flower{
             “
         </div>
 
+
         <div class="quote-content">
 
             <p class="final-quote">
+
                 Diperjumpakan dengan akhir dan kerampungan,
                 kita akan usai dan menyambut garis selesai.
+
             </p>
+
 
             <span class="final-quote-author">
                 (Nadin Amizah - Kekal)
             </span>
 
         </div>
+
 
         <div class="quote-decoration quote-right">
             ”
@@ -2858,16 +3256,20 @@ footer .footer-flower{
                 Your Wishes
             </div>
 
+
             <h2>
                 Leave<br>
                 A Little<br>
                 Memory
             </h2>
 
+
             <p>
+
                 Tuliskan ucapan, doa, atau pesan kecil
                 untuk Intan. Setiap kata akan menjadi
                 bagian dari kenangan hari ini.
+
             </p>
 
         </div>
@@ -2930,15 +3332,19 @@ footer .footer-flower{
         See You On
     </div>
 
+
     <h2>
         18 September 2026
     </h2>
 
+
     <p>
+
         Terima kasih telah menjadi bagian dari
         perjalanan ini. Kehadiran dan doa baik
         dari Anda akan menjadi bagian indah
         dari hari yang berkesan.
+
     </p>
 
 
@@ -3001,6 +3407,7 @@ footer .footer-flower{
         ×
     </div>
 
+
     <img
         id="lightboxImage"
         src=""
@@ -3044,6 +3451,7 @@ const params =
         window.location.search
     );
 
+
 const guest =
     params.get("to");
 
@@ -3069,10 +3477,13 @@ function openInvitation(){
     const opening =
         document.getElementById("opening");
 
+
     const main =
         document.getElementById("main");
 
+
     opening.classList.add("hide");
+
 
     setTimeout(function(){
 
@@ -3084,10 +3495,12 @@ function openInvitation(){
     const music =
         document.getElementById("music");
 
+
     music.volume = 0.35;
 
 
     music.play()
+
         .then(function(){
 
             document.getElementById(
@@ -3095,6 +3508,7 @@ function openInvitation(){
             ).textContent = "♫";
 
         })
+
         .catch(function(){
 
             document.getElementById(
@@ -3119,15 +3533,21 @@ function createFlowers(){
 
 
     const flowerTypes = [
+
         "❀",
         "✿",
         "❁",
         "✽",
         "♡"
+
     ];
 
 
-    for(let i = 0; i < 30; i++){
+    for(
+        let i = 0;
+        i < 30;
+        i++
+    ){
 
         const flower =
             document.createElement("div");
@@ -3188,7 +3608,11 @@ function createGlow(){
         );
 
 
-    for(let i = 0; i < 20; i++){
+    for(
+        let i = 0;
+        i < 20;
+        i++
+    ){
 
         const dot =
             document.createElement("div");
@@ -3246,17 +3670,21 @@ function updateCountdown(){
             "days"
         ).textContent = "00";
 
+
         document.getElementById(
             "hours"
         ).textContent = "00";
+
 
         document.getElementById(
             "minutes"
         ).textContent = "00";
 
+
         document.getElementById(
             "seconds"
         ).textContent = "00";
+
 
         return;
 
@@ -3272,24 +3700,30 @@ function updateCountdown(){
 
     const hours =
         Math.floor(
-            (distance %
-            (1000 * 60 * 60 * 24)) /
+            (
+                distance %
+                (1000 * 60 * 60 * 24)
+            ) /
             (1000 * 60 * 60)
         );
 
 
     const minutes =
         Math.floor(
-            (distance %
-            (1000 * 60 * 60)) /
+            (
+                distance %
+                (1000 * 60 * 60)
+            ) /
             (1000 * 60)
         );
 
 
     const seconds =
         Math.floor(
-            (distance %
-            (1000 * 60)) /
+            (
+                distance %
+                (1000 * 60)
+            ) /
             1000
         );
 
@@ -3334,10 +3768,12 @@ setInterval(
 ========================================================= */
 
 let calendarMonth = 8;
+
 let calendarYear = 2026;
 
 
 const monthNames = [
+
     "JANUARI",
     "FEBRUARI",
     "MARET",
@@ -3350,6 +3786,7 @@ const monthNames = [
     "OKTOBER",
     "NOVEMBER",
     "DESEMBER"
+
 ];
 
 
@@ -3440,9 +3877,13 @@ function renderCalendar(){
 
 
         if(
+
             day === 18 &&
+
             calendarMonth === 8 &&
+
             calendarYear === 2026
+
         ){
 
             cell.classList.add(
@@ -3469,6 +3910,7 @@ function changeMonth(direction){
     if(calendarMonth < 0){
 
         calendarMonth = 11;
+
         calendarYear--;
 
     }
@@ -3477,6 +3919,7 @@ function changeMonth(direction){
     if(calendarMonth > 11){
 
         calendarMonth = 0;
+
         calendarYear++;
 
     }
@@ -3491,11 +3934,50 @@ renderCalendar();
 
 
 /* =========================================================
-   LEAFLET OPENSTREETMAP
+   PHOTO SLIDER - DUPLIKASI OTOMATIS
 ========================================================= */
 
-const FTI_LAT = -0.91482;
-const FTI_LNG = 100.46039;
+const photoTrack =
+    document.getElementById(
+        "photoTrack"
+    );
+
+
+const originalPhotos =
+    Array.from(
+        photoTrack.children
+    );
+
+
+originalPhotos.forEach(function(photo){
+
+    const clone =
+        photo.cloneNode(true);
+
+
+    clone.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    photoTrack.appendChild(
+        clone
+    );
+
+});
+
+
+/* =========================================================
+   LEAFLET MAP
+========================================================= */
+
+const FTI_LAT =
+    -0.91482;
+
+
+const FTI_LNG =
+    100.46039;
 
 
 /* Membuat peta */
@@ -3504,6 +3986,7 @@ const map =
     L.map(
         "map",
         {
+
             center:[
                 FTI_LAT,
                 FTI_LNG
@@ -3514,6 +3997,7 @@ const map =
             scrollWheelZoom:false,
 
             zoomControl:true
+
         }
     );
 
@@ -3521,13 +4005,18 @@ const map =
 /* Tile OpenStreetMap */
 
 L.tileLayer(
+
     "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+
     {
+
         maxZoom:19,
 
         attribution:
-            '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
+            '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
+
     }
+
 ).addTo(map);
 
 
@@ -3536,6 +4025,7 @@ L.tileLayer(
 ========================================================= */
 
 const pinkPinIcon =
+
     L.divIcon({
 
         className:
@@ -3562,23 +4052,28 @@ const pinkPinIcon =
     });
 
 
-/* Marker lokasi */
+/* Marker */
 
 const marker =
+
     L.marker(
+
         [
             FTI_LAT,
             FTI_LNG
         ],
+
         {
             icon:pinkPinIcon
         }
+
     ).addTo(map);
 
 
 /* Popup */
 
 marker.bindPopup(`
+
     <div class="map-popup">
 
         <strong>
@@ -3593,16 +4088,17 @@ marker.bindPopup(`
         </small>
 
     </div>
+
 `);
 
 
-/* Buka popup otomatis */
+/* Buka popup */
 
 marker.openPopup();
 
 
 /* =========================================================
-   FIX MAP SAAT DIBUKA DI MOBILE
+   FIX MAP
 ========================================================= */
 
 setTimeout(function(){
@@ -3643,18 +4139,24 @@ function toggleMusic(){
     if(music.paused){
 
         music.play()
+
             .then(function(){
 
-                button.textContent = "♫";
+                button.textContent =
+                    "♫";
 
             })
+
             .catch(function(){
 
-                button.textContent = "♪";
+                button.textContent =
+                    "♪";
 
             });
 
-    }else{
+    }
+
+    else{
 
         music.pause();
 
@@ -3684,12 +4186,17 @@ function openLightbox(src){
         );
 
 
-    image.src = src;
+    image.src =
+        src;
 
 
     lightbox.classList.add(
         "show"
     );
+
+
+    document.body.style.overflow =
+        "hidden";
 
 }
 
@@ -3699,6 +4206,10 @@ function closeLightbox(){
     document
         .getElementById("lightbox")
         .classList.remove("show");
+
+
+    document.body.style.overflow =
+        "";
 
 }
 
@@ -3794,6 +4305,7 @@ function addWish(event){
 function downloadICS(){
 
     const ics =
+
 `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Undangan Wisuda Intan Salma Denaidy//ID
@@ -3813,23 +4325,31 @@ END:VCALENDAR`;
 
     const blob =
         new Blob(
+
             [ics],
+
             {
                 type:
                     "text/calendar;charset=utf-8"
             }
+
         );
 
 
     const url =
-        URL.createObjectURL(blob);
+        URL.createObjectURL(
+            blob
+        );
 
 
     const link =
-        document.createElement("a");
+        document.createElement(
+            "a"
+        );
 
 
-    link.href = url;
+    link.href =
+        url;
 
 
     link.download =
@@ -3849,7 +4369,9 @@ END:VCALENDAR`;
     );
 
 
-    URL.revokeObjectURL(url);
+    URL.revokeObjectURL(
+        url
+    );
 
 }
 
@@ -3862,7 +4384,9 @@ document.addEventListener(
     "keydown",
     function(event){
 
-        if(event.key === "Escape"){
+        if(
+            event.key === "Escape"
+        ){
 
             closeLightbox();
 
@@ -3873,6 +4397,6 @@ document.addEventListener(
 
 </script>
 
+
 </body>
 </html>
-
