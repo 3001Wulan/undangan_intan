@@ -1288,6 +1288,12 @@ a{
     transform:translateY(-2px);
 }
 
+.send-button:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+    transform:none;
+}
+
 /* =========================
    INPUT
 ========================= */
@@ -1310,28 +1316,53 @@ textarea.input{
 }
 
 /* =========================
-   WISH CARD
-   CARD PUTIH HASIL UCAPAN
+   WISH AUTO SCROLL
 ========================= */
 
-.wish-list{
+.wish-scroll-window{
     margin-top:30px;
+    height:390px;
+    overflow:hidden;
+    position:relative;
+
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+            transparent 0%,
+            #000 7%,
+            #000 93%,
+            transparent 100%
+        );
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            transparent 0%,
+            #000 7%,
+            #000 93%,
+            transparent 100%
+        );
+}
+
+.wish-list{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    will-change:transform;
 }
 
 .wish-card{
     width:100%;
     padding:20px;
-    margin-bottom:14px;
+    flex-shrink:0;
 
     background:#ffffff;
 
     border:1px solid rgba(216,100,137,.12);
     border-left:3px solid #d77a99;
 
-    /* Keempat sudut benar-benar melengkung */
     border-radius:22px !important;
 
-    /* Agar isi dan border mengikuti lengkungan */
     overflow:hidden;
 
     box-shadow:
@@ -1351,6 +1382,29 @@ textarea.input{
     font-size:12px;
     line-height:1.7;
     color:#856a74;
+    word-break:break-word;
+}
+
+.wish-empty{
+    padding:35px 20px;
+    text-align:center;
+    color:#a0808b;
+    font-size:12px;
+}
+
+.wish-status{
+    min-height:18px;
+    margin-top:12px;
+    font-size:11px;
+    color:#96727d;
+}
+
+.wish-status.success{
+    color:#5f9274;
+}
+
+.wish-status.error{
+    color:#b35b72;
 }
 
 /* =========================
@@ -1587,7 +1641,6 @@ footer .footer-flower{
         white-space:normal;
     }
 
-    /* G kapital lebih jelas dengan Great Vibes */
     .opening-script{
         font-family:'Great Vibes',cursive;
         font-size:46px;
@@ -1718,7 +1771,14 @@ footer .footer-flower{
         height:300px;
     }
 
-    /* Card putih ucapan di HP */
+    .wish-form{
+        padding:25px 20px;
+    }
+
+    .wish-scroll-window{
+        height:350px;
+    }
+
     .wish-card{
         border-radius:22px !important;
         overflow:hidden;
@@ -1741,6 +1801,7 @@ footer .footer-flower{
     .photo-track{
         animation:none !important;
     }
+
 }
 
 </style>
@@ -2033,146 +2094,83 @@ footer .footer-flower{
             id="photoTrack"
         >
 
-            <div
-                class="slide-photo"
-                onclick="openLightbox('foto-intan.jpg')"
-            >
-                <img
-                    src="foto-intan.jpg"
-                    alt="Intan Salma Denaidy"
-                >
+            <div class="slide-photo" onclick="openLightbox('foto-intan.jpg')">
+                <img src="foto-intan.jpg" alt="Intan Salma Denaidy">
             </div>
 
-            <div
-                class="slide-photo"
-                onclick="openLightbox('foto-2.jpg')"
-            >
+            <div class="slide-photo" onclick="openLightbox('foto-2.jpg')">
                 <img src="foto-2.jpg" alt="Memory 2">
             </div>
 
-            <div
-                class="slide-photo"
-                onclick="openLightbox('foto-3.jpg')"
-            >
+            <div class="slide-photo" onclick="openLightbox('foto-3.jpg')">
                 <img src="foto-3.jpg" alt="Memory 3">
             </div>
 
-            <div
-                class="slide-photo"
-                onclick="openLightbox('foto-4.jpg')"
-            >
+            <div class="slide-photo" onclick="openLightbox('foto-4.jpg')">
                 <img src="foto-4.jpg" alt="Memory 4">
             </div>
 
-            <div
-                class="slide-photo"
-                onclick="openLightbox('foto-5.jpg')"
-            >
+            <div class="slide-photo" onclick="openLightbox('foto-5.jpg')">
                 <img src="foto-5.jpg" alt="Memory 5">
             </div>
 
-            <div
-                class="slide-photo"
-                onclick="openLightbox('foto-6.jpg')"
-            >
+            <div class="slide-photo" onclick="openLightbox('foto-6.jpg')">
                 <img src="foto-6.jpg" alt="Memory 6">
             </div>
 
-            <div
-                class="slide-photo"
-                onclick="openLightbox('foto-7.jpg')"
-            >
+            <div class="slide-photo" onclick="openLightbox('foto-7.jpg')">
                 <img src="foto-7.jpg" alt="Memory 7">
             </div>
 
-            <div
-                class="slide-photo"
-                onclick="openLightbox('foto-8.jpg')"
-            >
+            <div class="slide-photo" onclick="openLightbox('foto-8.jpg')">
                 <img src="foto-8.jpg" alt="Memory 8">
             </div>
 
-            <div
-                class="slide-photo"
-                onclick="openLightbox('foto-9.jpg')"
-            >
+            <div class="slide-photo" onclick="openLightbox('foto-9.jpg')">
                 <img src="foto-9.jpg" alt="Memory 9">
             </div>
 
-            <div
-                class="slide-photo"
-                onclick="openLightbox('foto-10.jpg')"
-            >
+            <div class="slide-photo" onclick="openLightbox('foto-10.jpg')">
                 <img src="foto-10.jpg" alt="Memory 10">
             </div>
 
-            <div
-                class="slide-photo"
-                onclick="openLightbox('foto-11.jpg')"
-            >
+            <div class="slide-photo" onclick="openLightbox('foto-11.jpg')">
                 <img src="foto-11.jpg" alt="Memory 11">
             </div>
 
-            <div
-                class="slide-photo"
-                onclick="openLightbox('foto-12.jpg')"
-            >
+            <div class="slide-photo" onclick="openLightbox('foto-12.jpg')">
                 <img src="foto-12.jpg" alt="Memory 12">
             </div>
 
-            <div
-                class="slide-photo"
-                onclick="openLightbox('foto-13.jpg')"
-            >
+            <div class="slide-photo" onclick="openLightbox('foto-13.jpg')">
                 <img src="foto-13.jpg" alt="Memory 13">
             </div>
 
-            <div
-                class="slide-photo"
-                onclick="openLightbox('foto-14.jpg')"
-            >
+            <div class="slide-photo" onclick="openLightbox('foto-14.jpg')">
                 <img src="foto-14.jpg" alt="Memory 14">
             </div>
 
-            <div
-                class="slide-photo"
-                onclick="openLightbox('foto-15.jpg')"
-            >
+            <div class="slide-photo" onclick="openLightbox('foto-15.jpg')">
                 <img src="foto-15.jpg" alt="Memory 15">
             </div>
 
-            <div
-                class="slide-photo"
-                onclick="openLightbox('foto-16.jpg')"
-            >
+            <div class="slide-photo" onclick="openLightbox('foto-16.jpg')">
                 <img src="foto-16.jpg" alt="Memory 16">
             </div>
 
-            <div
-                class="slide-photo"
-                onclick="openLightbox('foto-17.jpg')"
-            >
+            <div class="slide-photo" onclick="openLightbox('foto-17.jpg')">
                 <img src="foto-17.jpg" alt="Memory 17">
             </div>
 
-            <div
-                class="slide-photo"
-                onclick="openLightbox('foto-18.jpg')"
-            >
+            <div class="slide-photo" onclick="openLightbox('foto-18.jpg')">
                 <img src="foto-18.jpg" alt="Memory 18">
             </div>
 
-            <div
-                class="slide-photo"
-                onclick="openLightbox('foto-19.jpg')"
-            >
+            <div class="slide-photo" onclick="openLightbox('foto-19.jpg')">
                 <img src="foto-19.jpg" alt="Memory 19">
             </div>
 
-            <div
-                class="slide-photo"
-                onclick="openLightbox('foto-20.jpg')"
-            >
+            <div class="slide-photo" onclick="openLightbox('foto-20.jpg')">
                 <img src="foto-20.jpg" alt="Memory 20">
             </div>
 
@@ -2316,6 +2314,7 @@ footer .footer-flower{
 
             <form
                 class="wish-form"
+                id="wishForm"
                 onsubmit="addWish(event)"
             >
 
@@ -2325,6 +2324,7 @@ footer .footer-flower{
                     type="text"
                     placeholder="Nama"
                     autocomplete="name"
+                    maxlength="80"
                     required
                 >
 
@@ -2332,22 +2332,40 @@ footer .footer-flower{
                     class="input"
                     id="wishMessage"
                     placeholder="Tulis ucapan dan doa..."
+                    maxlength="500"
                     required
                 ></textarea>
 
                 <button
                     class="send-button"
+                    id="sendWishButton"
                     type="submit"
                 >
                     Kirim Ucapan ♡
                 </button>
 
+                <div
+                    class="wish-status"
+                    id="wishStatus"
+                    aria-live="polite"
+                ></div>
+
             </form>
 
-            <div
-                class="wish-list"
-                id="wishList"
-            ></div>
+            <div class="wish-scroll-window" id="wishScrollWindow">
+
+                <div
+                    class="wish-list"
+                    id="wishList"
+                >
+
+                    <div class="wish-empty" id="wishEmpty">
+                        Memuat ucapan...
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -2461,23 +2479,45 @@ footer .footer-flower{
 <script>
 
 /* =========================
+   GOOGLE SHEETS
+========================= */
+
+/*
+   PENTING:
+   Ganti URL di bawah dengan URL WEB APP GOOGLE APPS SCRIPT
+   yang berakhiran /exec.
+
+   Contoh:
+   https://script.google.com/macros/s/XXXXXXXXXXXX/exec
+*/
+
+const WISH_SCRIPT_URL =
+    "GANTI_DENGAN_URL_WEB_APP_GOOGLE_APPS_SCRIPT_ANDA";
+
+
+/* =========================
    GUEST NAME
 ========================= */
 
-const params = new URLSearchParams(
-    window.location.search
-);
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
 
-const guest = params.get("to");
+const guest =
+    params.get("to");
 
 if(guest){
 
-    document.getElementById("guestName").textContent =
+    document.getElementById(
+        "guestName"
+    ).textContent =
         decodeURIComponent(
             guest.replace(/\+/g," ")
         );
 
 }
+
 
 /* =========================
    OPEN INVITATION
@@ -2520,6 +2560,7 @@ function openInvitation(){
 
 }
 
+
 /* =========================
    FLOWERS
 ========================= */
@@ -2527,7 +2568,9 @@ function openInvitation(){
 function createFlowers(){
 
     const layer =
-        document.getElementById("flowerLayer");
+        document.getElementById(
+            "flowerLayer"
+        );
 
     const flowerTypes = [
         "❀",
@@ -2575,6 +2618,7 @@ function createFlowers(){
 
 createFlowers();
 
+
 /* =========================
    GLOW
 ========================= */
@@ -2582,7 +2626,9 @@ createFlowers();
 function createGlow(){
 
     const layer =
-        document.getElementById("glowLayer");
+        document.getElementById(
+            "glowLayer"
+        );
 
     for(let i=0;i<20;i++){
 
@@ -2607,6 +2653,7 @@ function createGlow(){
 }
 
 createGlow();
+
 
 /* =========================
    COUNTDOWN
@@ -2690,6 +2737,7 @@ setInterval(
     updateCountdown,
     1000
 );
+
 
 /* =========================
    CALENDAR
@@ -2825,6 +2873,7 @@ function changeMonth(direction){
 
 renderCalendar();
 
+
 /* =========================
    PHOTO SLIDER
 ========================= */
@@ -2856,6 +2905,7 @@ originalPhotos.forEach(
 
     }
 );
+
 
 /* =========================
    PHOTO ORIENTATION
@@ -2925,6 +2975,7 @@ window.addEventListener(
 
     }
 );
+
 
 /* =========================
    MAP
@@ -3033,6 +3084,7 @@ window.addEventListener(
     }
 );
 
+
 /* =========================
    MUSIC
 ========================= */
@@ -3078,6 +3130,7 @@ function toggleMusic(){
 
 }
 
+
 /* =========================
    LIGHTBOX
 ========================= */
@@ -3118,11 +3171,313 @@ function closeLightbox(){
 
 }
 
+
+/* =====================================================
+   WISHES - GOOGLE SHEETS
+===================================================== */
+
+let wishesData = [];
+
+let wishScrollPosition = 0;
+
+let wishScrollPaused = false;
+
+let wishScrollAnimation = null;
+
+let wishLastUpdate = 0;
+
+
 /* =========================
-   WISH
+   ESCAPE HTML
 ========================= */
 
-function addWish(event){
+function escapeHTML(value){
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        value == null
+            ? ""
+            : String(value);
+
+    return div.innerHTML;
+
+}
+
+
+/* =========================
+   RENDER WISHES
+========================= */
+
+function renderWishes(data){
+
+    const list =
+        document.getElementById(
+            "wishList"
+        );
+
+    const empty =
+        document.getElementById(
+            "wishEmpty"
+        );
+
+    if(!Array.isArray(data)){
+        return;
+    }
+
+    wishesData = data;
+
+    list.innerHTML = "";
+
+    if(data.length === 0){
+
+        const emptyCard =
+            document.createElement("div");
+
+        emptyCard.className =
+            "wish-empty";
+
+        emptyCard.textContent =
+            "Belum ada ucapan. Jadilah yang pertama memberikan ucapan ♡";
+
+        list.appendChild(
+            emptyCard
+        );
+
+        wishScrollPosition = 0;
+
+        return;
+
+    }
+
+    /*
+       Ucapan terbaru diletakkan paling atas.
+    */
+
+    const reversed =
+        [...data].reverse();
+
+    reversed.forEach(
+        function(item){
+
+            const card =
+                document.createElement("div");
+
+            card.className =
+                "wish-card";
+
+            const name =
+                document.createElement("strong");
+
+            name.textContent =
+                item.name || "Tamu Undangan";
+
+            const message =
+                document.createElement("p");
+
+            message.textContent =
+                item.message || "";
+
+            card.appendChild(
+                name
+            );
+
+            card.appendChild(
+                message
+            );
+
+            list.appendChild(
+                card
+            );
+
+        }
+    );
+
+    /*
+       Setelah data diperbarui,
+       posisi scroll dijaga agar tidak
+       selalu kembali ke awal.
+    */
+
+    requestAnimationFrame(
+        function(){
+
+            const max =
+                Math.max(
+                    0,
+                    list.scrollHeight -
+                    document.getElementById(
+                        "wishScrollWindow"
+                    ).clientHeight
+                );
+
+            if(wishScrollPosition > max){
+                wishScrollPosition = 0;
+            }
+
+            list.style.transform =
+                "translateY(-" +
+                wishScrollPosition +
+                "px)";
+
+        }
+    );
+
+}
+
+
+/* =========================
+   LOAD WISHES
+========================= */
+
+async function loadWishes(){
+
+    if(
+        !WISH_SCRIPT_URL ||
+        WISH_SCRIPT_URL.includes(
+            "GANTI_DENGAN_URL"
+        )
+    ){
+
+        const list =
+            document.getElementById(
+                "wishList"
+            );
+
+        list.innerHTML = "";
+
+        const info =
+            document.createElement("div");
+
+        info.className =
+            "wish-empty";
+
+        info.textContent =
+            "Hubungkan Google Sheets terlebih dahulu untuk menampilkan ucapan.";
+
+        list.appendChild(
+            info
+        );
+
+        return;
+
+    }
+
+    try{
+
+        const response =
+            await fetch(
+                WISH_SCRIPT_URL +
+                "?action=get&t=" +
+                Date.now(),
+                {
+                    method:"GET",
+                    cache:"no-store"
+                }
+            );
+
+        if(!response.ok){
+
+            throw new Error(
+                "Gagal mengambil data ucapan."
+            );
+
+        }
+
+        const result =
+            await response.json();
+
+        if(
+            result &&
+            result.success
+        ){
+
+            /*
+               Cek apakah data berubah.
+               Kalau sama, tidak perlu render ulang.
+            */
+
+            const newData =
+                Array.isArray(result.data)
+                    ? result.data
+                    : [];
+
+            const oldJSON =
+                JSON.stringify(
+                    wishesData
+                );
+
+            const newJSON =
+                JSON.stringify(
+                    newData
+                );
+
+            if(oldJSON !== newJSON){
+
+                renderWishes(
+                    newData
+                );
+
+            }
+
+        }else{
+
+            throw new Error(
+                result.error ||
+                "Data ucapan tidak tersedia."
+            );
+
+        }
+
+    }catch(error){
+
+        console.error(
+            "Wishes error:",
+            error
+        );
+
+        /*
+           Jangan menghapus ucapan yang
+           sudah tampil jika polling gagal.
+        */
+
+        if(
+            wishesData.length === 0
+        ){
+
+            const list =
+                document.getElementById(
+                    "wishList"
+                );
+
+            list.innerHTML = "";
+
+            const errorCard =
+                document.createElement("div");
+
+            errorCard.className =
+                "wish-empty";
+
+            errorCard.textContent =
+                "Ucapan belum dapat dimuat.";
+
+            list.appendChild(
+                errorCard
+            );
+
+        }
+
+    }
+
+}
+
+
+/* =========================
+   SEND WISH
+========================= */
+
+async function addWish(event){
 
     event.preventDefault();
 
@@ -3136,49 +3491,312 @@ function addWish(event){
             "wishMessage"
         ).value.trim();
 
+    const button =
+        document.getElementById(
+            "sendWishButton"
+        );
+
+    const status =
+        document.getElementById(
+            "wishStatus"
+        );
+
     if(!name || !message){
+
+        status.textContent =
+            "Nama dan ucapan wajib diisi.";
+
+        status.className =
+            "wish-status error";
+
         return;
+
     }
 
-    const card =
-        document.createElement("div");
+    if(
+        !WISH_SCRIPT_URL ||
+        WISH_SCRIPT_URL.includes(
+            "GANTI_DENGAN_URL"
+        )
+    ){
 
-    card.className =
-        "wish-card";
+        status.textContent =
+            "URL Google Sheets belum dipasang.";
 
-    const nameElement =
-        document.createElement("strong");
+        status.className =
+            "wish-status error";
 
-    nameElement.textContent =
-        name;
+        return;
 
-    const messageElement =
-        document.createElement("p");
+    }
 
-    messageElement.textContent =
-        message;
+    button.disabled = true;
 
-    card.appendChild(
-        nameElement
-    );
+    button.textContent =
+        "Mengirim...";
 
-    card.appendChild(
-        messageElement
-    );
+    status.textContent =
+        "";
 
-    document.getElementById(
-        "wishList"
-    ).prepend(card);
+    status.className =
+        "wish-status";
 
-    document.getElementById(
-        "wishName"
-    ).value = "";
+    try{
 
-    document.getElementById(
-        "wishMessage"
-    ).value = "";
+        /*
+           Menggunakan URLSearchParams agar
+           request tetap sederhana dan tidak
+           memicu preflight CORS seperti JSON.
+        */
+
+        const formData =
+            new URLSearchParams();
+
+        formData.append(
+            "name",
+            name
+        );
+
+        formData.append(
+            "message",
+            message
+        );
+
+        const response =
+            await fetch(
+                WISH_SCRIPT_URL,
+                {
+                    method:"POST",
+                    body:formData
+                }
+            );
+
+        const result =
+            await response.json();
+
+        if(
+            !result ||
+            !result.success
+        ){
+
+            throw new Error(
+                result.error ||
+                "Ucapan gagal dikirim."
+            );
+
+        }
+
+        /*
+           Bersihkan form setelah berhasil.
+        */
+
+        document.getElementById(
+            "wishName"
+        ).value = "";
+
+        document.getElementById(
+            "wishMessage"
+        ).value = "";
+
+        status.textContent =
+            "Ucapan berhasil dikirim ♡";
+
+        status.className =
+            "wish-status success";
+
+        /*
+           Ambil kembali data dari Google Sheets
+           agar ucapan langsung muncul.
+        */
+
+        await loadWishes();
+
+    }catch(error){
+
+        console.error(
+            "Send wish error:",
+            error
+        );
+
+        status.textContent =
+            "Ucapan belum berhasil dikirim. Coba lagi.";
+
+        status.className =
+            "wish-status error";
+
+    }finally{
+
+        button.disabled = false;
+
+        button.textContent =
+            "Kirim Ucapan ♡";
+
+    }
 
 }
+
+
+/* =========================
+   AUTO SCROLL WISHES
+========================= */
+
+function animateWishScroll(){
+
+    const windowElement =
+        document.getElementById(
+            "wishScrollWindow"
+        );
+
+    const list =
+        document.getElementById(
+            "wishList"
+        );
+
+    if(
+        !windowElement ||
+        !list
+    ){
+
+        wishScrollAnimation =
+            requestAnimationFrame(
+                animateWishScroll
+            );
+
+        return;
+
+    }
+
+    if(
+        !wishScrollPaused &&
+        wishesData.length > 0
+    ){
+
+        const maxScroll =
+            Math.max(
+                0,
+                list.scrollHeight -
+                windowElement.clientHeight
+            );
+
+        if(maxScroll > 5){
+
+            /*
+               Kecepatan sangat pelan agar
+               ucapan nyaman dibaca.
+            */
+
+            wishScrollPosition += 0.18;
+
+            if(
+                wishScrollPosition >=
+                maxScroll
+            ){
+
+                /*
+                   Setelah sampai bawah,
+                   kembali ke atas secara halus.
+                */
+
+                wishScrollPosition = 0;
+
+            }
+
+            list.style.transform =
+                "translateY(-" +
+                wishScrollPosition +
+                "px)";
+
+        }
+
+    }
+
+    wishScrollAnimation =
+        requestAnimationFrame(
+            animateWishScroll
+        );
+
+}
+
+animateWishScroll();
+
+
+/* =========================
+   PAUSE WISH SCROLL
+========================= */
+
+const wishScrollWindow =
+    document.getElementById(
+        "wishScrollWindow"
+    );
+
+wishScrollWindow.addEventListener(
+    "mouseenter",
+    function(){
+
+        wishScrollPaused = true;
+
+    }
+);
+
+wishScrollWindow.addEventListener(
+    "mouseleave",
+    function(){
+
+        wishScrollPaused = false;
+
+    }
+);
+
+wishScrollWindow.addEventListener(
+    "touchstart",
+    function(){
+
+        wishScrollPaused = true;
+
+    },
+    {
+        passive:true
+    }
+);
+
+wishScrollWindow.addEventListener(
+    "touchend",
+    function(){
+
+        setTimeout(
+            function(){
+
+                wishScrollPaused = false;
+
+            },
+            1200
+        );
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+/* =========================
+   INITIAL LOAD WISHES
+========================= */
+
+loadWishes();
+
+/*
+   Cek Google Sheets setiap 5 detik.
+   Jadi kalau tamu lain mengirim ucapan,
+   browser akan mengambil data terbaru
+   tanpa perlu refresh halaman.
+*/
+
+setInterval(
+    loadWishes,
+    5000
+);
+
 
 /* =========================
    DOWNLOAD ICS
@@ -3240,6 +3858,7 @@ END:VCALENDAR`;
     );
 
 }
+
 
 /* =========================
    ESCAPE
