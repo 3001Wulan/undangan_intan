@@ -1315,11 +1315,92 @@ textarea.input{
     resize:vertical;
 }
 
+/* =========================
+   WISH AUTO SCROLL
+========================= */
+
+.wish-scroll-window{
+    margin-top:30px;
+    height:390px;
+    overflow:hidden;
+    position:relative;
+
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+            transparent 0%,
+            #000 7%,
+            #000 93%,
+            transparent 100%
+        );
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            transparent 0%,
+            #000 7%,
+            #000 93%,
+            transparent 100%
+        );
+}
+
+.wish-list{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    will-change:transform;
+}
+
+.wish-card{
+    width:100%;
+    padding:20px;
+    flex-shrink:0;
+
+    background:#ffffff;
+
+    border:1px solid rgba(216,100,137,.12);
+    border-left:3px solid #d77a99;
+
+    border-radius:22px !important;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 8px 22px rgba(120,60,80,.07);
+
+    position:relative;
+}
+
+.wish-card strong{
+    display:block;
+    font-size:13px;
+    color:#704451;
+}
+
+.wish-card p{
+    margin-top:7px;
+    font-size:12px;
+    line-height:1.7;
+    color:#856a74;
+    word-break:break-word;
+}
+
+.wish-empty{
+    padding:35px 20px;
+    text-align:center;
+    color:#a0808b;
+    font-size:12px;
+}
+
 .wish-status{
     min-height:18px;
     margin-top:12px;
     font-size:11px;
     color:#96727d;
+    
+}
+    .wish-scroll-window{
+    display:none !important;
 }
 
 .wish-status.success{
@@ -1696,6 +1777,15 @@ footer .footer-flower{
 
     .wish-form{
         padding:25px 20px;
+    }
+
+    .wish-scroll-window{
+        height:350px;
+    }
+
+    .wish-card{
+        border-radius:22px !important;
+        overflow:hidden;
     }
 
 }
@@ -2266,6 +2356,27 @@ footer .footer-flower{
 
             </form>
 
+            <div
+                class="wish-scroll-window"
+                id="wishScrollWindow"
+            >
+
+                <div
+                    class="wish-list"
+                    id="wishList"
+                >
+
+                    <div
+                        class="wish-empty"
+                        id="wishEmpty"
+                    >
+                        Memuat ucapan...
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
     </div>
@@ -2376,6 +2487,18 @@ footer .footer-flower{
 </button>
 
 <script>
+
+/* =====================================================
+   GOOGLE SHEETS
+===================================================== */
+
+/*
+   URL WEB APP GOOGLE APPS SCRIPT KAMU
+*/
+
+const WISH_API_URL =
+    "https://script.google.com/macros/s/AKfycbwqmrozOIeHgSVW74JVazQJePT5oNYAaGYyqNqRxy85rho0hic7Rck49dJd93A14GLP/exec";
+
 
 /* =====================================================
    GUEST NAME
@@ -3073,32 +3196,284 @@ function closeLightbox(){
 
 
 /* =====================================================
-   WISHES
+   WISHES - GOOGLE SHEETS
+===================================================== */
+
+let wishesData = [];
+
+let wishScrollPosition = 0;
+
+let wishScrollPaused = false;
+
+let wishScrollAnimation = null;
+
+
+/* =====================================================
+   RENDER WISHES
+===================================================== */
+
+function renderWishes(data){
+
+    const list =
+        document.getElementById(
+            "wishList"
+        );
+
+    if(!Array.isArray(data)){
+        return;
+    }
+
+    wishesData = data;
+
+    list.innerHTML = "";
+
+    if(data.length === 0){
+
+        const emptyCard =
+            document.createElement("div");
+
+        emptyCard.className =
+            "wish-empty";
+
+        emptyCard.textContent =
+            "Belum ada ucapan. Jadilah yang pertama memberikan ucapan ♡";
+
+        list.appendChild(
+            emptyCard
+        );
+
+        wishScrollPosition = 0;
+
+        list.style.transform =
+            "translateY(0)";
+
+        return;
+
+    }
+
+
+    /*
+       Ucapan terbaru berada di paling atas.
+    */
+
+    const reversed =
+        [...data].reverse();
+
+
+    reversed.forEach(
+        function(item){
+
+            const card =
+                document.createElement("div");
+
+            card.className =
+                "wish-card";
+
+
+            const name =
+                document.createElement("strong");
+
+            name.textContent =
+                item.name ||
+                "Tamu Undangan";
+
+
+            const message =
+                document.createElement("p");
+
+            message.textContent =
+                item.message ||
+                "";
+
+
+            card.appendChild(
+                name
+            );
+
+            card.appendChild(
+                message
+            );
+
+            list.appendChild(
+                card
+            );
+
+        }
+    );
+
+
+    wishScrollPosition = 0;
+
+    list.style.transform =
+        "translateY(0)";
+
+}
+
+
+/* =====================================================
+   LOAD WISHES
+===================================================== */
+
+async function loadWishes(){
+
+    if(
+        !WISH_API_URL ||
+        !WISH_API_URL.includes("/exec")
+    ){
+
+        return;
+
+    }
+
+
+    try{
+
+        const response =
+            await fetch(
+                WISH_API_URL +
+                "?action=get&t=" +
+                Date.now(),
+                {
+                    method:"GET",
+                    cache:"no-store"
+                }
+            );
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "Gagal mengambil data ucapan."
+            );
+
+        }
+
+
+        const result =
+            await response.json();
+
+
+        if(
+            result &&
+            result.success
+        ){
+
+            const newData =
+                Array.isArray(result.data)
+                    ? result.data
+                    : [];
+
+
+            const oldJSON =
+                JSON.stringify(
+                    wishesData
+                );
+
+            const newJSON =
+                JSON.stringify(
+                    newData
+                );
+
+
+            /*
+               Hanya render ulang jika
+               memang ada perubahan data.
+            */
+
+            if(oldJSON !== newJSON){
+
+                renderWishes(
+                    newData
+                );
+
+            }
+
+        }else{
+
+            throw new Error(
+                result.error ||
+                "Data ucapan tidak tersedia."
+            );
+
+        }
+
+
+    }catch(error){
+
+        console.error(
+            "Wishes error:",
+            error
+        );
+
+
+        /*
+           Jangan menghapus data yang
+           sudah berhasil tampil.
+        */
+
+        if(
+            wishesData.length === 0
+        ){
+
+            const list =
+                document.getElementById(
+                    "wishList"
+                );
+
+            list.innerHTML = "";
+
+            const errorCard =
+                document.createElement("div");
+
+            errorCard.className =
+                "wish-empty";
+
+            errorCard.textContent =
+                "Ucapan belum dapat dimuat.";
+
+            list.appendChild(
+                errorCard
+            );
+
+        }
+
+    }
+
+}
+
+
+/* =====================================================
+   SEND WISH
 ===================================================== */
 
 async function addWish(event){
 
     event.preventDefault();
 
+
     const name =
         document.getElementById(
             "wishName"
         ).value.trim();
+
 
     const message =
         document.getElementById(
             "wishMessage"
         ).value.trim();
 
+
     const button =
         document.getElementById(
             "sendWishButton"
         );
 
+
     const status =
         document.getElementById(
             "wishStatus"
         );
+
 
     if(!name || !message){
 
@@ -3112,15 +3487,12 @@ async function addWish(event){
 
     }
 
-    /*
-       Tampilan form tetap ada.
-       Pesan tidak ditampilkan di halaman.
-    */
 
     button.disabled = true;
 
     button.textContent =
         "Mengirim...";
+
 
     status.textContent =
         "Menyimpan ucapan...";
@@ -3128,21 +3500,79 @@ async function addWish(event){
     status.className =
         "wish-status";
 
-    /*
-       Jika nantinya ingin tetap menyimpan
-       ucapan ke Google Sheets, bagian ini
-       bisa digunakan kembali.
-    */
 
-    setTimeout(function(){
+    try{
+
+        /*
+           URLSearchParams digunakan supaya
+           request tetap sederhana.
+        */
+
+        const formData =
+            new URLSearchParams();
+
+
+        formData.append(
+            "name",
+            name
+        );
+
+
+        formData.append(
+            "message",
+            message
+        );
+
+
+        const response =
+            await fetch(
+                WISH_API_URL,
+                {
+                    method:"POST",
+                    body:formData
+                }
+            );
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "Server tidak merespons dengan benar."
+            );
+
+        }
+
+
+        const result =
+            await response.json();
+
+
+        if(
+            !result ||
+            !result.success
+        ){
+
+            throw new Error(
+                result.error ||
+                "Ucapan gagal dikirim."
+            );
+
+        }
+
+
+        /*
+           Kosongkan form.
+        */
 
         document.getElementById(
             "wishName"
         ).value = "";
 
+
         document.getElementById(
             "wishMessage"
         ).value = "";
+
 
         status.textContent =
             "Ucapan berhasil dikirim ♡";
@@ -3150,14 +3580,210 @@ async function addWish(event){
         status.className =
             "wish-status success";
 
+
+        /*
+           Ambil data terbaru segera.
+        */
+
+        await loadWishes();
+
+
+    }catch(error){
+
+        console.error(
+            "Send wish error:",
+            error
+        );
+
+
+        status.textContent =
+            "Ucapan belum berhasil dikirim. Coba lagi.";
+
+        status.className =
+            "wish-status error";
+
+
+    }finally{
+
         button.disabled = false;
 
         button.textContent =
             "Kirim Ucapan ♡";
 
-    },800);
+    }
 
 }
+
+
+/* =====================================================
+   AUTO SCROLL WISHES
+===================================================== */
+
+function animateWishScroll(){
+
+    const windowElement =
+        document.getElementById(
+            "wishScrollWindow"
+        );
+
+    const list =
+        document.getElementById(
+            "wishList"
+        );
+
+
+    if(
+        !windowElement ||
+        !list
+    ){
+
+        wishScrollAnimation =
+            requestAnimationFrame(
+                animateWishScroll
+            );
+
+        return;
+
+    }
+
+
+    if(
+        !wishScrollPaused &&
+        wishesData.length > 0
+    ){
+
+        const maxScroll =
+            Math.max(
+                0,
+                list.scrollHeight -
+                windowElement.clientHeight
+            );
+
+
+        if(maxScroll > 5){
+
+            /*
+               Gerakan pelan agar nyaman dibaca.
+            */
+
+            wishScrollPosition += 0.18;
+
+
+            /*
+               Setelah sampai bawah,
+               kembali ke atas.
+            */
+
+            if(
+                wishScrollPosition >=
+                maxScroll
+            ){
+
+                wishScrollPosition = 0;
+
+            }
+
+
+            list.style.transform =
+                "translateY(-" +
+                wishScrollPosition +
+                "px)";
+
+        }
+
+    }
+
+
+    wishScrollAnimation =
+        requestAnimationFrame(
+            animateWishScroll
+        );
+
+}
+
+animateWishScroll();
+
+
+/* =====================================================
+   PAUSE AUTO SCROLL
+===================================================== */
+
+const wishScrollWindow =
+    document.getElementById(
+        "wishScrollWindow"
+    );
+
+
+wishScrollWindow.addEventListener(
+    "mouseenter",
+    function(){
+
+        wishScrollPaused = true;
+
+    }
+);
+
+
+wishScrollWindow.addEventListener(
+    "mouseleave",
+    function(){
+
+        wishScrollPaused = false;
+
+    }
+);
+
+
+wishScrollWindow.addEventListener(
+    "touchstart",
+    function(){
+
+        wishScrollPaused = true;
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+wishScrollWindow.addEventListener(
+    "touchend",
+    function(){
+
+        setTimeout(
+            function(){
+
+                wishScrollPaused = false;
+
+            },
+            1200
+        );
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+/* =====================================================
+   INITIAL LOAD
+===================================================== */
+
+loadWishes();
+
+
+/*
+   Cek Google Sheets setiap 5 detik.
+   Jadi ucapan dari tamu lain akan
+   muncul otomatis tanpa refresh.
+*/
+
+setInterval(
+    loadWishes,
+    5000
+);
 
 
 /* =====================================================
@@ -3183,6 +3809,7 @@ LOCATION:Fakultas Teknologi Informasi, Universitas Andalas, Limau Manis, Padang
 END:VEVENT
 END:VCALENDAR`;
 
+
     const blob =
         new Blob(
             [ics],
@@ -3192,29 +3819,37 @@ END:VCALENDAR`;
             }
         );
 
+
     const url =
         URL.createObjectURL(
             blob
         );
 
+
     const link =
         document.createElement("a");
+
 
     link.href =
         url;
 
+
     link.download =
         "wisuda-intan-salma-denaidy.ics";
+
 
     document.body.appendChild(
         link
     );
 
+
     link.click();
+
 
     document.body.removeChild(
         link
     );
+
 
     URL.revokeObjectURL(
         url
