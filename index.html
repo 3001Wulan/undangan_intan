@@ -2352,14 +2352,20 @@ footer .footer-flower{
 
             </form>
 
-            <div class="wish-scroll-window" id="wishScrollWindow">
+            <div
+                class="wish-scroll-window"
+                id="wishScrollWindow"
+            >
 
                 <div
                     class="wish-list"
                     id="wishList"
                 >
 
-                    <div class="wish-empty" id="wishEmpty">
+                    <div
+                        class="wish-empty"
+                        id="wishEmpty"
+                    >
                         Memuat ucapan...
                     </div>
 
@@ -2478,25 +2484,21 @@ footer .footer-flower{
 
 <script>
 
-/* =========================
+/* =====================================================
    GOOGLE SHEETS
-========================= */
+===================================================== */
 
 /*
-   PENTING:
-   Ganti URL di bawah dengan URL WEB APP GOOGLE APPS SCRIPT
-   yang berakhiran /exec.
-
-   Contoh:
-   https://script.google.com/macros/s/XXXXXXXXXXXX/exec
+   URL WEB APP GOOGLE APPS SCRIPT KAMU
 */
 
-const WISH_API_URL = "https://script.google.com/macros/s/AKfycbwqmrozOIeHgSVW74JVazQJePT5oNYAaGYyqNqRxy85rho0hic7Rck49dJd93A14GLP/exec";
+const WISH_API_URL =
+    "https://script.google.com/macros/s/AKfycbwqmrozOIeHgSVW74JVazQJePT5oNYAaGYyqNqRxy85rho0hic7Rck49dJd93A14GLP/exec";
 
 
-/* =========================
+/* =====================================================
    GUEST NAME
-========================= */
+===================================================== */
 
 const params =
     new URLSearchParams(
@@ -2518,9 +2520,9 @@ if(guest){
 }
 
 
-/* =========================
+/* =====================================================
    OPEN INVITATION
-========================= */
+===================================================== */
 
 function openInvitation(){
 
@@ -2535,6 +2537,18 @@ function openInvitation(){
     setTimeout(function(){
 
         main.classList.add("show");
+
+        setTimeout(function(){
+
+            if(
+                typeof map !== "undefined"
+            ){
+
+                map.invalidateSize();
+
+            }
+
+        },500);
 
     },300);
 
@@ -2560,9 +2574,9 @@ function openInvitation(){
 }
 
 
-/* =========================
+/* =====================================================
    FLOWERS
-========================= */
+===================================================== */
 
 function createFlowers(){
 
@@ -2584,7 +2598,8 @@ function createFlowers(){
         const flower =
             document.createElement("div");
 
-        flower.className = "flower";
+        flower.className =
+            "flower";
 
         flower.textContent =
             flowerTypes[
@@ -2609,7 +2624,9 @@ function createFlowers(){
         flower.style.opacity =
             (.25 + Math.random() * .55);
 
-        layer.appendChild(flower);
+        layer.appendChild(
+            flower
+        );
 
     }
 
@@ -2618,9 +2635,9 @@ function createFlowers(){
 createFlowers();
 
 
-/* =========================
+/* =====================================================
    GLOW
-========================= */
+===================================================== */
 
 function createGlow(){
 
@@ -2634,7 +2651,8 @@ function createGlow(){
         const dot =
             document.createElement("div");
 
-        dot.className = "glow";
+        dot.className =
+            "glow";
 
         dot.style.left =
             Math.random() * 100 + "%";
@@ -2645,7 +2663,9 @@ function createGlow(){
         dot.style.animationDelay =
             (-Math.random() * 5) + "s";
 
-        layer.appendChild(dot);
+        layer.appendChild(
+            dot
+        );
 
     }
 
@@ -2654,9 +2674,9 @@ function createGlow(){
 createGlow();
 
 
-/* =========================
+/* =====================================================
    COUNTDOWN
-========================= */
+===================================================== */
 
 const targetDate =
     new Date(
@@ -2738,9 +2758,9 @@ setInterval(
 );
 
 
-/* =========================
+/* =====================================================
    CALENDAR
-========================= */
+===================================================== */
 
 let calendarMonth = 8;
 let calendarYear = 2026;
@@ -2873,9 +2893,9 @@ function changeMonth(direction){
 renderCalendar();
 
 
-/* =========================
+/* =====================================================
    PHOTO SLIDER
-========================= */
+===================================================== */
 
 const photoTrack =
     document.getElementById(
@@ -2906,9 +2926,9 @@ originalPhotos.forEach(
 );
 
 
-/* =========================
+/* =====================================================
    PHOTO ORIENTATION
-========================= */
+===================================================== */
 
 function detectPhotoOrientation(){
 
@@ -2976,9 +2996,9 @@ window.addEventListener(
 );
 
 
-/* =========================
+/* =====================================================
    MAP
-========================= */
+===================================================== */
 
 const FTI_LAT = -0.91482;
 const FTI_LNG = 100.46039;
@@ -3084,9 +3104,9 @@ window.addEventListener(
 );
 
 
-/* =========================
+/* =====================================================
    MUSIC
-========================= */
+===================================================== */
 
 function toggleMusic(){
 
@@ -3130,9 +3150,9 @@ function toggleMusic(){
 }
 
 
-/* =========================
+/* =====================================================
    LIGHTBOX
-========================= */
+===================================================== */
 
 function openLightbox(src){
 
@@ -3183,42 +3203,16 @@ let wishScrollPaused = false;
 
 let wishScrollAnimation = null;
 
-let wishLastUpdate = 0;
 
-
-/* =========================
-   ESCAPE HTML
-========================= */
-
-function escapeHTML(value){
-
-    const div =
-        document.createElement("div");
-
-    div.textContent =
-        value == null
-            ? ""
-            : String(value);
-
-    return div.innerHTML;
-
-}
-
-
-/* =========================
+/* =====================================================
    RENDER WISHES
-========================= */
+===================================================== */
 
 function renderWishes(data){
 
     const list =
         document.getElementById(
             "wishList"
-        );
-
-    const empty =
-        document.getElementById(
-            "wishEmpty"
         );
 
     if(!Array.isArray(data)){
@@ -3246,16 +3240,21 @@ function renderWishes(data){
 
         wishScrollPosition = 0;
 
+        list.style.transform =
+            "translateY(0)";
+
         return;
 
     }
 
+
     /*
-       Ucapan terbaru diletakkan paling atas.
+       Ucapan terbaru berada di paling atas.
     */
 
     const reversed =
         [...data].reverse();
+
 
     reversed.forEach(
         function(item){
@@ -3266,17 +3265,22 @@ function renderWishes(data){
             card.className =
                 "wish-card";
 
+
             const name =
                 document.createElement("strong");
 
             name.textContent =
-                item.name || "Tamu Undangan";
+                item.name ||
+                "Tamu Undangan";
+
 
             const message =
                 document.createElement("p");
 
             message.textContent =
-                item.message || "";
+                item.message ||
+                "";
+
 
             card.appendChild(
                 name
@@ -3293,81 +3297,36 @@ function renderWishes(data){
         }
     );
 
-    /*
-       Setelah data diperbarui,
-       posisi scroll dijaga agar tidak
-       selalu kembali ke awal.
-    */
 
-    requestAnimationFrame(
-        function(){
+    wishScrollPosition = 0;
 
-            const max =
-                Math.max(
-                    0,
-                    list.scrollHeight -
-                    document.getElementById(
-                        "wishScrollWindow"
-                    ).clientHeight
-                );
-
-            if(wishScrollPosition > max){
-                wishScrollPosition = 0;
-            }
-
-            list.style.transform =
-                "translateY(-" +
-                wishScrollPosition +
-                "px)";
-
-        }
-    );
+    list.style.transform =
+        "translateY(0)";
 
 }
 
 
-/* =========================
+/* =====================================================
    LOAD WISHES
-========================= */
+===================================================== */
 
 async function loadWishes(){
 
     if(
-        !WISH_SCRIPT_URL ||
-        WISH_SCRIPT_URL.includes(
-            "GANTI_DENGAN_URL"
-        )
+        !WISH_API_URL ||
+        !WISH_API_URL.includes("/exec")
     ){
-
-        const list =
-            document.getElementById(
-                "wishList"
-            );
-
-        list.innerHTML = "";
-
-        const info =
-            document.createElement("div");
-
-        info.className =
-            "wish-empty";
-
-        info.textContent =
-            "Hubungkan Google Sheets terlebih dahulu untuk menampilkan ucapan.";
-
-        list.appendChild(
-            info
-        );
 
         return;
 
     }
 
+
     try{
 
         const response =
             await fetch(
-                WISH_SCRIPT_URL +
+                WISH_API_URL +
                 "?action=get&t=" +
                 Date.now(),
                 {
@@ -3375,6 +3334,7 @@ async function loadWishes(){
                     cache:"no-store"
                 }
             );
+
 
         if(!response.ok){
 
@@ -3384,23 +3344,21 @@ async function loadWishes(){
 
         }
 
+
         const result =
             await response.json();
+
 
         if(
             result &&
             result.success
         ){
 
-            /*
-               Cek apakah data berubah.
-               Kalau sama, tidak perlu render ulang.
-            */
-
             const newData =
                 Array.isArray(result.data)
                     ? result.data
                     : [];
+
 
             const oldJSON =
                 JSON.stringify(
@@ -3411,6 +3369,12 @@ async function loadWishes(){
                 JSON.stringify(
                     newData
                 );
+
+
+            /*
+               Hanya render ulang jika
+               memang ada perubahan data.
+            */
 
             if(oldJSON !== newJSON){
 
@@ -3429,6 +3393,7 @@ async function loadWishes(){
 
         }
 
+
     }catch(error){
 
         console.error(
@@ -3436,9 +3401,10 @@ async function loadWishes(){
             error
         );
 
+
         /*
-           Jangan menghapus ucapan yang
-           sudah tampil jika polling gagal.
+           Jangan menghapus data yang
+           sudah berhasil tampil.
         */
 
         if(
@@ -3472,33 +3438,38 @@ async function loadWishes(){
 }
 
 
-/* =========================
+/* =====================================================
    SEND WISH
-========================= */
+===================================================== */
 
 async function addWish(event){
 
     event.preventDefault();
+
 
     const name =
         document.getElementById(
             "wishName"
         ).value.trim();
 
+
     const message =
         document.getElementById(
             "wishMessage"
         ).value.trim();
+
 
     const button =
         document.getElementById(
             "sendWishButton"
         );
 
+
     const status =
         document.getElementById(
             "wishStatus"
         );
+
 
     if(!name || !message){
 
@@ -3512,66 +3483,65 @@ async function addWish(event){
 
     }
 
-    if(
-        !WISH_SCRIPT_URL ||
-        WISH_SCRIPT_URL.includes(
-            "GANTI_DENGAN_URL"
-        )
-    ){
-
-        status.textContent =
-            "URL Google Sheets belum dipasang.";
-
-        status.className =
-            "wish-status error";
-
-        return;
-
-    }
 
     button.disabled = true;
 
     button.textContent =
         "Mengirim...";
 
+
     status.textContent =
-        "";
+        "Menyimpan ucapan...";
 
     status.className =
         "wish-status";
 
+
     try{
 
         /*
-           Menggunakan URLSearchParams agar
-           request tetap sederhana dan tidak
-           memicu preflight CORS seperti JSON.
+           URLSearchParams digunakan supaya
+           request tetap sederhana.
         */
 
         const formData =
             new URLSearchParams();
+
 
         formData.append(
             "name",
             name
         );
 
+
         formData.append(
             "message",
             message
         );
 
+
         const response =
             await fetch(
-                WISH_SCRIPT_URL,
+                WISH_API_URL,
                 {
                     method:"POST",
                     body:formData
                 }
             );
 
+
+        if(!response.ok){
+
+            throw new Error(
+                "Server tidak merespons dengan benar."
+            );
+
+        }
+
+
         const result =
             await response.json();
+
 
         if(
             !result ||
@@ -3585,17 +3555,20 @@ async function addWish(event){
 
         }
 
+
         /*
-           Bersihkan form setelah berhasil.
+           Kosongkan form.
         */
 
         document.getElementById(
             "wishName"
         ).value = "";
 
+
         document.getElementById(
             "wishMessage"
         ).value = "";
+
 
         status.textContent =
             "Ucapan berhasil dikirim ♡";
@@ -3603,12 +3576,13 @@ async function addWish(event){
         status.className =
             "wish-status success";
 
+
         /*
-           Ambil kembali data dari Google Sheets
-           agar ucapan langsung muncul.
+           Ambil data terbaru segera.
         */
 
         await loadWishes();
+
 
     }catch(error){
 
@@ -3617,11 +3591,13 @@ async function addWish(event){
             error
         );
 
+
         status.textContent =
             "Ucapan belum berhasil dikirim. Coba lagi.";
 
         status.className =
             "wish-status error";
+
 
     }finally{
 
@@ -3635,9 +3611,9 @@ async function addWish(event){
 }
 
 
-/* =========================
+/* =====================================================
    AUTO SCROLL WISHES
-========================= */
+===================================================== */
 
 function animateWishScroll(){
 
@@ -3650,6 +3626,7 @@ function animateWishScroll(){
         document.getElementById(
             "wishList"
         );
+
 
     if(
         !windowElement ||
@@ -3665,6 +3642,7 @@ function animateWishScroll(){
 
     }
 
+
     if(
         !wishScrollPaused &&
         wishesData.length > 0
@@ -3677,28 +3655,30 @@ function animateWishScroll(){
                 windowElement.clientHeight
             );
 
+
         if(maxScroll > 5){
 
             /*
-               Kecepatan sangat pelan agar
-               ucapan nyaman dibaca.
+               Gerakan pelan agar nyaman dibaca.
             */
 
             wishScrollPosition += 0.18;
+
+
+            /*
+               Setelah sampai bawah,
+               kembali ke atas.
+            */
 
             if(
                 wishScrollPosition >=
                 maxScroll
             ){
 
-                /*
-                   Setelah sampai bawah,
-                   kembali ke atas secara halus.
-                */
-
                 wishScrollPosition = 0;
 
             }
+
 
             list.style.transform =
                 "translateY(-" +
@@ -3708,6 +3688,7 @@ function animateWishScroll(){
         }
 
     }
+
 
     wishScrollAnimation =
         requestAnimationFrame(
@@ -3719,14 +3700,15 @@ function animateWishScroll(){
 animateWishScroll();
 
 
-/* =========================
-   PAUSE WISH SCROLL
-========================= */
+/* =====================================================
+   PAUSE AUTO SCROLL
+===================================================== */
 
 const wishScrollWindow =
     document.getElementById(
         "wishScrollWindow"
     );
+
 
 wishScrollWindow.addEventListener(
     "mouseenter",
@@ -3737,6 +3719,7 @@ wishScrollWindow.addEventListener(
     }
 );
 
+
 wishScrollWindow.addEventListener(
     "mouseleave",
     function(){
@@ -3745,6 +3728,7 @@ wishScrollWindow.addEventListener(
 
     }
 );
+
 
 wishScrollWindow.addEventListener(
     "touchstart",
@@ -3757,6 +3741,7 @@ wishScrollWindow.addEventListener(
         passive:true
     }
 );
+
 
 wishScrollWindow.addEventListener(
     "touchend",
@@ -3778,17 +3763,17 @@ wishScrollWindow.addEventListener(
 );
 
 
-/* =========================
-   INITIAL LOAD WISHES
-========================= */
+/* =====================================================
+   INITIAL LOAD
+===================================================== */
 
 loadWishes();
 
+
 /*
    Cek Google Sheets setiap 5 detik.
-   Jadi kalau tamu lain mengirim ucapan,
-   browser akan mengambil data terbaru
-   tanpa perlu refresh halaman.
+   Jadi ucapan dari tamu lain akan
+   muncul otomatis tanpa refresh.
 */
 
 setInterval(
@@ -3797,9 +3782,9 @@ setInterval(
 );
 
 
-/* =========================
+/* =====================================================
    DOWNLOAD ICS
-========================= */
+===================================================== */
 
 function downloadICS(){
 
@@ -3820,6 +3805,7 @@ LOCATION:Fakultas Teknologi Informasi, Universitas Andalas, Limau Manis, Padang
 END:VEVENT
 END:VCALENDAR`;
 
+
     const blob =
         new Blob(
             [ics],
@@ -3829,28 +3815,37 @@ END:VCALENDAR`;
             }
         );
 
+
     const url =
         URL.createObjectURL(
             blob
         );
 
+
     const link =
         document.createElement("a");
 
-    link.href = url;
+
+    link.href =
+        url;
+
 
     link.download =
         "wisuda-intan-salma-denaidy.ics";
+
 
     document.body.appendChild(
         link
     );
 
+
     link.click();
+
 
     document.body.removeChild(
         link
     );
+
 
     URL.revokeObjectURL(
         url
@@ -3859,9 +3854,9 @@ END:VCALENDAR`;
 }
 
 
-/* =========================
-   ESCAPE
-========================= */
+/* =====================================================
+   ESCAPE KEY
+===================================================== */
 
 document.addEventListener(
     "keydown",
